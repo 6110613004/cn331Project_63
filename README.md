@@ -6,7 +6,7 @@
 ### member of group:
 1. Kittisak Boonchalee   6110613004<br>
 2. Chanoknun Choosaksilp 6110612998<br>
-3. Siriluk Rachaniyom <6110613277>
+3. Siriluk Rachaniyom 6110613277<br>
 4. yourname yoursurename<br>
 5. yourname yoursurename<br>
 
