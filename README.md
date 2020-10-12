@@ -13,3 +13,4 @@
 # work details
 ## 12/10/20's work details:<br>
 - สร้าง repository , แอด member
+- Meeting ครั้งที่ 1 กำหนดหัวข้อ Setup Git Hub
