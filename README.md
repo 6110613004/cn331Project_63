@@ -4,8 +4,8 @@
 <br>
 
 ### member of group:
-1. Kittisak Boonchalee 6110613004<br>
-2. yourname yoursurename<br>
+1. Kittisak Boonchalee   6110613004<br>
+2. Chanoknun Choosaksilp 6110612998<br>
 3. yourname yoursurename<br>
 4. yourname yoursurename<br>
 5. yourname yoursurename<br>
