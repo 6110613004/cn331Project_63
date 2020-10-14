@@ -14,3 +14,7 @@
 ## 12/10/20's work details:<br>
 - สร้าง repository , แอด member
 - Meeting ครั้งที่ 1 กำหนดหัวข้อ, Setup GitHub , แบ่งงานสำหรับ Iteration 0  
+
+## 14/10/20's work details:<br>
+- นัดทำงานที่ป๋วย
+- ทำ ER Diagram , รายงานและ Pivotal Tracker
