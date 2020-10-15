@@ -18,3 +18,6 @@
 ## 14/10/20's work details:<br>
 - นัดทำงานที่ป๋วย
 - ทำ ER Diagram , รายงานและ Pivotal Tracker
+
+## 15/10/20's work details:<br>
+- สร้าง branch aboutpage เพื่อทำ page about
