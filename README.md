@@ -21,3 +21,6 @@
 
 ## 15/10/20's work details:<br>
 - สร้าง branch aboutpage เพื่อทำ page about
+
+## 16/10/20's work details:<br>
+- Meeting ที่ป๋วย
