@@ -56,7 +56,7 @@ ROOT_URLCONF = 'tust.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'regis/templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'trader/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
