@@ -1,1 +1,1 @@
-web: gunicorn /tust.wsgi
+web: gunicorn tust.wsgi
