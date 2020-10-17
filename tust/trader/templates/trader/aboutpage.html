@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,42 +8,67 @@
     <link rel="stylesheet" href="{% static '/css/aboutpage.css' %}" type="text/css">
 
     <style>
-        body { background-color: black;}
-        div { text-align: center; }
-        ul , ol { display: inline-block; text-align: left; }
-        div li,h1,h2,h3 { color: white;}
-    
+        body {
+            background-color: #23315c;
+        }
+        
+        div {
+            text-align: center;
+        }
+        
+        ul,
+        ol {
+            display: inline-block;
+            text-align: left;
+        }
+        
+        div li,
+        h1,
+        h2,
+        h3,
+        p {
+            color: white;
+        }
+        
         hr {
-            width:50%;
-            height:3px;
-            border-width:0px;
-            background-color:gray;
-            text-align:center;
-            margin-left:1;
+            width: 50%;
+            height: 3px;
+            border-width: 0px;
+            background-color: gray;
+            text-align: center;
+            margin-left: 1;
         }
-
+        
         hr.A {
-            width:20%;
-            height: 1px ;
+            width: 20%;
+            height: 1px;
         }
-        a { color: white; font-size: 20px;}
-        a:link , a:visited{
+        
+        a {
+            color: white;
+            font-size: 20px;
+        }
+        
+        a:link,
+        a:visited {
             background-color: transparent;
             text-decoration: none;
         }
         
-        a:hover , a:active{
+        a:hover,
+        a:active {
             background-color: transparent;
             text-decoration: underline;
         }
-        
     </style>
 
 </head>
 
 <body>
     <div>
-        <h1><center>Welcome to TU Second Trader</center></h1>    
+        <h1>
+            <center>Welcome to TU Second Trader</center>
+        </h1>
         <hr>
         <h1>Member of group:</h1>
         <ol>
@@ -61,13 +87,12 @@
 
         <hr>
         <h1>รายละเอียดProject</h1>
-        <p><center>
-            TU Second Trader เป็นเว็บไซต์สำหรับค้าขายแลกเปลี่ยนของมือสองในมหาวิทยาลัยธรรมศาสตร์ ศูนย์รังสิต โดยเว็บไซต์นี้จะเสนอการให้บริการเป็นคนกลางในการ
-            เจรจาตกลงและนัดพบเพื่อแลกเปลี่ยนสินค้า ซึ่งขอบเขตของสถานที่การนัดพบจะอยู่ในมหาวิทยาลัยเท่านั้น และบุคคลที่สามารถใช้เว็บไซต์นี้จะต้องเป็นนักศึกษามหาวิทยาลัย
-            ธรรมศาสตร์เท่านั้น 
-        </center></p>
-    
-        <h1>Work details</h1> 
+        <p style="color:yellow">
+            TU Second Trader เป็นเว็บไซต์สำหรับค้าขายแลกเปลี่ยนของมือสองในมหาวิทยาลัยธรรมศาสตร์ ศูนย์รังสิต โดยเว็บไซต์นี้จะเสนอการให้บริการเป็นคนกลางในการ เจรจาตกลงและนัดพบเพื่อแลกเปลี่ยนสินค้า ซึ่งขอบเขตของสถานที่การนัดพบจะอยู่ในมหาวิทยาลัยเท่านั้น และบุคคลที่สามารถใช้เว็บไซต์นี้จะต้องเป็นนักศึกษามหาวิทยาลัย
+            ธรรมศาสตร์เท่านั้น
+        </p>
+
+        <h1>Work details</h1>
         <hr class="A">
         <h3>12/10/20's work details:</h3>
         <ul>
@@ -80,19 +105,19 @@
             <li>นัดทำงานที่ป๋วย</li>
             <li>ทำ ER Diagram , รายงานและ Pivotal Tracker</li>
         </ul>
-        <hr class="A">    
+        <hr class="A">
         <h3>15/10/20's work details:</h3>
         <ul>
             <li>สร้าง branch aboutpage เพื่อทำ page about</li>
         </ul>
-        
+
         <hr>
     </div>
-    
-        
 
 
-    
+
+
+
 </body>
 
 </html>
