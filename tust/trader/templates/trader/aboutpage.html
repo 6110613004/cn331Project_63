@@ -6,118 +6,165 @@
     <meta charset="UTF-8">
     <title>About Page</title>
     <link rel="stylesheet" href="{% static '/css/aboutpage.css' %}" type="text/css">
-
-    <style>
-        body {
-            background-color: #23315c;
-        }
-        
-        div {
-            text-align: center;
-        }
-        
-        ul,
-        ol {
-            display: inline-block;
-            text-align: left;
-        }
-        
-        div li,
-        h1,
-        h2,
-        h3,
-        p {
-            color: white;
-        }
-        
-        hr {
-            width: 50%;
-            height: 3px;
-            border-width: 0px;
-            background-color: gray;
-            text-align: center;
-            margin-left: 1;
-        }
-        
-        hr.A {
-            width: 20%;
-            height: 1px;
-        }
-        
-        a {
-            color: white;
-            font-size: 20px;
-        }
-        
-        a:link,
-        a:visited {
-            background-color: transparent;
-            text-decoration: none;
-        }
-        
-        a:hover,
-        a:active {
-            background-color: transparent;
-            text-decoration: underline;
-        }
-    </style>
-
 </head>
 
 <body>
-    <div>
-        <h1>
-            <center>Welcome to TU Second Trader</center>
-        </h1>
-        <hr>
-        <h1>Member of group:</h1>
-        <ol>
-            <li>Kittisak Boonchalee 6110613004</li>
-            <li>Chanoknun Choosaksilp 6110612998</li>
-            <li>Siriluk Rachaniyom 6110613277</li>
-            <li>Ravipol Jamkrajang 6110613251</li>
-            <li>Perasu Kaeomanee 6110680391</li>
-        </ol>
-
-        <hr>
-        <h1>Links :</h1>
-        <a href="https://www.pivotaltracker.com/n/projects/2469809" target="_blank">Tracker</a> &nbsp;&nbsp;
-        <a href="https://github.com/6110613004/cn331Project_63/invitations" target="_blank">GitHub Invitations</a>
-        <a href="https://github.com/6110613004/cn331Project_63/tree/finality" target="_blank">GitHub</a>
-
-        <hr>
-        <h1>รายละเอียดProject</h1>
-        <p style="color:yellow">
-            TU Second Trader เป็นเว็บไซต์สำหรับค้าขายแลกเปลี่ยนของมือสองในมหาวิทยาลัยธรรมศาสตร์ ศูนย์รังสิต โดยเว็บไซต์นี้จะเสนอการให้บริการเป็นคนกลางในการ เจรจาตกลงและนัดพบเพื่อแลกเปลี่ยนสินค้า ซึ่งขอบเขตของสถานที่การนัดพบจะอยู่ในมหาวิทยาลัยเท่านั้น และบุคคลที่สามารถใช้เว็บไซต์นี้จะต้องเป็นนักศึกษามหาวิทยาลัย
-            ธรรมศาสตร์เท่านั้น
-        </p>
-
-        <h1>Work details</h1>
-        <hr class="A">
-        <h3>12/10/20's work details:</h3>
-        <ul>
-            <li>สร้าง repository , แอด member</li>
-            <li>Meeting ครั้งที่ 1 กำหนดหัวข้อ, Setup GitHub , แบ่งงานสำหรับ Iteration 0</li>
-        </ul>
-        <hr class="A">
-        <h3>14/10/20's work details:</h3>
-        <ul>
-            <li>นัดทำงานที่ป๋วย</li>
-            <li>ทำ ER Diagram , รายงานและ Pivotal Tracker</li>
-        </ul>
-        <hr class="A">
-        <h3>15/10/20's work details:</h3>
-        <ul>
-            <li>สร้าง branch aboutpage เพื่อทำ page about</li>
-        </ul>
-
-        <hr>
-    </div>
-
-
-
-
-
+    <header class="headed">
+        <table class="head-table">
+            <tr>
+                <td>
+                    <div class="logo">
+                        <img src="{% static 'images/Logo.png' %}" alt="logo">
+                        <h1 class="head-text">Tu Second Trader<br><i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-comments-o" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-handshake-o"
+                                aria-hidden="true"></i>&nbsp;
+                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                        </h1>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </header>
+    <br>
+    <nav class="navigator">
+        <div class="main">
+            <ul>
+                <li><a href="#" class="nav-bar"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+                <li class="activate"><a href="#" class="nav-bar"><i class="fa fa-users" aria-hidden="true"></i> About Us</a></li>
+                <li><a href="#" class="nav-bar"><i class="fa fa-envelope" aria-hidden="true"></i> Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+    <table class="table-content">
+        <tr class="welcome">
+            <td colspan="5">
+                <h1>What is TU Scond Trader ?</h1><br>
+                <p>TU Second Trader เป็นเว็บไซต์สำหรับค้าขายแลกเปลี่ยนของมือสองในมหาวิทยาลัยธรรมศาสตร์ ศูนย์รังสิต โดยเว็บไซต์นี้จะเสนอการให้บริการเป็นคนกลางในการเจรจาตกลงและนัดพบเพื่อแลกเปลี่ยนสินค้า<br>ซึ่งขอบเขตของสถานที่การนัดพบจะอยู่ในมหาวิทยาลัยเท่านั้นและบุคคลที่สามารถใช้เว็บไซต์นี้จะต้องเป็นนักศึกษามหาวิทยาลัยธรรมศาสตร์เท่านั้น
+                </p>
+            </td>
+        </tr>
+        <tr class="emty">
+            <td colspan="5"></td>
+        </tr>
+        <tr>
+            <td colspan="5">
+                <h1 class="head-mem">Member of group :</h1>
+            </td>
+        </tr>
+        <tr class="emtyy">
+        </tr>
+        <tr class="member-web">
+            <td class="mem-pic">
+                <div class="container">
+                    <img src="{% static 'images/oat.jpg' %}" alt="ooto" class="picmem">
+                    <div class="overlay">
+                        <div class="text">Chanoknun Choosaksilp<br>6110612998</div>
+                    </div>
+                </div>
+            </td>
+            <td class="mem-pic">
+                <div class="container">
+                    <img src="{% static 'images/boom.jpg' %}">
+                    <div class="overlay">
+                        <div class="text">Kittisak Boonchalee<br>6110613004</div>
+                    </div>
+                </div>
+            </td>
+            <td class="mem-pic">
+                <div class="container">
+                    <img src="{% static 'images/park.jpg' %}" alt="pakku" class="picmem">
+                    <div class="overlay">
+                        <div class="text">Ravipol Jamkrajang<br>6110613251</div>
+                    </div>
+                </div>
+            </td>
+            <td class="mem-pic">
+                <div class="container">
+                    <img src="{% static 'images/fah.jpg' %}" alt="faahu" class="picmem">
+                    <div class="overlay">
+                        <div class="text">Siriluk Rachaniyom<br>6110613277</div>
+                    </div>
+                </div>
+            </td>
+            <td class="mem-pic">
+                <div class="container">
+                    <img src="{% static 'images/pee.jpg' %}" alt="pee" class="picmem">
+                    <div class="overlay">
+                        <div class="text">Perasu Kaeomanee<br>6110680391</div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr class="emty">
+        </tr>
+        <tr>
+            <td colspan="5" class="link">
+                <h1 class="link">Links :</h1><br>
+                <ul>
+                    <li class="activate"><a href="https://www.pivotaltracker.com/n/projects/2469809" target="_blank" class="link-bar"><i class="fa fa-life-ring" aria-hidden="true"></i>&nbsp&nbspTracker</a></li>
+                    <li class="activate"><a href="https://github.com/6110613004/cn331Project_63/invitations" target="_blank" class="link-bar"><i class="fa fa-envelope" aria-hidden="true"></i>&nbsp&nbspGitHub Invitations</a></li>
+                    <li class="activate"><a href="https://github.com/6110613004/cn331Project_63/tree/finality" target="_blank" class="link-bar"><i class="fa fa-github" aria-hidden="true"></i>&nbsp&nbspGitHub</a></li>
+                </ul>
+                <br><br>
+            </td>
+            <tr class="emtyy">
+                <td colspan="5"></td>
+            </tr>
+            <tr>
+                <td class="wd">
+                    <h1 class="wd">Work detail </h1>
+                </td>
+                <td colspan="4"></td>
+            </tr>
+            <tr class="emtyy">
+                <td colspan="5"></td>
+            </tr>
+            <tr class="day-detail">
+                <td colspan="3" class="day-detail">
+                    <div>
+                        <h1 class="day-detail"><i class="fa fa-code-fork" aria-hidden="true"></i>&nbsp10.12.20 :</h1>
+                    </div>
+                    <br>
+                    <ol class="detail">
+                        <li>สร้าง repository , แอด member</li>
+                        <li>Meeting ครั้งที่ 1 กำหนดหัวข้อ, Setup GitHub</li>
+                        <li>แบ่งงานสำหรับ Iteration 0</li>
+                    </ol>
+                </td>
+                <td colspan="2" class="day-pic">
+                    <img src="{% static 'images/github.jpeg' %}" alt="meeting" class="MT">
+                </td>
+            </tr>
+            <tr class="day-detail">
+                <td colspan="3" class="day-detail">
+                    <div>
+                        <h1 class="day-detail"><i class="fa fa-code-fork" aria-hidden="true"></i>&nbsp10.14.20 :</h1>
+                    </div>
+                    <br>
+                    <ol class="detail">
+                        <li>นัดทำงานที่ป๋วย</li>
+                        <li>ทำ ER Diagram</li>
+                        <li>รายงานและ Pivotal Tracker</li>
+                    </ol>
+                </td>
+                <td colspan="2" class="day-pic">
+                    <img src="{% static 'images/Meeting_201017.jpg' %}" alt="meeting" class="MT">
+                </td>
+            </tr>
+            <tr class="day-detail">
+                <td colspan="3" class="day-detail">
+                    <div>
+                        <h1 class="day-detail"><i class="fa fa-code-fork" aria-hidden="true"></i>&nbsp10.15.20 :</h1>
+                    </div>
+                    <br>
+                    <ol class="detail">
+                        <li>สร้าง branch aboutpage เพื่อทำ page about</li>
+                    </ol>
+                </td>
+                <td colspan="2" class="day-pic">
+                    <img src="{% static 'images/Meeting_201017_0.jpg' %}" alt="meeting" class="MT">
+                </td>
+            </tr>
+    </table>
 </body>
 
 </html>
