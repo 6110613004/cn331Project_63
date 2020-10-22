@@ -1,4 +1,0 @@
-.gitattributes
-venv
-tust/trader/templates/trader/aboutpage.html
-static/css/aboutpage.css
