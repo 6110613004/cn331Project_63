@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-# this is oat's branch
-=======
-<<<<<<< HEAD
+
 # cn331Project_63 --> TU Second Trader
  
 ## Welcome to ourProject ! ! !
@@ -28,5 +25,5 @@
 
 ## 16/10/20's work details:<br>
 - Meeting ที่ป๋วย
-=======
->>>>>>> finality
+
+
