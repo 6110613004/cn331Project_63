@@ -5,10 +5,12 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 
-
 # Create your views here.
 def about(request):
     return render(request,"trader/aboutpage.html")
+
+def about_login(request):
+    return render(request,"trader/aboutpage_logged.html")
 
 def test(request):
     return render(request,"trader/test.html")
@@ -42,7 +44,7 @@ def login_view(request):
         user = authenticate(request, username = username, password = password)
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect(reverse('aboutpage'))
+            return HttpResponseRedirect(reverse('about_logged'))
         else:
             return render(request, 'trader/login.html',{
                 'message' : 'Invalid'
@@ -50,4 +52,11 @@ def login_view(request):
     return render(request, 'trader/login.html')
 
 def logout_view(request):
-    return render(request, 'trader/login.html')
+    logout_view(request)
+    return render(request, 'trader/login.html',{
+        "message": "Logged out"
+    })
+
+
+def profile(request):
+    return render(request, 'trader/profile.html')
