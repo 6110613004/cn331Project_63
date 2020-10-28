@@ -4,10 +4,21 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>About Page</title>
+    <title>Your Profile</title>
     <link rel="stylesheet" href="{% static '/css/aboutpage.css' %}" type="text/css">
 </head>
 <body>
-    <h1>Hello {{user.first_name}}</h1>
+    <h1><center>Hello {{user.first_name}}</center></h1>
+    <center><img src="{{user.profile.image.url}}" width="240"></center>
+    <!-- ใส่รูปโปรไฟล์ตรงนี้ -->
+    <div class="container">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ u_form }}<br>
+            {{ p_form }}<br>
+            <button type="submit">Update</button>
+        </form>
+</div>
+
 </body>
 </html>

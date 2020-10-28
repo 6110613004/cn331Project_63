@@ -4,7 +4,8 @@ from django.http import HttpResponse, HttpResponseRedirect #เขียนบ�
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
-
+from .forms import  ProfileUpdateForm,UserUpdateForm
+from django.contrib import messages
 # Create your views here.
 def about(request):
     return render(request,"trader/aboutpage.html")
@@ -12,8 +13,6 @@ def about(request):
 def about_login(request):
     return render(request,"trader/aboutpage_logged.html")
 
-def test(request):
-    return render(request,"trader/test.html")
 
 def Register(request):
     if request.method == 'POST':
@@ -58,5 +57,23 @@ def logout_view(request):
     })
 
 
-def profile(request):
-    return render(request, 'trader/profile.html')
+def profile(request): #Render Profile page
+    if request.method == 'POST':   
+        u_form = UserUpdateForm(request.POST,instance=request.user)
+        p_form = ProfileUpdateForm(request.POST,request.FILES,instance=request.user.profile)
+
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request, f'Your account has been updated !')
+            return redirect('profile')
+    else:   
+        u_form = UserUpdateForm(instance=request.user)
+        p_form = ProfileUpdateForm(instance=request.user.profile)
+    
+    context ={
+        'u_form': u_form,
+        'p_form': p_form,
+    }
+    return render(request, 'trader/profile.html', context)
+
