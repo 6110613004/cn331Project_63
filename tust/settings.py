@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'crispy_forms',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -120,6 +121,7 @@ USE_TZ = True
 
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 STATIC_URL = '/static/'
 
@@ -128,6 +130,7 @@ STATICFILES_DIRS = (
 )
 
 LOGIN_REDIRECT_URL = 'aboutpage'
+LOGIN_URL ='login'
 
 STATIC_ROOT = os.path.join(BASE_DIR, "live-static", "static-root")
 
@@ -135,6 +138,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "live-static", "static-root")
 #STATIC_ROOT = "/home/cfedeploy/webapps/cfehome_static_root/"
 
 MEDIA_URL = "/media/"
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "live-static", "media-root") #เวลาอัพรูป รูปจะไปอยูในfolder พวกนี้
 django_heroku.settings(locals())

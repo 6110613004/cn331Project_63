@@ -3,60 +3,31 @@ from django.shortcuts import render, redirect #ดึงมาจากtemplats
 from django.http import HttpResponse, HttpResponseRedirect #เขียนบนกระดาน
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse
-from .forms import  ProfileUpdateForm,UserUpdateForm
+from .forms import  UserRegisterForm,ProfileUpdateForm,UserUpdateForm
 from django.contrib import messages
 # Create your views here.
 def about(request):
     return render(request,"trader/aboutpage.html")
 
-def about_login(request):
-    return render(request,"trader/aboutpage_logged.html")
 
 
-def Register(request):
+def register(request):
     if request.method == 'POST':
-        data = request.POST.copy()
-        first_name = data.get('first_name')
-        last_name = data.get('last_name')
-        email = data.get('email')
-        password = data.get('password')
-
-        newuser = User()
-        newuser.username = email
-        newuser.first_name = first_name
-        newuser.last_name = last_name
-        newuser.email = email
-        newuser.set_password(password)
-        newuser.save()
-        #from django.shortcuts import render, redirect
-        return redirect(login_view)
-
-    return render(request, 'trader/register.html')
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request,f'Account created for {username}!')
+            return redirect(about)
+    else:
+        form = UserRegisterForm()
+    return render(request, 'trader/register.html',{'form':form})
 
 
 
-def login_view(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username = username, password = password)
-        if user is not None:
-            login(request, user)
-            return HttpResponseRedirect(reverse('about_logged'))
-        else:
-            return render(request, 'trader/login.html',{
-                'message' : 'Invalid'
-            })
-    return render(request, 'trader/login.html')
-
-def logout_view(request):
-    logout_view(request)
-    return render(request, 'trader/login.html',{
-        "message": "Logged out"
-    })
-
-
+@login_required
 def profile(request): #Render Profile page
     if request.method == 'POST':   
         u_form = UserUpdateForm(request.POST,instance=request.user)

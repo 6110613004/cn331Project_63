@@ -31,8 +31,13 @@
                 <li><a href="#" class="nav-bar"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
                 <li class="activate"><a href="#" class="nav-bar"><i class="fa fa-users" aria-hidden="true"></i> About Us</a></li>
                 <li><a href="#" class="nav-bar"><i class="fa fa-envelope" aria-hidden="true"></i> Contact Us</a></li>
-                <li><a href = "{% url 'login' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Login </a><li>  
-                 <li><a href = "{% url 'logout' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Logout </a><li>
+                {% if user.is_authenticated %}
+                    <a href = "{% url 'profile' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Profile </a> 
+                    <a href = "{% url 'logout' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Logout </a>
+                {% else %}
+                    <li><a href = "{% url 'login' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Login </a><li>  
+                    <li><a href = "{% url 'logout' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Logout </a><li>
+                {% endif %}
             </ul>
         </div>
     </nav>
