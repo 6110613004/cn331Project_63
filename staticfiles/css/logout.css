@@ -1,0 +1,79 @@
+@import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mitr:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: #eda0cd;
+    background-size: cover;
+    background-position: center;
+    height: 100vh; 
+    background: -webkit-linear-gradient(right, #eda0cd, #8DC26F);
+    background: -moz-linear-gradient(right, #eda0cd, #8DC26F);
+    background: -o-linear-gradient(right, #eda0cd, #8DC26F);
+    background: linear-gradient(to left,#eda0cd, #8DC26F);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;  
+}
+.logo{
+    background-color: #a0edc0;
+    height: 15%;
+}
+
+.logo img {
+    float: left;
+    width: 15%;
+    height: auto;
+    margin-top: 0px;
+    margin-left: 5%;
+}
+.logout-page{
+    height: 85%;
+}
+.form {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 360px;
+    margin: 10% auto 100px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form h2.login-char{
+    text-align: center;
+    padding-bottom: 30px;
+    font-family: 'Mitr', sans-serif;
+    font-size: large;
+}
+
+.form button{
+    font-family: 'Mitr', sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #59e694;
+    width: 50%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+    text-decoration: none;
+}
+.form a {
+    text-decoration: none;
+}
+
+.form button:hover,.form button:active,.form button:focus {
+    background: #0eac50;
+}
