@@ -12,10 +12,10 @@
         {% for x in PD %}
         <li>
             ชื่อสินค้า {{ x }}  ลงขายโดย 
-            <a href = "{% url 'productpage' 'x.ownerName' %}"> {{ x.ownerName }} </a>
+            <a href = "{% url 'productpage' x.ownerName %}"> {{ x.ownerName }} </a>
         </li>
         {% empty %}
-            <li>ไม่มีo</li>
+            <li>ไม่มีสินค้าใดๆ</li>
         {% endfor %}
 </body>
 </html>
