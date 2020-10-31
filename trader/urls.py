@@ -1,9 +1,14 @@
+from django.urls import path
 from . import views
-from django.urls import path , include
 
 urlpatterns = [
-    path('', views.index, name = 'index'),
-    path('add', views.add_Product, name = 'add'),
-    path('delete', views.delete_Product, name = 'delete'),
-    path('update', views.update_Product, name = 'update'),
-]
+   # path('register/',views.register, name="register"),
+    path('', views.about, name ="aboutpage"),
+    path('myshop', views.myshop, name ="myshop"),
+    path('shop', views.shop, name ="shop"),
+    path('addproductpage', views.addproductpage, name ="addproductpage"),
+    path('addproduct', views.addproduct, name ="addproduct"),
+    path('delete', views.delete, name ="delete"),
+    path('productpage/<str:x_ownerName>', views.productpage, name ="productpage"),
+    #path('profile/', views.profile,name="profile"),
+] 

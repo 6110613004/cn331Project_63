@@ -1,30 +1,95 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, redirect #ดึงมาจากtemplats
+from django.http import HttpResponse, HttpResponseRedirect #เขียนบนกระดาน
 from django.contrib.auth.models import User
-from .models import Product
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.urls import reverse
+from .forms import  UserRegisterForm,ProfileUpdateForm,UserUpdateForm
+from django.contrib import messages
+from .models import Product,Profile
 # Create your views here.
+def about(request):
+    return render(request,"trader/aboutpage.html")
 
-def index(request):
-    return render(request, 'trader/index.html', {'AAA' : Product.objects.all()})
 
 
-def add_Product(request):
+def register(request):
     if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request,f'Account created for {username}!')
+            return redirect(about)
+    else:
+        form = UserRegisterForm()
+    return render(request, 'trader/register.html',{'form':form})
+
+
+
+@login_required
+def profile(request): #Render Profile page
+    if request.method == 'POST':   
+        u_form = UserUpdateForm(request.POST,instance=request.user)
+        p_form = ProfileUpdateForm(request.POST,request.FILES,instance=request.user.profile)
+
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request, f'Your account has been updated !')
+            return redirect('profile')
+    else:   
+        u_form = UserUpdateForm(instance=request.user)
+        p_form = ProfileUpdateForm(instance=request.user.profile)
+    
+    context ={
+        'u_form': u_form,
+        'p_form': p_form,
+    }
+    
+    return render(request, 'trader/profile.html', context)
+
+def myshop(request):
+    return render(request, 'trader/myshop.html',{
+        'PD' : Product.objects.filter(owner = request.user.id)}
+    )
+
+def shop(request):
+    return render(request, 'trader/shop.html',{
+        'PD' : Product.objects.all()}
+    )
+
+def addproductpage(request):
+    return render(request, 'trader/addproduct.html')   
+
+def addproduct(request):
+    if request.method == 'POST':
+        tempUser = User.objects.get(pk = request.user.pk)
         temp = request.POST.copy()
         tempProduct = Product()
         tempProduct.pName = temp.get('product_name')
+        tempProduct.ownerName = tempUser.first_name
         tempProduct.save()
-        return render(request, 'trader/index.html', {'AAA' : Product.objects.all()})
-        
+        tempOwner = User.objects.get(pk = request.user.pk) 
+        tempProduct.owner.add(tempOwner)
+        return HttpResponseRedirect(reverse('myshop'))
+    
+def profile_test(request):
+    return render(request, 'trader/profile_test.html')
 
-def delete_Product(request):
+def update_ownerName(request):
+    tempUser = User.objects.get(pk = request.user.pk)
+    tempUser.ownerName = tempUser.first_name
+
+def delete(request):
     if request.method == 'POST':
         temp = Product.objects.filter(pName = request.POST['product_name'])
         temp.delete()
-        return render(request, 'trader/index.html', {'AAA' : Product.objects.all()})
+        return HttpResponseRedirect(reverse('myshop'))
 
-def update_Product(request):
-    if request.method == 'POST':
-        temp = Product.objects.filter(pName = request.POST['product_name'])
-        temp.update(pName = request.POST['update_product_name'])
-        return render(request, 'trader/index.html', {'AAA' : Product.objects.all()})
+def productpage(request,x_ownerName):
+    
+    return render(request, 'trader/productpage.html',{
+        'PDF' : Product.objects.filter(ownerName = x_ownerName)}
+    )

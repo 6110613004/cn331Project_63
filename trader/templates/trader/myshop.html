@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Shop</title>
+</head>
+<body>
+    My Shop!
+    <br>
+    <ul>
+        {% for x in PD %}
+        <li>
+            ชื่อสินค้า {{ x.pName }} 
+        </li>
+        {% empty %}
+            <li>ไม่มีo</li>
+        {% endfor %}
+    </ul>
+    <br>
+
+    <form method="post" action = "{% url 'delete' %}" >
+        {% csrf_token %}
+        <label for="product_name">กรุณาใส่ชื่อสินค้าที่ต้องการลบ</label> <br>
+        <input type="text" id ="product_name" name ="product_name">
+        <button type="submit" >Submit</button>
+    </form>
+
+    <br>
+    <a href = "{% url 'addproductpage' %}"><i class="fa fa-envelope" aria-hidden="true"></i> addproduct </a>
+</body>
+</html>
