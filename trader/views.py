@@ -56,7 +56,7 @@ def myshop(request):
 
 def shop(request):
     return render(request, 'trader/shop.html',{
-        'PD' : Product.objects.all()}
+        'PD' : Product.objects.all() }
     )
 
 def addproductpage(request):
@@ -87,8 +87,9 @@ def delete(request):
         temp.delete()
         return HttpResponseRedirect(reverse('myshop'))
 
+
 def productpage(request,x_ownerName):
     
     return render(request, 'trader/productpage.html',{
-        'PDF' : Product.objects.filter(ownerName = x_ownerName)}
+        'PDG' : Product.objects.filter(ownerName = x_ownerName)}
     )

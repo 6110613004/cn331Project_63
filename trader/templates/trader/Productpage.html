@@ -6,11 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    Product Page {{ XXX }}
-    {% for x in PDF %}
+    Product Page 
+    {% for x in PDG %}
         <li>
-            ชื่อสินค้า {{ x }}  ลงขายโดย 
-            {{ x.ownerName }}
+            ชื่อสินค้า {{ x }}  ลงขายโดย {{x.ownerName}}
         </li>
         {% empty %}
             <li>ไม่มีo</li>
