@@ -68,7 +68,7 @@ def addproduct(request):
         temp = request.POST.copy()
         tempProduct = Product()
         tempProduct.pName = temp.get('product_name')
-        tempProduct.ownerName = tempUser.first_name
+        tempProduct.ownerName = tempUser.first_name   #ชื่อของคนลงขาย
         tempProduct.save()
         tempOwner = User.objects.get(pk = request.user.pk) 
         tempProduct.owner.add(tempOwner)
