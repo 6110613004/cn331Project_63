@@ -132,6 +132,7 @@ STATICFILES_DIRS = (
 LOGIN_REDIRECT_URL = 'aboutpage'
 LOGIN_URL ='login'
 
+
 STATIC_ROOT = os.path.join(BASE_DIR, "live-static", "static-root")
 
 
