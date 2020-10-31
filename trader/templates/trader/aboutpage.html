@@ -32,11 +32,9 @@
                 <li class="activate"><a href="#" class="nav-bar"><i class="fa fa-users" aria-hidden="true"></i> About Us</a></li>
                 <li><a href="#" class="nav-bar"><i class="fa fa-envelope" aria-hidden="true"></i> Contact Us</a></li>
                 {% if user.is_authenticated %}
-                    <li><a href = "{% url 'profile' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Profile </a></li>
-                    <li><a href = "{% url 'profile_test' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Profile_test </a></li>
-                    <li><a href = "{% url 'shop' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Shop </a></li>
-                    <li><a href = "{% url 'myshop' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Myshop </a></li>
-                    <li><a href = "{% url 'logout' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Logout </a></li>
+                    <a href = "{% url 'profile' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Profile </a> 
+                    <a href = "{% url 'logout' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Logout </a>
+
                 {% else %}
                     <li><a href = "{% url 'login' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Login </a><li>  
                     <li><a href = "{% url 'logout' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Logout </a><li>

@@ -1,3 +1,26 @@
-<h2> You have been logged out </h2>
-<a href="{% url 'login' %}" class="w3-bar-item w3-button">Log in</a>
-<a href="{% url 'aboutpage' %}" class="w3-bar-item w3-button">Back to about</a>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/css/logout.css' %}" type="text/css">
+    <title>logout-page</title>
+</head>
+<body>
+    <div class="logo">
+        <img src="{% static 'images/Logo.png' %}" alt="logo">
+    </div>
+    <div class="logout-page">
+        <div class="form">
+            <form>
+                <h2 class="login-char"> คุณได้ออกจากระบบแล้ว </h2>
+                <button><a href="{% url 'login' %}">เข้าสู่ระบบ</a></button>
+                <br><br>
+                <button><a href="{% url 'aboutpage' %}">About us</a></button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+

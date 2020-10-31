@@ -1,11 +1,35 @@
 {% load crispy_forms_tags %}
 
-<div class="container">
+=======
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+    <link rel="stylesheet" href="{% static '/css/login+register.css' %}" type="text/css">
+</head>
 
-        <form method="POST" action="{% url 'register' %}">
-            {% csrf_token %}
-            {{ form|crispy }}
-            <button type="submit" class="btn btn-primary">Sign up</button>
-            
-</div>
+<body>
+    <div class="logo">
+        <img src="{% static 'images/Logo.png' %}" alt="logo">
+        <h1 class="head-login">สมัครสมาชิกใหม่</h1>
+    </div>
+    <br>
+    <div class="login-page">
+        <div class="form">
+            <p class="login-char">สมัครสมาชิกใหม่</p><br>
+            <form class="register-form" method="POST" action="{% url 'register' %}">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit">สร้าง</button>
+                <p class="message">หรือมีบัญชี อยู่แล้ว? <a href="{% url 'login' %}">เข้าสู่ระบบ</a></p>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
+>>>>>>> oat

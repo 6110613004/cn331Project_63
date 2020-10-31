@@ -47,7 +47,6 @@ def profile(request): #Render Profile page
         'u_form': u_form,
         'p_form': p_form,
     }
-    
     return render(request, 'trader/profile.html', context)
 
 def myshop(request):

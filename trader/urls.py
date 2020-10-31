@@ -10,5 +10,4 @@ urlpatterns = [
     path('addproduct', views.addproduct, name ="addproduct"),
     path('delete', views.delete, name ="delete"),
     path('productpage/<str:x_ownerName>', views.productpage, name ="productpage"),
-    #path('profile/', views.profile,name="profile"),
-] 
+]
