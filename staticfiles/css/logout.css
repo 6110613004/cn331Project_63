@@ -16,15 +16,15 @@ body {
     background-size: cover;
     background-position: center;
     height: 100vh; 
-    background: -webkit-linear-gradient(right, #eda0cd, #8DC26F);
-    background: -moz-linear-gradient(right, #eda0cd, #8DC26F);
-    background: -o-linear-gradient(right, #eda0cd, #8DC26F);
-    background: linear-gradient(to left,#eda0cd, #8DC26F);
+    background: -webkit-linear-gradient(right, #e0cadf, #cae0cb);
+    background: -moz-linear-gradient(right, #e0cadf, #cae0cb);
+    background: -o-linear-gradient(right, #e0cadf, #cae0cb);
+    background: linear-gradient(to left,#e0cadf, #cae0cb);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;  
 }
 .logo{
-    background-color: #a0edc0;
+    background-color: #cae0cb;
     height: 15%;
 }
 
