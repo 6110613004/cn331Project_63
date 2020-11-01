@@ -140,6 +140,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, "live-static", "static-root")
 #STATIC_ROOT = "/home/cfedeploy/webapps/cfehome_static_root/"
 
 MEDIA_URL = "/media/"
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+NOSE_ARGS = [
+    '--with-coverage',
+    '--cover-package=trader',
+]
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "live-static", "media-root") #เวลาอัพรูป รูปจะไปอยูในfolder พวกนี้
