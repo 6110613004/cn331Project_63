@@ -12,11 +12,7 @@
         {% for x in PD %}
         <li>
             ชื่อสินค้า {{ x }}  ลงขายโดย 
-<<<<<<< HEAD
             <a href = "{% url 'productpage' x.ownerName %}"> {{ x.ownerName }} </a>
-=======
-            <a href = "{% url 'productpage' x.ownerName %}" >{{ x.ownerName }} </a>
->>>>>>> 616e366f4f52db073ee26d94c5b427a4234fcd91
         </li>
         {% empty %}
             <li>ไม่มีสินค้าใดๆ</li>
