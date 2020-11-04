@@ -12,7 +12,7 @@
         {% for x in PD %}
         <li>
             ชื่อสินค้า {{ x.pName }} 
-            <a href = "{% url 'delete' x.pName %}" >ลบ</a>
+            <a href = "{% url 'delete' x.id %}" >ลบ</a>
         </li>
         {% empty %}
             <li>ไม่มีo</li>

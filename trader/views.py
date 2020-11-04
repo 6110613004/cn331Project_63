@@ -81,14 +81,13 @@ def update_ownerName(request):
     tempUser = User.objects.get(pk = request.user.pk)
     tempUser.ownerName = tempUser.first_name
 
-def delete(request,x_pName):
-        temp = Product.objects.filter(pName = x_pName )
+def delete(request,x_id):
+        temp = Product.objects.filter(id = x_id )
         temp.delete()
         return HttpResponseRedirect(reverse('myshop'))
 
 
 def productpage(request,x_ownerName):
-    
     return render(request, 'trader/productpage.html',{
         'PDG' : Product.objects.filter(ownerName = x_ownerName),
         'XXX' : x_ownerName}
