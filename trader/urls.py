@@ -9,4 +9,8 @@ urlpatterns = [
     path('addproductpage', views.addproductpage, name ="addproductpage"),
     path('addproduct', views.addproduct, name ="addproduct"),
     path('delete/<str:x_id>', views.delete, name ="delete"),
-    path('productpage/<str:x_ownerName>', views.productpage, name ="productpage"),]
+    path('productpage/<str:x_ownerName>', views.productpage, name ="productpage"),
+    path('myfavorite', views.myfavorite, name ="myfavorite"),
+    path('addmyfavorite/<str:x_id>', views.addmyfavorite, name ="addmyfavorite"),
+    path('deletefavorite/<str:x_id>', views.deletefavorite, name ="deletefavorite"),
+    ]

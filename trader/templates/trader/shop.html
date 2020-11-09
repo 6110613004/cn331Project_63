@@ -13,6 +13,7 @@
         <li>
             ชื่อสินค้า {{ x }}  ลงขายโดย 
             <a href = "{% url 'productpage' x.ownerName %}"> {{ x.ownerName }} </a>
+            <a href = "{% url 'addmyfavorite' x.id %}"> เพิ่มลงในสิ่งที่ถูกใจ </a>
         </li>
         {% empty %}
             <li>ไม่มีสินค้าใดๆ</li>
