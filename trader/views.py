@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
-from .forms import  UserRegisterForm,ProfileUpdateForm,UserUpdateForm
+from .forms import  UserRegisterForm,ProfileUpdateForm,UserUpdateForm,ProductUpdateForm
 from django.contrib import messages
 from .models import Product,Profile
 # Create your views here.
@@ -20,7 +20,7 @@ def register(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            messages.success(request,f'Account created for {username}!')
+            messages.success(request ,f'Account created for {username}!')
             return redirect(about)
     else:
         form = UserRegisterForm()
@@ -67,29 +67,41 @@ def addproduct(request):
         tempUser = User.objects.get(pk = request.user.pk)
         temp = request.POST.copy()
         tempProduct = Product()
-        tempProduct.pName = temp.get('product_name')
-        tempProduct.ownerName = tempUser.first_name   #ชื่อของคนลงขาย
-        tempProduct.save()
-        tempOwner = User.objects.get(pk = request.user.pk) 
-        tempProduct.owner.add(tempOwner)
-        return HttpResponseRedirect(reverse('myshop'))
-    
-def profile_test(request):
-    return render(request, 'trader/profile_test.html')
+        pro_form = ProductUpdateForm(request.POST,request.FILES)
+        if pro_form.is_valid():
+            tempProduct.pName = temp.get('product_name')
+            tempProduct.p_detail = temp.get('product_detail') #Detail of product
+            tempProduct.p_price = temp.get('product_price')
+            tempProduct.ownerName = tempUser.first_name   #ชื่อของคนลงขาย
+            tempProduct.save()
+            tempOwner = User.objects.get(pk = request.user.pk) 
+            tempProduct.owner.add(tempOwner)
+            return redirect('myshop')
+
+    else:   
+        pro_form = ProductUpdateForm()
+    return render(request, 'trader/addproduct.html',{
+        'pro_form':pro_form
+    })  
+              
 
 def update_ownerName(request):
     tempUser = User.objects.get(pk = request.user.pk)
     tempUser.ownerName = tempUser.first_name
 
-def delete(request,x_pName):
-        temp = Product.objects.filter(pName = x_pName )
+def delete(request,x_id):
+        temp = Product.objects.filter(id = x_id )
         temp.delete()
         return HttpResponseRedirect(reverse('myshop'))
 
 
 def productpage(request,x_ownerName):
-    
     return render(request, 'trader/productpage.html',{
         'PDG' : Product.objects.filter(ownerName = x_ownerName),
         'XXX' : x_ownerName}
     )
+
+def product_detail(request,pro_name):
+    return render(request,'trader/product.html',{
+        'product_de' : Product.objects.get(pName=pro_name),
+    })

@@ -9,10 +9,11 @@
     สินค้าของ {{XXX}}
     {% for x in PDG %}
         <li>
-            ชื่อสินค้า {{ x }}  
+            ชื่อสินค้า {{ x }}
+            <img src="{{x.p_image.url}}" width="200">  
         </li>
         {% empty %}
-            <li>ไม่มีo</li>
+            <li>ไม่มีสินค้า</li>
         {% endfor %}
 </body>
 </html>

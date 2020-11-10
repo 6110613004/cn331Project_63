@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+</head>
+<body>
+    <center><h1>ชื่อสินค้า {{ product_de.pName}}</h1></center><br>
+    <center><img src="{{product_de.p_image.url}}" width="240"></center><br>
+    <h2> รายละเอียดสินค้า </h2><br>
+    {{product_de.p_detail}} <br>
+    <h2> ราคา  {{product_de.p_price}} </h2> <br>
+    
+
+    <a href = "{% url 'shop' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Back to shop </a>
+</body>
+</html>

@@ -11,11 +11,12 @@
     <ul>
         {% for x in PD %}
         <li>
-            ชื่อสินค้า {{ x.pName }} 
-            <a href = "{% url 'delete' x.pName %}" >ลบ</a>
+            ชื่อสินค้า {{ x.pName }}
+            <img src="{{x.p_image.url}}" width="200"> 
+            <a href = "{% url 'delete' x.id %}" >ลบ</a>
         </li>
         {% empty %}
-            <li>ไม่มีo</li>
+            <li>ไม่มีสินค้า</li>
         {% endfor %}
     </ul>
     <br>
