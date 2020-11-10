@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Index page</h1>
+    <br>
+    <ul>
+        {% for x in AAA %}
+        <li>
+            ชื่อสินค้า {{ x.pName }}
+        </li>
+        {% empty %}
+            <li>ไม่มีo</li>
+        {% endfor %}
+    </ul>
+    
+    <br>
+    <form method="post" action = "{% url 'add' %}" >
+        {% csrf_token %}
+        <label for="product_name">กรุณาใส่ชื่อสินค้า</label> <br>
+        <input type="text" id ="product_name" name ="product_name">
+        <button type="submit" >Submit</button>
+    </form>
+
+    <br>
+    <br>
+    <br>
+
+    <form method="post" action = "{% url 'delete' %}" >
+        {% csrf_token %}
+        <label for="product_name">กรุณาใส่ชื่อสินค้าที่ต้องการลบ</label> <br>
+        <input type="text" id ="product_name" name ="product_name">
+        <button type="submit" >Submit</button>
+    </form>
+
+    <br>
+    <br>
+    <br>
+
+    <form method="post" action = "{% url 'update' %}" >
+        {% csrf_token %}
+        <label for="product_name">กรุณาใส่ชื่อสินค้าที่ต้องการอัพเดต</label> <br>
+        <input type="text" id ="product_name" name ="product_name"> <br>
+        <label for="product_name">อัพเดตเป็น</label> <br>
+        <input type="text" id ="product_name" name ="update_product_name"> <br>
+        <button type="submit" >Submit</button>
+    </form>
+    
+</body>
+</html>

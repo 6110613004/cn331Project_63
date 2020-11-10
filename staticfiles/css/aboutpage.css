@@ -16,7 +16,7 @@
 }
 
 body {
-    background-color: rgba(228, 231, 42, 0.918);
+    background-color: #e0cadf;
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -39,7 +39,7 @@ ul li {
 /*this is headder*/
 
 .headed {
-    background-color: #ffffff;
+    background-color: #cae0cb;
 }
 
 

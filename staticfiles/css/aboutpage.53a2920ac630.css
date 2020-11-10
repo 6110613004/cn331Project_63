@@ -1,0 +1,265 @@
+@import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mitr:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@600&display=swap');
+
+/*this is overall*/
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Mitr', Arial, sans-serif;
+}
+
+body {
+    background-color: #eda0cd;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+ul {
+    list-style-type: none;
+    margin-top: 5px;
+    width: auto;
+}
+
+ul li {
+    display: inline-block;
+}
+
+
+/*this is overall*/
+
+
+/*this is headder*/
+
+.headed {
+    background-color: #a0edc0;
+}
+
+
+/*this is headder*/
+
+
+/*this is logo*/
+
+.logo img {
+    float: left;
+    width: 30%;
+    height: auto;
+    margin-top: 0px;
+}
+
+.logo h1.head-text {
+    float: left;
+    font-family: 'Anton', sans-serif;
+    font-size: 300%;
+    margin-top: 50px;
+}
+
+
+/*this is logo*/
+
+
+/*this is nav-bar*/
+
+ul li a.nav-bar {
+    text-decoration: none;
+    color: black;
+    padding: 15px;
+    border: none;
+    margin: 5px;
+    font-size: 150%;
+    border-radius: 15px;
+    font-family: 'Merriweather', serif;
+}
+
+ul li a.nav-bar:hover {
+    background-color: #ccce4e;
+    color: black;
+}
+
+ul li.activate a.nav-bar {
+    background-color: whitesmoke;
+    color: black;
+}
+
+
+/*this is nav-bar*/
+
+
+/*this is table-content*/
+
+.table-content {
+    width: 100%;
+    margin-top: 100px;
+}
+
+.table-content tr.welcome td {
+    text-align: center;
+    vertical-align: middle;
+    padding-bottom: 20px;
+}
+
+.table-content tr.welcome td h1 {
+    font-family: 'Roboto', sans-serif;
+}
+
+.table-content tr.welcome td p {
+    font-family: 'Mitr', sans-serif;
+    font-size: 120;
+}
+
+.table-content tr.emty {
+    height: 75px;
+}
+
+.table-content tr.emty td {
+    border-top: 1px solid white;
+}
+
+.table-content tr td h1.head-mem {
+    text-align: left;
+    font-family: 'Crimson Text', serif;
+    font-size: 250%;
+}
+
+.table-content tr.emtyy {
+    height: 30px;
+}
+
+.table-content tr.member-web td.mem-pic {
+    vertical-align: middle;
+    text-align: center;
+    border-radius: 50px;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+.table-content tr.member-web td.mem-pic img {
+    width: 100%;
+    border: solid#5e4770;
+    border-radius: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.table-content tr.member-web td.mem-pic .container {
+    position: relative;
+    width: 90%;
+    margin: 0;
+    padding: 0;
+    margin-left: 10px;
+}
+
+.table-content tr.member-web td.mem-pic .overlay {
+    transition: 1s ease;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    bottom: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%)
+}
+
+.table-content tr.member-web td.mem-pic .container:hover .picmem {
+    opacity: 0.3;
+}
+
+.table-content tr.member-web td.mem-pic .container:hover .overlay {
+    opacity: 1;
+}
+
+.table-content tr.member-web td.mem-pic .text {
+    color: black;
+    font-size: 150%;
+    font-family: 'Roboto Slab', serif;
+}
+
+
+/*this is table-content*/
+
+
+/*this is link */
+
+.table-content tr td h1.link {
+    text-align: left;
+    font-family: 'Crimson Text', serif;
+    font-size: 300%;
+}
+
+ul li a.link-bar {
+    text-decoration: none;
+    color: black;
+    padding: 15px;
+    border: none;
+    margin: 5px;
+    font-size: 120%;
+    border-radius: 15px;
+    background-color: salmon;
+    font-family: 'Merriweather', serif;
+}
+
+ul li a.link-bar:hover {
+    background-color: white;
+    color: black;
+}
+
+ul li a.link-bar:focus {
+    background-color: gray;
+    color: white;
+}
+
+.table-content tr td.link {
+    border-bottom: 1px solid white;
+}
+
+
+/*this is link */
+
+
+/*this is work detail*/
+
+.table-content tr td h1.wd {
+    font-family: 'Lora', serif;
+    text-align: left;
+    font-size: 400%;
+}
+
+.table-content tr td.wd {
+    border-bottom: 5px solid white;
+    padding-left: 2%;
+}
+
+.table-content tr td h1.day-detail {
+    padding-left: 5%;
+}
+
+.table-content tr td ol.detail {
+    padding-left: 10%;
+    list-style-type: square;
+}
+
+.table-content tr.day-detail td {
+    border-bottom: 1px solid white;
+}
+
+.table-content tr td.day-pic {
+    text-align: center;
+}
+
+.table-content tr td.day-pic img {
+    width: 400px;
+    border-radius: 15px;
+    border: solid white 5px;
+}
+
+
+/*this is work detail*/

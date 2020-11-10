@@ -1,15 +1,18 @@
-from django.test import TestCase
 from django.test import TestCase,SimpleTestCase
-from trader import forms,templates
+from trader import forms
+from .models import Product,Profile
 from django.test import Client
 from django.urls import reverse
+from django.core.files import File
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, get_user_model
+from django.core.files.uploadedfile import SimpleUploadedFile
 
 
-class RegisterPageTest(TestCase):
-    def testFormFail1(self):   #สมัครไม่ผ่านเพราะว่าpasswordมีความคล้ายคลึงกับ username
+
+class RegisterFormTest(TestCase):
+    def test_form_fail_1(self):   #สมัครไม่ผ่านเพราะว่าpasswordมีความคล้ายคลึงกับ username Bad path
         data={
             'username' : 'testuser',
             'email' : 'test@testmail.com',
@@ -20,7 +23,7 @@ class RegisterPageTest(TestCase):
         self.assertFalse(form.is_valid())
 
     
-    def testFormFail2(self):   #สมัครไม่ผ่านเพราะว่าpasswordง่ายเกินไป
+    def test_form_fail_2(self):   #สมัครไม่ผ่านเพราะว่าpasswordง่ายเกินไป Bad path
         data={
             'username' : 'testuser2',
             'email' : 'test2@testmail.com',
@@ -30,7 +33,7 @@ class RegisterPageTest(TestCase):
         form = UserCreationForm(data)
         self.assertFalse(form.is_valid())
     
-    def testFormFail3(self):   #สมัครไม่ผ่านเพราะว่า email ไม่ตรงรูปแบบ
+    def test_form_fail_3(self):   #สมัครไม่ผ่านเพราะว่า email ไม่ตรงรูปแบบ Bad path
         data={
             'username' : 'testuser3',
             'email' : 'test1234',
@@ -40,26 +43,91 @@ class RegisterPageTest(TestCase):
         form = UserCreationForm(data)
         self.assertFalse(form.is_valid())
     
-    def testFormFail4(self):   #สมัครผ่าน
+    def test_form_success(self):   #สมัครผ่าน Happy path
         data={
-            'username' : 'testuser2',
+            'username' : 'testuser4',
             'email' : 'test2@testmail.com',
             'password1': 'zazaZA1234',
             'password2' : 'zazaZA1234'
         }
         form = UserCreationForm(data)
         self.assertTrue(form.is_valid())
-        
     
-class LoginTest(TestCase):
-    def setup(self):
+    
+class RegisterTest(TestCase):     
+    def test_login_userfail(self): ##Login ด้วย username ที่ผิด
+        User = get_user_model()
         self.user=User.objects.create_user('test123','test@testmail.com','oatty8867')
         self.user.save()
-        
-    def test_login1(self): ##Login ด้วย username ที่ผิด
-        user = authenticate(username='wrong', password='oatty8867')
-        self.assertFalse(user is not None and user.is_authenticated)
-    def test_correct(self):
-        user = authenticate(username='test123', password='oatty8867')
-        self.assertTrue((user is not None) and user.is_authenticated)
-# Create your tests here.
+        self.user = authenticate(username='wrong', password='oatty8867')
+        #Should not be able to login
+        self.assertFalse(self.user is not None and user.is_authenticated)
+    def test_login_passfail(self):
+        User = get_user_model()
+        self.user=User.objects.create_user('test123','test@testmail.com','oatty8867')
+        self.user.save()
+        self.user = authenticate(username='test123',password='123')
+        self.assertFalse(self.user is not None and self.user.is_authenticated)
+    def test_login_correct(self):
+        User = get_user_model()
+        self.user=User.objects.create_user('test123','test@testmail.com','oatty8867')
+        self.user.save()
+        User = authenticate(username='test123', email='test@testmail.com', password='oatty8867')
+        self.assertTrue(User is not None and User.is_authenticated)    
+
+class SimpleTest(TestCase):
+    def setUp(self):
+        # Every test needs a client.
+        self.client = Client()
+
+    def test_details_aboutpage(self): ##Testหน้าaboutpage
+        # Issue a GET request.
+        response = self.client.get('/')
+
+        # Check that the response is 200 OK.
+        self.assertEqual(response.status_code, 200)
+    def test_details_myshop(self):  ##Testหน้าmyshop
+        # Issue a GET request.
+        response = self.client.get('/myshop')
+
+        # Check that the response is 200 OK.
+        self.assertEqual(response.status_code, 200)
+    def test_details_shop(self): ##Testหน้าshop
+        # Issue a GET request.
+        response = self.client.get('/shop')
+
+        # Check that the response is 200 OK.
+        self.assertEqual(response.status_code, 200)
+    def test_details_addproductpage(self): ##Testหน้าaddproduct
+        # Issue a GET request.
+        response = self.client.get('/addproductpage')
+
+        # Check that the response is 200 OK.
+        self.assertEqual(response.status_code, 200)
+    def test_details_productpage(self):  ##Testproductpage
+        # Issue a GET request.
+        response = self.client.get('/productpage/<str:x_ownerName>')
+
+        # Check that the response is 200 OK.
+        self.assertEqual(response.status_code, 200)
+
+class TestModelProfile(TestCase):  #test profile objects amount Happy path
+    def test_object_count(self):
+        user1 = User.objects.create_user('test123','test@mail.com','oatty8867')
+        self.assertEqual(Profile.objects.count(),1) #Profile object should be 1
+
+class TestModelProduct(TestCase):  
+    def test_object_productcount(self):  #test product objects
+        User.objects.create_user('Oatty','test@mail.com','oatty8867')
+        user1 = User.objects.get(username='Oatty')
+        product1 = Product(pName='Book',ownerName='Harry')
+        self.assertEqual(product1.pName,'Book')
+        self.assertEqual(product1.ownerName,'Harry')
+
+
+
+
+
+
+
+

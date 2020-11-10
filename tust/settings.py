@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_nose',
     'trader',
 ]
 
@@ -132,12 +133,18 @@ STATICFILES_DIRS = (
 LOGIN_REDIRECT_URL = 'aboutpage'
 LOGIN_URL ='login'
 
+
 STATIC_ROOT = os.path.join(BASE_DIR, "live-static", "static-root")
 
 
 #STATIC_ROOT = "/home/cfedeploy/webapps/cfehome_static_root/"
 
 MEDIA_URL = "/media/"
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+NOSE_ARGS = [
+    '--with-coverage',
+    '--cover-package=trader',
+]
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "live-static", "media-root") #เวลาอัพรูป รูปจะไปอยูในfolder พวกนี้
