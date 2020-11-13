@@ -67,8 +67,9 @@ def addproduct(request):
         tempUser = User.objects.get(pk = request.user.pk)
         temp = request.POST.copy()
         tempProduct = Product()
-        pro_form = ProductUpdateForm(request.POST,request.FILES)
+        pro_form = ProductUpdateForm(request.POST,request.FILES,instance=request.user.profile)
         if pro_form.is_valid():
+            pro_form.save()
             tempProduct.pName = temp.get('product_name')
             tempProduct.p_detail = temp.get('product_detail') #Detail of product
             tempProduct.p_price = temp.get('product_price')
@@ -79,7 +80,7 @@ def addproduct(request):
             return redirect('myshop')
 
     else:   
-        pro_form = ProductUpdateForm()
+        pro_form = ProductUpdateForm(instance=request.user.profile)
     return render(request, 'trader/addproduct.html',{
         'pro_form':pro_form
     })  
@@ -105,3 +106,10 @@ def product_detail(request,pro_name):
     return render(request,'trader/product.html',{
         'product_de' : Product.objects.get(pName=pro_name),
     })
+def searchbar(request):
+    if request.method == 'GET':
+        search = request.GET.get('search')
+        post1 = Product.objects.filter(pName = search)
+    
+        return render(request, 'trader/searchbar.html', {'post': post1})
+

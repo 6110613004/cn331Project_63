@@ -17,8 +17,11 @@
         <textarea name="product_detail" id="product_detail " cols="20" rows="4"></textarea><br>
         <label for="product_price">กรุณาใส่ราคาของสินค้า</label> <br>
         <input type="text" id ="product_price" name ="product_price"><br>
+        <label for="product_cat">กรุณาใส่หมวดหมู่ของสินค้า</label> <br>
+        <input type="text" id ="product_cat" name ="product_cat"><br>
         <button type="submit" >Submit</button>
     </form>
+    <a href = "{% url 'shop' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Back to shop </a>
 
 </body>
 </html>

@@ -8,6 +8,10 @@
 <body>
     <center><h1>สินค้าทั้งหมด</h1></center>
     <ul>
+    <form action="{% url 'searchbar' %}" method="get">
+            <input type="text" name="search"/>
+            <button type="submit">Search</button>
+        </form>
         {% for listProduct in PD %}
         <li>
             ชื่อสินค้า <a href = "{% url 'product_detail' listProduct.pName %}"> {{ listProduct }}</a>  ลงขายโดย 

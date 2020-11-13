@@ -10,5 +10,6 @@ urlpatterns = [
     path('addproduct', views.addproduct, name ="addproduct"),
     path('delete/<str:x_id>', views.delete, name ="delete"),
     path('productpage/<str:x_ownerName>', views.productpage, name ="productpage"),
-    path('product_detail/<str:pro_name>', views.product_detail, name ="product_detail"),]
+    path('product_detail/<str:pro_name>', views.product_detail, name ="product_detail"),
+    path('searchbar/', views.searchbar, name='searchbar'),]
 
