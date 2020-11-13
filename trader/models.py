@@ -48,6 +48,7 @@ class Product(models.Model):
     p_detail = models.CharField(max_length = 200,blank = True)
     p_price = models.CharField(max_length = 6,default = 0)
     pStatus = models.BooleanField(default = True)
+   
     
     def save(self,*args,**kwargs):  #reduced picture sized in database
         super(Product, self).save(*args, **kwargs)

@@ -13,11 +13,11 @@
             <button type="submit">Search</button>
         </form>
         {% for listProduct in PD %}
-        <li>
+        {% if listProduct.pStatus %}
             ชื่อสินค้า <a href = "{% url 'product_detail' listProduct.pName %}"> {{ listProduct }}</a>  ลงขายโดย 
             <a href = "{% url 'productpage' listProduct.ownerName %}"> {{ listProduct.ownerName }} </a>
             <img src="{{listProduct.p_image.url}}" width="200">
-        </li>
+        {% endif %}
         {% empty %}
             <li>ไม่มีสินค้าใดๆ</li>
         {% endfor %}

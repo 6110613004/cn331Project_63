@@ -68,8 +68,8 @@ def addproduct(request):
         temp = request.POST.copy()
         tempProduct = Product()
         pro_form = ProductUpdateForm(request.POST,request.FILES,instance=request.user.profile)
-        if pro_form.is_valid():
-            pro_form.save()
+        if pro_form.is_valid():     #Still can't update
+            pro_form.save()     #Still can't update
             tempProduct.pName = temp.get('product_name')
             tempProduct.p_detail = temp.get('product_detail') #Detail of product
             tempProduct.p_price = temp.get('product_price')
