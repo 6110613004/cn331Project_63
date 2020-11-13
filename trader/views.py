@@ -86,6 +86,8 @@ def addproduct(request):
         pro_form = ProductUpdateForm(instance=request.user.profile)
     return render(request, 'trader/addproduct.html',{
         'pro_form':pro_form
+        ,
+        'Category' : Category.objects.all()
     })  
               
 
