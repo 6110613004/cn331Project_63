@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from .forms import  UserRegisterForm,ProfileUpdateForm,UserUpdateForm,ProductUpdateForm
 from django.contrib import messages
-from .models import Product,Profile
+from .models import Product,Profile,Category
 # Create your views here.
 def about(request):
     return render(request,"trader/aboutpage.html")
@@ -56,7 +56,9 @@ def myshop(request):
 
 def shop(request):
     return render(request, 'trader/shop.html',{
-        'PD' : Product.objects.all() }
+        'PD' : Product.objects.all() ,
+        'Category' : Category.objects.all()
+        }
     )
 
 def addproductpage(request):
@@ -73,6 +75,7 @@ def addproduct(request):
             tempProduct.pName = temp.get('product_name')
             tempProduct.p_detail = temp.get('product_detail') #Detail of product
             tempProduct.p_price = temp.get('product_price')
+            tempProduct.category = temp.get('product_cat')
             tempProduct.ownerName = tempUser.first_name   #ชื่อของคนลงขาย
             tempProduct.save()
             tempOwner = User.objects.get(pk = request.user.pk) 
@@ -109,7 +112,17 @@ def product_detail(request,pro_name):
 def searchbar(request):
     if request.method == 'GET':
         search = request.GET.get('search')
-        post1 = Product.objects.filter(pName = search)
-    
-        return render(request, 'trader/searchbar.html', {'post': post1})
+        search_Category = request.GET.get('searchCategory')
+        if search_Category == 'All':
+            post1 = Product.objects.filter(pName__icontains=search)
+        else:
+            post1 = Product.objects.filter(category = search_Category,pName__icontains=search)
+       
+            
+    return render(request, 'trader/searchbar.html', {
+        'search' : search,
+        'post': post1 
+        
+        }
+        )
 

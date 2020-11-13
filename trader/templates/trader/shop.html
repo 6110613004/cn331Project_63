@@ -8,8 +8,19 @@
 <body>
     <center><h1>สินค้าทั้งหมด</h1></center>
     <ul>
-    <form action="{% url 'searchbar' %}" method="get">
+        <form action="{% url 'searchbar' %}" method="get">
             <input type="text" name="search"/>
+
+            <label for="searchCategory"> หมวดหมู่ </label> 
+            <select name="searchCategory" id="searchCategory">
+                    <li> <option value="All"> All </option>  </li>
+                {% for x in Category %}
+                    <li> <option value="{{ x }}"> {{x}} </option>  </li>
+                {% empty %}
+                    <li>ไม่มี Category </li>
+                {% endfor %}
+            </select>
+
             <button type="submit">Search</button>
         </form>
         {% for listProduct in PD %}

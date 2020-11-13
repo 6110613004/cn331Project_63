@@ -5,8 +5,9 @@
 
 {% for i in post %}
 <center><h2><a href="{% url 'product_detail' i.pName %}">{{ i.pName }}</a></h2></center>
-<center><img src ="{{i.p_image.url}}" width="200"></center>
 {% endfor %}
-    {% else %}              
+    {% else %}
     <h1>Nothing found</h1>
 {% endif %}
+
+<a href="{% url 'shop' %}"> Shop </a>
