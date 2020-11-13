@@ -16,7 +16,13 @@
         <li>
             ชื่อสินค้า <a href = "{% url 'product_detail' listProduct.pName %}"> {{ listProduct }}</a>  ลงขายโดย 
             <a href = "{% url 'productpage' listProduct.ownerName %}"> {{ listProduct.ownerName }} </a>
-            <img src="{{listProduct.p_image.url}}" width="200">
+            <img src="{{listProduct.p_image.url}}" width="200"><br><br>
+            สถานที่:1 <form><input type="radio" id="place" name="place" value="place">
+                    <label for="place">{{listProduct.place}}</label><br>
+            สถานที่:2 <form><input type="radio" id="place1" name="place" value="place1">
+                    <label for="place1">{{listProduct.place1}}</label><br>
+            สถานที่:3 <form><input type="radio" id="place2" name="place" value="place2">
+                    <label for="place2">{{listProduct.place2}}</label><br>
         </li>
         {% empty %}
             <li>ไม่มีสินค้าใดๆ</li>

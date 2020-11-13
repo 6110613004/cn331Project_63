@@ -19,6 +19,28 @@
         <input type="text" id ="product_price" name ="product_price"><br>
         <label for="product_cat">กรุณาใส่หมวดหมู่ของสินค้า</label> <br>
         <input type="text" id ="product_cat" name ="product_cat"><br>
+        <!---สถานที่นัดรับสินค้า-->
+        <label for="place">เลือกสถานที่นัดรับสินค้า1:</label><br>
+        <select id="place" name="place">
+           <option value="ศกร">ศกร</option>
+           <option value="ป๋วย">ป๋วย</option>
+           <option value="เชียงราก1">เชียงราก1</option>
+           <option value="SC">SC</option>
+        </select><br><br>
+        <label for="place1">เลือกสถานที่นัดรับสินค้า2:</label><br>
+        <select id="place1" name="place1">
+           <option value="ศกร">ศกร</option>
+           <option value="ป๋วย">ป๋วย</option>
+           <option value="เชียงราก1">เชียงราก1</option>
+           <option value="SC">SC</option>
+        </select><br><br>
+        <label for="place2">เลือกสถานที่นัดรับสินค้า3:</label><br>
+        <select id="place2" name="place2">
+           <option value="ศกร">ศกร</option>
+           <option value="ป๋วย">ป๋วย</option>
+           <option value="เชียงราก1">เชียงราก1</option>
+           <option value="SC">SC</option>
+        </select><br><br>
         <button type="submit" >Submit</button>
     </form>
     <a href = "{% url 'shop' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Back to shop </a>

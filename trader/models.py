@@ -48,6 +48,9 @@ class Product(models.Model):
     p_detail = models.CharField(max_length = 200,blank = True)
     p_price = models.CharField(max_length = 6,default = 0)
     pStatus = models.BooleanField(default = True)
+    place = models.CharField(max_length=99,blank=True) #สถานที่นัดรับสินค้า:1
+    place1 = models.CharField(max_length=99,blank=True) #สถานที่นัดรับสินค้า:2
+    place2 = models.CharField(max_length=99,blank=True) #สถานที่นัดรับสินค้า:3
     
     def save(self,*args,**kwargs):  #reduced picture sized in database
         super(Product, self).save(*args, **kwargs)
