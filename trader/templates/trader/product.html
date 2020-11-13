@@ -10,7 +10,12 @@
     <center><img src="{{product_de.p_image.url}}" width="240"></center><br>
     <h2> รายละเอียดสินค้า </h2><br>
     {{product_de.p_detail}} <br>
-    <h2> ราคา  {{product_de.p_price}} </h2> <br>
+    <h2> ราคา  {{product_de.p_price}} บาท </h2> <br>
+    {% if product_de.pStatus %}
+    <h2> สถานะสินค้า พร้อมส่ง </h2>
+    {% else %}
+    <h2> สินค้าหมด // ขายออกแล้ว </h2>
+    {% endif %} 
     
 
     <a href = "{% url 'shop' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Back to shop </a>
