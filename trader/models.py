@@ -76,3 +76,13 @@ class Category(models.Model):
 
     def  __str__(self):
         return self.nameCategory
+
+
+class MyFavorite(models.Model):
+    pID  = models.CharField(max_length = 30)
+    uID  = models.CharField(max_length = 30)
+    pName = models.CharField(max_length = 30,blank = True)
+    
+
+    def __str__(self):
+        return self.pID 

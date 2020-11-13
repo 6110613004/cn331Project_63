@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from .forms import  UserRegisterForm,ProfileUpdateForm,UserUpdateForm,ProductUpdateForm
 from django.contrib import messages
-from .models import Product,Profile,Category
+from .models import Product,Profile,Category,MyFavorite
 # Create your views here.
 def about(request):
     return render(request,"trader/aboutpage.html")
@@ -126,3 +126,24 @@ def searchbar(request):
         }
         )
 
+def myfavorite(request):
+    return render(request, 'trader/myfavorite.html',{
+        'MF' : MyFavorite.objects.filter(uID = request.user.pk),
+    }
+    )
+
+def addmyfavorite(request,x_id):
+    tempUser = User.objects.get(pk = request.user.pk)
+    temp = Product.objects.get(id = x_id)
+    tempFavorite = MyFavorite()
+    tempFavorite.pID = temp.id
+    tempFavorite.pName = temp.pName
+    tempFavorite.uID = request.user.pk
+    tempFavorite.status = True
+    tempFavorite.save()
+    return HttpResponseRedirect(reverse('shop'))
+
+def deletefavorite(request,x_id):
+        temp = MyFavorite.objects.filter(id = x_id )
+        temp.delete()
+        return HttpResponseRedirect(reverse('myfavorite'))
