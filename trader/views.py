@@ -77,6 +77,9 @@ def addproduct(request):
             tempProduct.p_price = temp.get('product_price')
             tempProduct.category = temp.get('product_cat')
             tempProduct.ownerName = tempUser.first_name   #ชื่อของคนลงขาย
+            tempProduct.place1 = temp.get('place1') #สถานที่นัดรับที่:1
+            tempProduct.place2 = temp.get('place2') #สถานที่นัดรับที่:2
+            tempProduct.place3 = temp.get('place3') #สถานที่นัดรับที่:3
             tempProduct.save()
             tempOwner = User.objects.get(pk = request.user.pk) 
             tempProduct.owner.add(tempOwner)

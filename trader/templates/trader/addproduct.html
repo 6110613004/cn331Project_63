@@ -26,6 +26,16 @@
                 <li>ไม่มี Category </li>
             {% endfor %}
             </select>  
+        <br>
+        <label for='place1'>สถานที่ 1 :</label> 
+        <input type="text" id ='place1' name ='place1'><br>  
+
+        <label for='place2'>สถานที่ 2 :</label> 
+        <input type="text" id ='place2' name ='place2'><br>  
+
+        <label for='place3'>สถานที่ 3 :</label>
+        <input type="text" id ='place3' name ='place3'><br>  
+
         <button type="submit" >Submit</button>
     </form>
     <a href = "{% url 'shop' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Back to shop </a>
