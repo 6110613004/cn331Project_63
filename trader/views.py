@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from .forms import  UserRegisterForm,ProfileUpdateForm,UserUpdateForm,ProductUpdateForm
 from django.contrib import messages
-from .models import Product,Profile,Category,MyFavorite
+from .models import Product,Profile,Category,MyFavorite,Day,Time,place
 # Create your views here.
 def about(request):
     return render(request,"trader/aboutpage.html")
@@ -69,6 +69,7 @@ def addproduct(request):
         tempUser = User.objects.get(pk = request.user.pk)
         temp = request.POST.copy()
         tempProduct = Product()
+        XXX = temp.get('place1')
         pro_form = ProductUpdateForm(request.POST,request.FILES,instance=request.user.profile)
         if pro_form.is_valid():     #Still can't update
             pro_form.save()     #Still can't update
@@ -77,9 +78,21 @@ def addproduct(request):
             tempProduct.p_price = temp.get('product_price')
             tempProduct.category = temp.get('product_cat')
             tempProduct.ownerName = tempUser.first_name   #ชื่อของคนลงขาย
-            tempProduct.place1 = temp.get('place1') #สถานที่นัดรับที่:1
-            tempProduct.place2 = temp.get('place2') #สถานที่นัดรับที่:2
-            tempProduct.place3 = temp.get('place3') #สถานที่นัดรับที่:3
+            if (temp.get('day1') != None)  and (temp.get('place1') != None) and (temp.get('time1') != None) :
+                tempProduct.day1 = temp.get('day1')
+                tempProduct.place1 = temp.get('place1')
+                tempProduct.time1 = temp.get('time1')
+                tempProduct.s1 = True
+            if (temp.get('day2') != None)  and (temp.get('place2') != None) and (temp.get('time2') != None) :
+                tempProduct.day2 = temp.get('day2')
+                tempProduct.place2 = temp.get('place2')
+                tempProduct.time2 = temp.get('time2')
+                tempProduct.s2 = True
+            if (temp.get('day3') != None)  and (temp.get('place3') != None) and (temp.get('time3') != None) :
+                tempProduct.day3 = temp.get('day3')
+                tempProduct.place3 = temp.get('place3')
+                tempProduct.time3 = temp.get('time3')
+                tempProduct.s3 = True
             tempProduct.save()
             tempOwner = User.objects.get(pk = request.user.pk) 
             tempProduct.owner.add(tempOwner)
@@ -88,9 +101,16 @@ def addproduct(request):
     else:   
         pro_form = ProductUpdateForm(instance=request.user.profile)
     return render(request, 'trader/addproduct.html',{
-        'pro_form':pro_form
+        'pro_form' : pro_form
         ,
         'Category' : Category.objects.all()
+        ,
+        'DayList' : Day
+        ,
+        'Time' : Time
+        ,
+        'place' : place
+        
     })  
               
 

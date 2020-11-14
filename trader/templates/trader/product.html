@@ -11,12 +11,52 @@
     <h2> รายละเอียดสินค้า </h2><br>
     {{product_de.p_detail}} <br>
     <h2> ราคา  {{product_de.p_price}} บาท </h2> <br>
+
     {% if product_de.pStatus %}
     <h2> สถานะสินค้า พร้อมส่ง </h2>
     {% else %}
     <h2> สินค้าหมด // ขายออกแล้ว </h2>
     {% endif %} 
+
+    <h2>เลือกวัน เวลา และสถานที่</h2>
     
+    
+    <form >
+        {% if product_de.s1 == True %}
+            <input type="radio" id="deal1" name="deal" value="1">
+            <label for="deal1">
+                {{product_de.day1}} {{product_de.place1}} {{product_de.time1}} 
+            </label>
+            <br>
+        {% else %}
+        {% endif %}
+
+        
+
+        {% if product_de.s2 == True %}
+            <input type="radio" id="deal2" name="deal" value="2">
+            <label for="deal2">
+                {{product_de.day2}} {{product_de.place2}} {{product_de.time2}} 
+            </label>
+            <br>
+        {% else %}
+        {% endif %}
+        
+        
+
+        {% if product_de.s3 == True %}
+            <input type="radio" id="deal2" name="deal" value="3">
+            <label for="deal2">
+                {{product_de.day3}} {{product_de.place3}} {{product_de.time3}} 
+            </label>
+            <br> 
+        {% else %}
+        {% endif %}
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+<br>
 
     <a href = "{% url 'shop' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Back to shop </a>
 </body>
