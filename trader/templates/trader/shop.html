@@ -25,7 +25,7 @@
         </form>
         {% for listProduct in PD %}
         {% if listProduct.pStatus %}
-            ชื่อสินค้า <a href = "{% url 'product_detail' listProduct.pName %}"> {{ listProduct }}</a>  ลงขายโดย 
+            ชื่อสินค้า <a href = "{% url 'product_detail' listProduct.id %}"> {{ listProduct }}</a>  ลงขายโดย 
             <a href = "{% url 'productpage' listProduct.ownerName %}"> {{ listProduct.ownerName }} </a>
             <img src="{{listProduct.p_image.url}}" width="200">
             <a href = "{% url 'addmyfavorite' listProduct.id %}"> เพิ่มลงในสิ่งที่ถูกใจ </a> <br>

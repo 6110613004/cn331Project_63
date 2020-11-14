@@ -130,9 +130,9 @@ def productpage(request,x_ownerName):
         'XXX' : x_ownerName}
     )
 
-def product_detail(request,pro_name):
+def product_detail(request,pro_id):
     return render(request,'trader/product.html',{
-        'product_de' : Product.objects.get(pName=pro_name),
+        'product_de' : Product.objects.get(id=pro_id),
     })
 def searchbar(request):
     if request.method == 'GET':
