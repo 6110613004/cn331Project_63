@@ -24,25 +24,39 @@
             </tr>
         </table>
     </header>
-    <br>
     <nav class="navigator">
-        <div class="main">
-            <ul>
-                <li><a href="shop" class="nav-bar"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-                <li class="activate"><a href="#" class="nav-bar"><i class="fa fa-users" aria-hidden="true"></i> About Us</a></li>
-                <li><a href="#" class="nav-bar"><i class="fa fa-envelope" aria-hidden="true"></i> Contact Us</a></li>
-                {% if user.is_authenticated %}
-                    <li><a href = "{% url 'profile' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Profile </a></li>
-                    <li><a href = "{% url 'shop' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Shop </a></li>
-                    <li><a href = "{% url 'myshop' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Myshop </a></li>
-                    <li><a href = "{% url 'logout' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Logout </a></li>
-
-                {% else %}
-                    <li><a href = "{% url 'login' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Login </a><li>
-                    <li><a href = "{% url 'register' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Register </a></li>
-                {% endif %}
-            </ul>
-        </div>
+        <table>
+            <tr>
+                <td>
+                    <div class="main">
+                        <ul>
+                            {% if user.is_authenticated %}
+                                <ul class="normal-bar">
+                                    <li><a href = "{% url 'shop' %}" class="nav-bar"><i class="fa fa-envelope" aria-hidden="true"></i> Home </a></li>
+                                    <li><a href = "{% url 'myshop' %}" class="nav-bar"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Myshop </a></li>
+                                    <li><a href="{% url 'aboutpage'  %}" class="nav-bar"><i class="fa fa-users" aria-hidden="true"></i> About Us</a></li>
+                                    <li><a href="#" class="nav-bar"><i class="fa fa-envelope" aria-hidden="true"></i> Contact Us</a></li>
+                                </ul>
+                                <ul class="login-botton">
+                                    <li><a href = "{% url 'profile' %}" class="nav-bar-login-register"><i class="fa fa-user" aria-hidden="true"></i> Profile </a></li>
+                                    <li><a href = "{% url 'logout' %}" class="nav-bar-login-register"><i class="fa fa-sign-out" aria-hidden="true"></i></i> Logout </a></li>
+                                </ul>              
+                            {% else %}
+                                <ul class="normal-bar">
+                                    <li><a href="shop" class="nav-bar"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Home</a></li>
+                                    <li><a href="#" class="nav-bar"><i class="fa fa-users" aria-hidden="true"></i> About Us</a></li>
+                                    <li><a href="#" class="nav-bar"><i class="fa fa-envelope" aria-hidden="true"></i> Contact Us</a></li>
+                                </ul>
+                                <ul class="login-botton">
+                                    <li><a href = "{% url 'login' %}" class="nav-bar-login-register"><i class="fa fa-sign-in" aria-hidden="true"></i> Login </a><li>
+                                    <li><a href = "{% url 'register' %}" class="nav-bar-login-register"><i class="fa fa-user-plus" aria-hidden="true" class="nav-bar-login-register"></i> Register </a></li>
+                                </ul>                   
+                            {% endif %}
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        </table>
     </nav>
     <table class="table-content">
         <tr class="welcome">
@@ -178,3 +192,4 @@
 </body>
 
 </html>
+

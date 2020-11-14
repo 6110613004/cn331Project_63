@@ -16,7 +16,7 @@ class Profile(models.Model):
         ('EM','Faculty of Economics')
     )  
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(default = 'default.jpg',upload_to='profile_pics') #Field for profile pic.
+    image = models.ImageField(default = 'default2.png',upload_to='profile_pics') #Field for profile pic.
     faculty = models.CharField(choices=FACULTY_TU, max_length=2,blank = True)
 
     def __str__(self):

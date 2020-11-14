@@ -143,7 +143,7 @@ MEDIA_URL = "/media/"
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 NOSE_ARGS = [
     '--with-coverage',
-    '--cover-package=trader',
+    '--cover-package= trader',
 ]
 
 

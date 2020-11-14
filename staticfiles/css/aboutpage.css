@@ -16,7 +16,7 @@
 }
 
 body {
-    background-color: #e0cadf;
+    background-color: #ffffff;
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -24,7 +24,6 @@ body {
 
 ul {
     list-style-type: none;
-    margin-top: 5px;
     width: auto;
 }
 
@@ -39,7 +38,7 @@ ul li {
 /*this is headder*/
 
 .headed {
-    background-color: #cae0cb;
+    background-color:  #222c3c;
 }
 
 
@@ -50,7 +49,7 @@ ul li {
 
 .logo img {
     float: left;
-    width: 30%;
+    width: 20%;
     height: auto;
     margin-top: 0px;
 }
@@ -58,8 +57,9 @@ ul li {
 .logo h1.head-text {
     float: left;
     font-family: 'Anton', sans-serif;
-    font-size: 300%;
-    margin-top: 50px;
+    font-size: 175%;
+    margin-top: 40px;
+    color: #ffffff;
 }
 
 
@@ -68,25 +68,54 @@ ul li {
 
 /*this is nav-bar*/
 
+.navigator{
+    background-color: #475c87;
+    height: 5%;
+}
+
 ul li a.nav-bar {
     text-decoration: none;
-    color: black;
-    padding: 15px;
+    color:  white;
     border: none;
+    padding: 5px;
     margin: 5px;
-    font-size: 150%;
-    border-radius: 15px;
+    font-size: 110%;
     font-family: 'Merriweather', serif;
 }
 
+ul li a.nav-bar:active{
+    color: #ffab2e;
+}
 ul li a.nav-bar:hover {
-    background-color: #ccce4e;
-    color: black;
+    border: solid 1px #ffffff;
+    background-color: transparent;
+}
+ul li a.nav-bar-login-register {
+    text-decoration: none;
+    color: white;
+    border: none;
+    padding: 5px;
+    margin: 5px;
+    font-size: 130%;
+    font-family: 'Merriweather', serif;
 }
 
-ul li.activate a.nav-bar {
-    background-color: whitesmoke;
-    color: black;
+ul li a.nav-bar-login-register:hover {
+    background-color: transparent;
+    border-bottom: 1px white solid;
+}
+ul.normal-bar{
+    padding-top: 10px;
+    float: left;
+}
+
+ul.login-botton{
+    padding-top: 10px;
+    float: right;
+}
+
+ul li a.nav-bar-login-register:active{
+    color: #ffab2e;
 }
 
 
@@ -120,7 +149,7 @@ ul li.activate a.nav-bar {
 }
 
 .table-content tr.emty td {
-    border-top: 1px solid white;
+    border-top: 1px solid lightgray;
 }
 
 .table-content tr td h1.head-mem {
@@ -203,13 +232,11 @@ ul li a.link-bar {
     margin: 5px;
     font-size: 120%;
     border-radius: 15px;
-    background-color: salmon;
     font-family: 'Merriweather', serif;
 }
 
 ul li a.link-bar:hover {
-    background-color: white;
-    color: black;
+    color: #ffab2e;
 }
 
 ul li a.link-bar:focus {
@@ -218,14 +245,11 @@ ul li a.link-bar:focus {
 }
 
 .table-content tr td.link {
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid lightgray;
 }
 
 
 /*this is link */
-
-
-/*this is work detail*/
 
 .table-content tr td h1.wd {
     font-family: 'Lora', serif;
@@ -234,7 +258,7 @@ ul li a.link-bar:focus {
 }
 
 .table-content tr td.wd {
-    border-bottom: 5px solid white;
+    border-bottom: 5px solid lightgray;
     padding-left: 2%;
 }
 
@@ -248,7 +272,7 @@ ul li a.link-bar:focus {
 }
 
 .table-content tr.day-detail td {
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid lightgray;
 }
 
 .table-content tr td.day-pic {
@@ -258,8 +282,5 @@ ul li a.link-bar:focus {
 .table-content tr td.day-pic img {
     width: 400px;
     border-radius: 15px;
-    border: solid white 5px;
+    border: solid lightgray 5px;
 }
-
-
-/*this is work detail*/

@@ -67,7 +67,7 @@ def addproduct(request):
         tempUser = User.objects.get(pk = request.user.pk)
         temp = request.POST.copy()
         tempProduct = Product()
-        pro_form = ProductUpdateForm(request.POST,request.FILES,instance=request.user.profile)
+        pro_form = ProductUpdateForm(request.POST,request.FILES)
         if pro_form.is_valid():     #Still can't update
             pro_form.save()     #Still can't update
             tempProduct.pName = temp.get('product_name')
@@ -80,7 +80,7 @@ def addproduct(request):
             return redirect('myshop')
 
     else:   
-        pro_form = ProductUpdateForm(instance=request.user.profile)
+        pro_form = ProductUpdateForm()
     return render(request, 'trader/addproduct.html',{
         'pro_form':pro_form
     })  

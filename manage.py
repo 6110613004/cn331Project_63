@@ -3,7 +3,6 @@
 import os
 import sys
 
-
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tust.settings')
     try:
@@ -19,3 +18,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+    
+

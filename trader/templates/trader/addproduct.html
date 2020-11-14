@@ -10,8 +10,7 @@
     <br>
     <form method="post" enctype="multipart/form-data" action = "{% url 'addproductpage' %}" >
         {% csrf_token %}
-        <form method="post" enctype="multipart/form-data">
-            {{ pro_form }}<br>
+        {{ pro_form }}<br>
         <label for="product_name">กรุณาใส่ชื่อสินค้า</label> <br>
         <input type="text" id ="product_name" name ="product_name"><br>
         <label for="product_detail">รายละเอียดของสินค้า</label> <br>
