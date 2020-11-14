@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from .forms import  UserRegisterForm,ProfileUpdateForm,UserUpdateForm,ProductUpdateForm
 from django.contrib import messages
-from .models import Product,Profile
+from .models import Product,Profile,Category,MyFavorite
 # Create your views here.
 def about(request):
     return render(request,"trader/aboutpage.html")
@@ -56,7 +56,9 @@ def myshop(request):
 
 def shop(request):
     return render(request, 'trader/shop.html',{
-        'PD' : Product.objects.all() }
+        'PD' : Product.objects.all() ,
+        'Category' : Category.objects.all()
+        }
     )
 
 def addproductpage(request):
@@ -73,6 +75,7 @@ def addproduct(request):
             tempProduct.pName = temp.get('product_name')
             tempProduct.p_detail = temp.get('product_detail') #Detail of product
             tempProduct.p_price = temp.get('product_price')
+            tempProduct.category = temp.get('product_cat')
             tempProduct.ownerName = tempUser.first_name   #ชื่อของคนลงขาย
             tempProduct.save()
             tempOwner = User.objects.get(pk = request.user.pk) 
@@ -83,6 +86,8 @@ def addproduct(request):
         pro_form = ProductUpdateForm()
     return render(request, 'trader/addproduct.html',{
         'pro_form':pro_form
+        ,
+        'Category' : Category.objects.all()
     })  
               
 
@@ -109,7 +114,38 @@ def product_detail(request,pro_name):
 def searchbar(request):
     if request.method == 'GET':
         search = request.GET.get('search')
-        post1 = Product.objects.filter(pName = search)
-    
-        return render(request, 'trader/searchbar.html', {'post': post1})
+        search_Category = request.GET.get('searchCategory')
+        if search_Category == 'All':
+            post1 = Product.objects.filter(pName__icontains=search)
+        else:
+            post1 = Product.objects.filter(category = search_Category,pName__icontains=search)
+       
+            
+    return render(request, 'trader/searchbar.html', {
+        'search' : search,
+        'post': post1 
+        
+        }
+        )
 
+def myfavorite(request):
+    return render(request, 'trader/myfavorite.html',{
+        'MF' : MyFavorite.objects.filter(uID = request.user.pk),
+    }
+    )
+
+def addmyfavorite(request,x_id):
+    tempUser = User.objects.get(pk = request.user.pk)
+    temp = Product.objects.get(id = x_id)
+    tempFavorite = MyFavorite()
+    tempFavorite.pID = temp.id
+    tempFavorite.pName = temp.pName
+    tempFavorite.uID = request.user.pk
+    tempFavorite.status = True
+    tempFavorite.save()
+    return HttpResponseRedirect(reverse('shop'))
+
+def deletefavorite(request,x_id):
+        temp = MyFavorite.objects.filter(id = x_id )
+        temp.delete()
+        return HttpResponseRedirect(reverse('myfavorite'))

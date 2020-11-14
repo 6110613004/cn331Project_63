@@ -43,7 +43,7 @@ class Product(models.Model):
     pName = models.CharField(max_length = 30)
     owner = models.ManyToManyField(User,blank = True)
     ownerName = models.CharField(max_length = 30,blank = True)
-    category = models.CharField(choices=CATEGORY_CHOICES, max_length=2,blank = True)
+    category = models.CharField( max_length=30,blank = True)
     p_image = models.ImageField(upload_to='product_pics',default = 'dafault1.jpg')
     p_detail = models.CharField(max_length = 200,blank = True)
     p_price = models.CharField(max_length = 6,default = 0)
@@ -71,3 +71,18 @@ class Product(models.Model):
         return self.pName
 
 
+class Category(models.Model):
+    nameCategory = models.CharField(max_length = 30)
+
+    def  __str__(self):
+        return self.nameCategory
+
+
+class MyFavorite(models.Model):
+    pID  = models.CharField(max_length = 30)
+    uID  = models.CharField(max_length = 30)
+    pName = models.CharField(max_length = 30,blank = True)
+    
+
+    def __str__(self):
+        return self.pID 

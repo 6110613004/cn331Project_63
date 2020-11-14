@@ -11,5 +11,8 @@ urlpatterns = [
     path('delete/<str:x_id>', views.delete, name ="delete"),
     path('productpage/<str:x_ownerName>', views.productpage, name ="productpage"),
     path('product_detail/<str:pro_name>', views.product_detail, name ="product_detail"),
-    path('searchbar/', views.searchbar, name='searchbar'),]
+    path('searchbar/', views.searchbar, name='searchbar'),
+    path('myfavorite', views.myfavorite, name ="myfavorite"),
+    path('addmyfavorite/<str:x_id>', views.addmyfavorite, name ="addmyfavorite"),
+    path('deletefavorite/<str:x_id>', views.deletefavorite, name ="deletefavorite"),]
 
