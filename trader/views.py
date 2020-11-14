@@ -5,9 +5,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
-from .forms import  UserRegisterForm,ProfileUpdateForm,UserUpdateForm
+from .forms import  UserRegisterForm,ProfileUpdateForm,UserUpdateForm,ProductUpdateForm
 from django.contrib import messages
-from .models import Product,Profile,MyFavorite
+from .models import Product,Profile,Category,MyFavorite
 # Create your views here.
 def about(request):
     return render(request,"trader/aboutpage.html")
@@ -20,7 +20,7 @@ def register(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            messages.success(request,f'Account created for {username}!')
+            messages.success(request ,f'Account created for {username}!')
             return redirect(about)
     else:
         form = UserRegisterForm()
@@ -56,7 +56,9 @@ def myshop(request):
 
 def shop(request):
     return render(request, 'trader/shop.html',{
-        'PD' : Product.objects.all() }
+        'PD' : Product.objects.all() ,
+        'Category' : Category.objects.all()
+        }
     )
 
 def addproductpage(request):
@@ -67,15 +69,27 @@ def addproduct(request):
         tempUser = User.objects.get(pk = request.user.pk)
         temp = request.POST.copy()
         tempProduct = Product()
-        tempProduct.pName = temp.get('product_name')
-        tempProduct.ownerName = tempUser.first_name   #ชื่อของคนลงขาย
-        tempProduct.save()
-        tempOwner = User.objects.get(pk = request.user.pk) 
-        tempProduct.owner.add(tempOwner)
-        return HttpResponseRedirect(reverse('myshop'))
-    
-def profile_test(request):
-    return render(request, 'trader/profile_test.html')
+        pro_form = ProductUpdateForm(request.POST,request.FILES,instance=request.user.profile)
+        if pro_form.is_valid():     #Still can't update
+            pro_form.save()     #Still can't update
+            tempProduct.pName = temp.get('product_name')
+            tempProduct.p_detail = temp.get('product_detail') #Detail of product
+            tempProduct.p_price = temp.get('product_price')
+            tempProduct.category = temp.get('product_cat')
+            tempProduct.ownerName = tempUser.first_name   #ชื่อของคนลงขาย
+            tempProduct.save()
+            tempOwner = User.objects.get(pk = request.user.pk) 
+            tempProduct.owner.add(tempOwner)
+            return redirect('myshop')
+
+    else:   
+        pro_form = ProductUpdateForm(instance=request.user.profile)
+    return render(request, 'trader/addproduct.html',{
+        'pro_form':pro_form
+        ,
+        'Category' : Category.objects.all()
+    })  
+              
 
 def update_ownerName(request):
     tempUser = User.objects.get(pk = request.user.pk)
@@ -92,6 +106,27 @@ def productpage(request,x_ownerName):
         'PDG' : Product.objects.filter(ownerName = x_ownerName),
         'XXX' : x_ownerName}
     )
+
+def product_detail(request,pro_name):
+    return render(request,'trader/product.html',{
+        'product_de' : Product.objects.get(pName=pro_name),
+    })
+def searchbar(request):
+    if request.method == 'GET':
+        search = request.GET.get('search')
+        search_Category = request.GET.get('searchCategory')
+        if search_Category == 'All':
+            post1 = Product.objects.filter(pName__icontains=search)
+        else:
+            post1 = Product.objects.filter(category = search_Category,pName__icontains=search)
+       
+            
+    return render(request, 'trader/searchbar.html', {
+        'search' : search,
+        'post': post1 
+        
+        }
+        )
 
 def myfavorite(request):
     return render(request, 'trader/myfavorite.html',{

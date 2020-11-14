@@ -6,15 +6,30 @@
     <title>Document</title>
 </head>
 <body>
-    S H O P !
-    All PRODUCT :
+    <center><h1>สินค้าทั้งหมด</h1></center>
     <ul>
-        {% for x in PD %}
-        <li>
-            ชื่อสินค้า {{ x }}  ลงขายโดย 
-            <a href = "{% url 'productpage' x.ownerName %}"> {{ x.ownerName }} </a>
-            <a href = "{% url 'addmyfavorite' x.id %}"> เพิ่มลงในสิ่งที่ถูกใจ </a>
-        </li>
+        <form action="{% url 'searchbar' %}" method="get">
+            <input type="text" name="search"/>
+
+            <label for="searchCategory"> หมวดหมู่ </label> 
+            <select name="searchCategory" id="searchCategory">
+                    <li> <option value="All"> All </option>  </li>
+                {% for x in Category %}
+                    <li> <option value="{{ x }}"> {{x}} </option>  </li>
+                {% empty %}
+                    <li>ไม่มี Category </li>
+                {% endfor %}
+            </select>
+
+            <button type="submit">Search</button>
+        </form>
+        {% for listProduct in PD %}
+        {% if listProduct.pStatus %}
+            ชื่อสินค้า <a href = "{% url 'product_detail' listProduct.pName %}"> {{ listProduct }}</a>  ลงขายโดย 
+            <a href = "{% url 'productpage' listProduct.ownerName %}"> {{ listProduct.ownerName }} </a>
+            <img src="{{listProduct.p_image.url}}" width="200">
+            <a href = "{% url 'addmyfavorite' listProduct.id %}"> เพิ่มลงในสิ่งที่ถูกใจ </a> <br>
+        {% endif %}
         {% empty %}
             <li>ไม่มีสินค้าใดๆ</li>
         {% endfor %}

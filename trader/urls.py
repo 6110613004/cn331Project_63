@@ -6,11 +6,13 @@ urlpatterns = [
     path('', views.about, name ="aboutpage"),
     path('myshop', views.myshop, name ="myshop"),
     path('shop', views.shop, name ="shop"),
-    path('addproductpage', views.addproductpage, name ="addproductpage"),
+    path('addproductpage', views.addproduct, name ="addproductpage"),
     path('addproduct', views.addproduct, name ="addproduct"),
     path('delete/<str:x_id>', views.delete, name ="delete"),
     path('productpage/<str:x_ownerName>', views.productpage, name ="productpage"),
+    path('product_detail/<str:pro_name>', views.product_detail, name ="product_detail"),
+    path('searchbar/', views.searchbar, name='searchbar'),
     path('myfavorite', views.myfavorite, name ="myfavorite"),
     path('addmyfavorite/<str:x_id>', views.addmyfavorite, name ="addmyfavorite"),
-    path('deletefavorite/<str:x_id>', views.deletefavorite, name ="deletefavorite"),
-    ]
+    path('deletefavorite/<str:x_id>', views.deletefavorite, name ="deletefavorite"),]
+

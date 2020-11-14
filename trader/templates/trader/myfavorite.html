@@ -8,9 +8,10 @@
 <body>
     MY FAVORITE!
     {% for x in MF %}
-        <li>
-             {{ x.pName}}  
-             <a href = "{% url 'deletefavorite' x.id %}" >ลบออกจากสิ่งที่ถูกใจ</a>
+    
+        <li> 
+             ชื่อสินค้า <a href = "{% url 'product_detail' x.pName %}"> {{ x.pName }} </a>  ลงขายโดย  
+             
             
         </li>
         {% empty %}

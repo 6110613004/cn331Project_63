@@ -6,14 +6,29 @@
     <title>Add Product</title>
 </head>
 <body>
-    Add Product !
+    <h1>Add Product here</h1>
     <br>
-    <form method="post" action = "{% url 'addproduct' %}" >
+    <form method="post" enctype="multipart/form-data" action = "{% url 'addproductpage' %}" >
         {% csrf_token %}
+        <form method="post" enctype="multipart/form-data">
+            {{ pro_form }}<br>
         <label for="product_name">กรุณาใส่ชื่อสินค้า</label> <br>
-        <input type="text" id ="product_name" name ="product_name">
+        <input type="text" id ="product_name" name ="product_name"><br>
+        <label for="product_detail">รายละเอียดของสินค้า</label> <br>
+        <textarea name="product_detail" id="product_detail " cols="20" rows="4"></textarea><br>
+        <label for="product_price">กรุณาใส่ราคาของสินค้า</label> <br>
+        <input type="text" id ="product_price" name ="product_price"><br>
+        <label for="product_cat">กรุณาใส่หมวดหมู่ของสินค้า</label> <br>
+        <select name="product_cat" id="product_cat">
+            {% for x in Category %}
+                <li> <option value="{{ x }}"> {{x}} </option>  </li>
+            {% empty %}
+                <li>ไม่มี Category </li>
+            {% endfor %}
+            </select>  
         <button type="submit" >Submit</button>
     </form>
+    <a href = "{% url 'shop' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Back to shop </a>
 
 </body>
 </html>
