@@ -29,6 +29,8 @@
             <a href = "{% url 'productpage' listProduct.ownerName %}"> {{ listProduct.ownerName }} </a>
             <img src="{{listProduct.p_image.url}}" width="200">
             <a href = "{% url 'addmyfavorite' listProduct.id %}"> เพิ่มลงในสิ่งที่ถูกใจ </a> <br>
+            <br><br>
+            
         {% endif %}
         {% empty %}
             <li>ไม่มีสินค้าใดๆ</li>

@@ -6,11 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-    MY FAVORITE!
+    My Favorite Shop.
     {% for x in MF %}
     
         <li> 
-             ชื่อสินค้า <a href = "{% url 'product_detail' x.pName %}"> {{ x.pName }} </a>  ลงขายโดย  
+            <img src="{{x.p_image.url}}" width="200">  <!--Don't forget to add image for product in myFavorite-->
+            ชื่อสินค้า <a href = "{% url 'product_detail' x.pName %}"> {{ x.pName }} </a>    
              
             
         </li>

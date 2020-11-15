@@ -46,7 +46,7 @@ class RegisterFormTest(TestCase):
         form = UserCreationForm(data)
         self.assertFalse(form.is_valid())
     
-    def test_form_fail_4(self):
+    def test_form_fail_4(self):    #สมัครไม่ผ่านเพราะไม่ได้กรอกข้อมูลอะไรลงไปเลย
         data={}
         form=UserCreationForm(data)
         self.assertFalse(form.is_valid())
@@ -132,7 +132,7 @@ class TestModelProduct(TestCase):
         self.assertEqual(product1.pName,'Book')
         self.assertEqual(product1.ownerName,'Harry')
         ############################################################################################################
-class TestDelete(TestCase):
+class TestDelete(TestCase): # Test feature delete
 
     def test_Delete(self):
         Product.objects.create(pName='Book',ownerName='Harry')
@@ -146,7 +146,7 @@ class TestDelete(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(status, True)
         
-class TestSearch(TestCase):
+class TestSearch(TestCase):    #Test feature search
 
     def test_Search(self):
         Product.objects.create(pName='Book',ownerName='Harry')
@@ -161,7 +161,7 @@ class TestSearch(TestCase):
 
 
 ##Test Signal here
-class TestSignals(TestCase):
+class TestSignals(TestCase):       #Test Signal เวลา register บัญชีจะไปเชื่อมกับตาราง Profile
     def test_create_profile_signal_triggered(self):
         handler = MagicMock()
         signals.create_profile.send(handler, sender='test')

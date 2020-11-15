@@ -21,10 +21,44 @@
         <select name="product_cat" id="product_cat">
             {% for x in Category %}
                 <li> <option value="{{ x }}"> {{x}} </option>  </li>
-            {% empty %}
-                <li>ไม่มี Category </li>
             {% endfor %}
             </select>  
+        </select>  
+        <br>
+        กรุณาใส่วัน เวลา และสถานที่นัดดูสินค้า <br>
+        {% for i in '123' %}
+        <label for="day{{i}}"> {{i}}: วัน</label> 
+        <select name="day{{i}}" id="day{{i}}">
+            <option value="none" selected disabled hidden> 
+                เลือกวัน 
+            </option>
+            {% for x in DayList %}
+                <option value="{{ x }}"> {{x}} </option>  
+            {% endfor %}
+        </select> 
+
+        <label for='place{{i}}'>สถานที่</label> 
+        <select name="place{{i}}" id="place{{i}}">
+            <option value="none" selected disabled hidden> 
+                เลือกสถานที่
+            </option>
+            {% for x in place %}
+                <option value="{{ x }}"> {{x}} </option>  
+            {% endfor %}
+        </select>
+
+        <label for='time{{i}}'>เวลา</label> 
+        <select name="time{{i}}" id="time{{i}}">
+            <option value="none" selected disabled hidden> 
+                เลือกเวลา
+            </option>
+            {% for x in Time %}
+                <option value="{{ x }}"> {{x}} </option>  
+            {% endfor %}
+        </select> <br> 
+        {% endfor %}
+        
+
         <button type="submit" >Submit</button>
     </form>
     <a href = "{% url 'shop' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Back to shop </a>
