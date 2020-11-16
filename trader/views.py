@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from .forms import  UserRegisterForm,ProfileUpdateForm,UserUpdateForm,ProductUpdateForm
 from django.contrib import messages
-from .models import Product,Profile,Category,MyFavorite,Day,Time,place,CATEGORY_CHOICES
+from .models import Product,Profile,Category,Day,Time,place,CATEGORY_CHOICES
 # Create your views here.
 def about(request):
     return render(request,"trader/aboutpage.html")
@@ -51,7 +51,7 @@ def profile(request): #Render Profile page
 
 def myshop(request):
     return render(request, 'trader/myshop.html',{
-        'PD' : Product.objects.filter(owner = request.user.id)}
+        'PD' : Product.objects.filter(ownerID = request.user.id)}
     )
 
 def shop(request):
@@ -78,6 +78,7 @@ def addproduct(request):
             tempProduct.p_price = temp.get('product_price')
             tempProduct.category = temp.get('product_cat')
             tempProduct.ownerName = tempUser.first_name   #ชื่อของคนลงขาย
+            tempProduct.ID = tempUser.pk
             if (temp.get('day1') != None)  and (temp.get('place1') != None) and (temp.get('time1') != None) :
                 tempProduct.day1 = temp.get('day1')
                 tempProduct.place1 = temp.get('place1')
@@ -94,8 +95,6 @@ def addproduct(request):
                 tempProduct.time3 = temp.get('time3')
                 tempProduct.s3 = True
             tempProduct.save()
-            tempOwner = User.objects.get(pk = request.user.pk) 
-            tempProduct.owner.add(tempOwner)
             return redirect('myshop')
 
     else:   
@@ -153,19 +152,14 @@ def searchbar(request):
 
 def myfavorite(request):
     return render(request, 'trader/myfavorite.html',{
-        'MF' : MyFavorite.objects.filter(uID = request.user.pk),
+        'MF' : Product.objects.filter(MyFavorite = request.user.id)
     }
     )
 
 def addmyfavorite(request,x_id):
     tempUser = User.objects.get(pk = request.user.pk)
     temp = Product.objects.get(id = x_id)
-    tempFavorite = MyFavorite()
-    tempFavorite.pID = temp.id
-    tempFavorite.pName = temp.pName
-    tempFavorite.uID = request.user.pk
-    tempFavorite.status = True
-    tempFavorite.save()
+    temp.MyFavorite.add(tempUser)
     return HttpResponseRedirect(reverse('shop'))
 
 def deletefavorite(request,x_id):

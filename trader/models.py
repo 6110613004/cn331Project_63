@@ -35,13 +35,14 @@ class Profile(models.Model):
 
 class Product(models.Model):
     pName = models.CharField(max_length = 30)
-    owner = models.ManyToManyField(User,blank = True)
     ownerName = models.CharField(max_length = 30,blank = True)
+    ownerID = models.CharField(max_length = 30,blank = True)
     category = models.CharField( max_length=30,blank = True)
     p_image = models.ImageField(upload_to='product_pics',default = 'dafault1.jpg')
     p_detail = models.CharField(max_length = 200,blank = True)
     p_price = models.CharField(max_length = 6,default = 0)
     pStatus = models.BooleanField(default = True)
+    MyFavorite = models.ManyToManyField(User,blank = True)
     place1 = models.CharField(max_length=999,blank=True) #สถานที่นัดรับสินค้า:1
     place2 = models.CharField(max_length=999,blank=True) #สถานที่นัดรับสินค้า:2
     place3 = models.CharField(max_length=999,blank=True) #สถานที่นัดรับสินค้า:3
@@ -86,14 +87,7 @@ class Category(models.Model):
         return self.nameCategory
 
 
-class MyFavorite(models.Model):
-    pID  = models.CharField(max_length = 30)
-    uID  = models.CharField(max_length = 30)
-    pName = models.CharField(max_length = 30,blank = True)
-    
 
-    def __str__(self):
-        return self.pID 
 
 Day = (
     'อาทิตย์','จันทร์','อังคาร','พุธ','พฤหัสบดี','ศุกร์','เสาร์'
