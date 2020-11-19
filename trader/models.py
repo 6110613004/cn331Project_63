@@ -55,6 +55,11 @@ class Product(models.Model):
     s1 = models.BooleanField(default = False)
     s2 = models.BooleanField(default = False)
     s3 = models.BooleanField(default = False)
+    buyerID = models.CharField(max_length = 30,blank = True,default="")
+    buyerName = models.CharField(max_length = 30,blank = True,default="")
+    dealplace = models.CharField(max_length=999,blank=True,default="")
+    dealday = models.CharField(max_length=10,blank=True,default="")
+    dealtime = models.CharField(max_length=5,blank=True,default="")
 
    
     

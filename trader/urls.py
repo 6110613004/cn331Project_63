@@ -14,5 +14,12 @@ urlpatterns = [
     path('searchbar/', views.searchbar, name='searchbar'),
     path('myfavorite', views.myfavorite, name ="myfavorite"),
     path('addmyfavorite/<str:x_id>', views.addmyfavorite, name ="addmyfavorite"),
-    path('deletefavorite/<str:x_id>', views.deletefavorite, name ="deletefavorite"),]
+    path('deletefavorite/<str:x_id>', views.deletefavorite, name ="deletefavorite"),
+    path('buy/<str:x_id>', views.buy, name ="buy"),
+    path('mydeal', views.mydeal, name ="mydeal"),
+    path('canceldeal/<str:x_id>', views.canceldeal, name ="canceldeal"),
+    path('confirmdeal/<str:x_id>', views.confirmdeal, name ="confirmdeal"),
+    path('previoustrades/<str:x_id>', views.previoustrades, name ="previoustrades"),
+    path('myprevioustrades', views.myprevioustrades, name ="myprevioustrades"),
+    ]
 

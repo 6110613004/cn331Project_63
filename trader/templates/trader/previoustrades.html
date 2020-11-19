@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>ประวัติการขาย</h2><br>
+    {% for x in previous_sell %}
+        ชื่อสินค้า <a href = "{% url 'product_detail' x.pName %}"> {{ x.pName }}</a> ซื้อโดย {{x.buyerName}} <br>
+    {% empty %}
+        บ่มีประวัติการขาย
+    {% endfor %}
+<br><br>
+    <h2>ประวัติการซื้อ</h2><br>
+    {% for x in previous_buy %}
+        ชื่อสินค้า <a href = "{% url 'product_detail' x.pName %}"> {{ x.pName }}</a> ซื้อจาก {{x.ownerName}} <br>
+    {% empty %}
+        บ่มีประวัติการซื้อ
+    {% endfor %}
+
+</body>
+</html>

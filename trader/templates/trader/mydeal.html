@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    My Deal !!
+    <a href="{% url 'myprevioustrades' %}"> ประวัติการ ซื้อ-ขาย ของ ฉัน </a>
+    <h1>ขาย</h1>
+    {% for x in sell %}
+        <p>ชื่อสินค้า <a href = "{% url 'product_detail' x.pName %}"> {{ x }}</a>
+        {% if x.pStatus == True %}
+            {% if x.buyerID == "" %}
+                กำลังรอผู้ที่สนใจ
+            {% else %}
+                กำลังซื้อโดย {{x.buyerName}}
+                <a href = "{% url 'canceldeal' x.id %}"> ยกเลิกการขาย </a>
+                <a href = "{% url 'confirmdeal' x.id %}"> สำเร็จการขาย </a>
+            {% endif %}
+        {% else %}
+            การซื้อขายนี้สำเร็จเเล้ว
+        {% endif %}
+        </p> <br>
+    {% empty %}
+        <p>บ่มี</p>
+    {% endfor %}
+    <br><br>
+
+    <h1>ซื้อ</h1>
+    {% for x in buy %}
+        <p> ชื่อสินค้า <a href = "{% url 'product_detail' x.pName %}"> {{ x }}</a> 
+            ขายโดย {{x.ownerName}}
+            <a href = "{% url 'canceldeal' x.id %}"> ยกเลิกการซื้อ </a>
+
+        </p>
+    {% empty %}
+        <p>บ่มี</p>
+    {% endfor %}
+</body>
+</html>

@@ -7,6 +7,7 @@
 </head>
 <body>
     สินค้าของ {{XXX}}
+    <a href="{% url 'previoustrades' ID %}"> ประวัติการ ซื้อ-ขาย ของ {{XXX}} </a>
     {% for x in PDG %}
         <li>
             ชื่อสินค้า {{ x }}

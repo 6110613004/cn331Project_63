@@ -51,12 +51,12 @@ def profile(request): #Render Profile page
 
 def myshop(request):
     return render(request, 'trader/myshop.html',{
-        'PD' : Product.objects.filter(ownerID = request.user.id)}
+        'PD' : Product.objects.filter(ownerID = request.user.id ).filter(pStatus=True)}
     )
 
 def shop(request):
     return render(request, 'trader/shop.html',{
-        'PD' : Product.objects.all() ,
+        'PD' : Product.objects.exclude(ownerID = request.user.pk ).filter(pStatus=True) ,
         'Category' : CATEGORY_CHOICES
         }
     )
@@ -78,7 +78,7 @@ def addproduct(request):
             tempProduct.p_price = temp.get('product_price')
             tempProduct.category = temp.get('product_cat')
             tempProduct.ownerName = tempUser.first_name   #ชื่อของคนลงขาย
-            tempProduct.ID = tempUser.pk
+            tempProduct.ownerID = tempUser.pk
             if (temp.get('day1') != None)  and (temp.get('place1') != None) and (temp.get('time1') != None) :
                 tempProduct.day1 = temp.get('day1')
                 tempProduct.place1 = temp.get('place1')
@@ -125,24 +125,37 @@ def delete(request,x_id):
 
 def productpage(request,x_ownerName):
     return render(request, 'trader/productpage.html',{
-        'PDG' : Product.objects.filter(ownerName = x_ownerName),
-        'XXX' : x_ownerName}
+        'PDG' : Product.objects.filter(ownerName = x_ownerName).filter(pStatus = True),
+        'XXX' : x_ownerName,
+        'ID' :  User.objects.get(first_name = x_ownerName).id
+        }
     )
 
 def product_detail(request,pro_name):
-    return render(request,'trader/product.html',{
-        'product_de' : Product.objects.get(pName=pro_name),
-    })
+    tempProduct = Product.objects.get(pName=pro_name)
+    if tempProduct.dealday != "" :
+        dataDetail = {
+            'status' : False ,
+            'product_de' : tempProduct,
+            'dealday' :	tempProduct.dealday,
+            'dealplace'	:	tempProduct.dealplace ,
+            'dealtime' :	tempProduct.dealtime
+        }
+    else:
+        dataDetail = {
+            'status' : True ,
+            'product_de' : tempProduct,
+        }
+    return render(request,'trader/product.html',dataDetail)
+
 def searchbar(request):
     if request.method == 'GET':
         search = request.GET.get('search')
         search_Category = request.GET.get('searchCategory')
         if search_Category == 'All':
-            post1 = Product.objects.filter(pName__icontains=search)
+            post1 = Product.objects.filter(pName__icontains=search).filter(pStatus = True)
         else:
-            post1 = Product.objects.filter(category = search_Category,pName__icontains=search)
-       
-            
+            post1 = Product.objects.filter(category = search_Category,pName__icontains=search).filter(pStatus = True)
     return render(request, 'trader/searchbar.html', {
         'search' : search,
         'post': post1 
@@ -166,3 +179,65 @@ def deletefavorite(request,x_id):
         temp = MyFavorite.objects.filter(id = x_id )
         temp.delete()
         return HttpResponseRedirect(reverse('myfavorite'))
+
+def buy(request,x_id):
+    tempProduct = Product.objects.get(id = x_id)
+    if request.method == 'POST' and tempProduct.buyerID == "" and tempProduct.ownerID != str(request.user.pk) and tempProduct.pStatus == True: 
+        tempProduct.buyerID = request.user.id
+        tempProduct.buyerName = request.user.first_name
+        deal = request.POST.get('deal')
+        if deal == "1":
+            tempProduct.dealplace = tempProduct.place1
+            tempProduct.dealday = tempProduct.day1
+            tempProduct.dealtime = tempProduct.time1
+        elif deal == "2":
+            tempProduct.dealplace = tempProduct.place2
+            tempProduct.dealday = tempProduct.day2
+            tempProduct.dealtime = tempProduct.time2
+        elif deal == "3":
+            tempProduct.dealplace = tempProduct.place3
+            tempProduct.dealday = tempProduct.day3
+            tempProduct.dealtime = tempProduct.time3
+        tempProduct.save()
+    return HttpResponseRedirect(reverse('shop'))    
+
+def mydeal(request):
+    return render(request, 'trader/mydeal.html',{
+        'sell' : Product.objects.filter(ownerID = request.user.pk).filter(pStatus=True),
+        'buy' : Product.objects.filter(buyerID = request.user.pk).filter(pStatus=True),
+        }
+    )
+def canceldeal(request,x_id):
+    tempProduct = Product.objects.get(id = x_id)
+    if tempProduct.pStatus == True :
+        tempProduct.buyerID = ""
+        tempProduct.buyerName = ""
+        tempProduct.dealplace = ""
+        tempProduct.dealday = ""
+        tempProduct.dealtime = ""
+        tempProduct.save()
+    return HttpResponseRedirect(reverse('mydeal'))
+
+def confirmdeal(request,x_id):
+    tempProduct = Product.objects.get(id = x_id)
+    tempProduct.pStatus = False 
+    tempProduct.save()
+    return HttpResponseRedirect(reverse('mydeal'))
+
+def previoustrades(request,x_id):
+    
+    return render(request, 'trader/previoustrades.html',{
+        'previous_sell' : Product.objects.filter(ownerID = x_id).filter(pStatus = False),
+        'previous_buy' : Product.objects.filter(buyerID = x_id).filter(pStatus = False) ,
+        
+        }
+    )
+
+def myprevioustrades(request):
+    
+    return render(request, 'trader/previoustrades.html',{
+        'previous_sell' : Product.objects.filter(ownerID = request.user.pk).filter(pStatus = False),
+        'previous_buy' : Product.objects.filter(buyerID = request.user.pk).filter(pStatus = False) ,
+        
+        }
+    )
