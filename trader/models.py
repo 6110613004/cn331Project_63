@@ -34,32 +34,32 @@ class Profile(models.Model):
 
 
 class Product(models.Model):
-    pName = models.CharField(max_length = 30)
-    ownerName = models.CharField(max_length = 30,blank = True)
-    ownerID = models.CharField(max_length = 30,blank = True)
-    category = models.CharField( max_length=30,blank = True)
-    p_image = models.ImageField(upload_to='product_pics',default = 'dafault1.jpg')
-    p_detail = models.CharField(max_length = 200,blank = True)
-    p_price = models.CharField(max_length = 6,default = 0)
-    pStatus = models.BooleanField(default = True)
-    MyFavorite = models.ManyToManyField(User,blank = True)
-    place1 = models.CharField(max_length=999,blank=True) #สถานที่นัดรับสินค้า:1
-    place2 = models.CharField(max_length=999,blank=True) #สถานที่นัดรับสินค้า:2
-    place3 = models.CharField(max_length=999,blank=True) #สถานที่นัดรับสินค้า:3
-    day1 = models.CharField(max_length=10,blank=True) #วันที่นัดรับสินค้า:1
-    day2 = models.CharField(max_length=10,blank=True) #วันที่นัดรับสินค้า:2
-    day3 = models.CharField(max_length=10,blank=True) #วันที่นัดรับสินค้า:3
-    time1 = models.CharField(max_length=5,blank=True) #เวลาที่นัดรับสินค้า:1
-    time2 = models.CharField(max_length=5,blank=True) #เวลาที่นัดรับสินค้า:2
-    time3 = models.CharField(max_length=5,blank=True) #เวลาที่นัดรับสินค้า:3
-    s1 = models.BooleanField(default = False)
-    s2 = models.BooleanField(default = False)
-    s3 = models.BooleanField(default = False)
-    buyerID = models.CharField(max_length = 30,blank = True,default="")
-    buyerName = models.CharField(max_length = 30,blank = True,default="")
-    dealplace = models.CharField(max_length=999,blank=True,default="")
-    dealday = models.CharField(max_length=10,blank=True,default="")
-    dealtime = models.CharField(max_length=5,blank=True,default="")
+    pName = models.CharField(max_length = 30)                                        # Field ที่เก็บค่า ชื่อของสินค้า
+    ownerName = models.CharField(max_length = 30,blank = True)                       # Field ที่เก็บค่า เจ้าของของสินค้า
+    ownerID = models.CharField(max_length = 30,blank = True)                         # Field ที่เก็บค่า pk ของเจ้าของสินค้า
+    category = models.CharField( max_length=30,blank = True)                         # Field ที่เก็บค่า หมวดหมู่ของสินค้า
+    p_image = models.ImageField(upload_to='product_pics',default = 'dafault1.jpg')   # Field ที่เก็บค่า 
+    p_detail = models.CharField(max_length = 200,blank = True)                       # Field ที่เก็บค่า รายละเอียดของสินค้า
+    p_price = models.CharField(max_length = 6,default = 0)                           # Field ที่เก็บค่า ราคาของสินค้า
+    pStatus = models.BooleanField(default = True)                                    # Field ที่เก็บค่า สถานะของสินค้า (True คือ ยังสามารถทำการซื้อขายได้อยู่ False ไม่สามารถทำการซื้อขายได้เเล้ว(สินค้าได้ขายไปแล้ว) )
+    MyFavorite = models.ManyToManyField(User,blank = True)                           # Field ที่เก็บค่า คนที่ถูกใจสินค้า (เป็น ManyToMany field)
+    place1 = models.CharField(max_length=999,blank=True)                             # Field ที่เก็บค่า สถานที่ที่ 1 สำหรับการซื้อขาย(เพิ่มโดยผู้ขาย)
+    place2 = models.CharField(max_length=999,blank=True)                             # Field ที่เก็บค่า สถานที่ที่ 2 สำหรับการซื้อขาย(เพิ่มโดยผู้ขาย)
+    place3 = models.CharField(max_length=999,blank=True)                             # Field ที่เก็บค่า สถานที่ที่ 3 สำหรับการซื้อขาย(เพิ่มโดยผู้ขาย)
+    day1 = models.CharField(max_length=10,blank=True)                                # Field ที่เก็บค่า วันที่ 1 สำหรับการซื้อขาย(เพิ่มโดยผู้ขาย)
+    day2 = models.CharField(max_length=10,blank=True)                                # Field ที่เก็บค่า วันที่ 2 สำหรับการซื้อขาย(เพิ่มโดยผู้ขาย)
+    day3 = models.CharField(max_length=10,blank=True)                                # Field ที่เก็บค่า วันที่ 3 สำหรับการซื้อขาย(เพิ่มโดยผู้ขาย)
+    time1 = models.CharField(max_length=5,blank=True)                                # Field ที่เก็บค่า เวลาที่ 1 สำหรับการซื้อขาย(เพิ่มโดยผู้ขาย)
+    time2 = models.CharField(max_length=5,blank=True)                                # Field ที่เก็บค่า เวลาที่ 2 สำหรับการซื้อขาย(เพิ่มโดยผู้ขาย)
+    time3 = models.CharField(max_length=5,blank=True)                                # Field ที่เก็บค่า เวลาที่ 3 สำหรับการซื้อขาย(เพิ่มโดยผู้ขาย)
+    s1 = models.BooleanField(default = False)                                        # Field ที่เก็บค่า ว่าสถานที่ วันที่ และเวลา ที่ 1 ได้ถูกเพิ่มเเล้ว (False = ยังไม่มีข้อมูล ,True = มีข้อมูลแล้ว)
+    s2 = models.BooleanField(default = False)                                        # Field ที่เก็บค่า ว่าสถานที่ วันที่ และเวลา ที่ 2 ได้ถูกเพิ่มเเล้ว (False = ยังไม่มีข้อมูล ,True = มีข้อมูลแล้ว)
+    s3 = models.BooleanField(default = False)                                        # Field ที่เก็บค่า ว่าสถานที่ วันที่ และเวลา ที่ 3 ได้ถูกเพิ่มเเล้ว (False = ยังไม่มีข้อมูล ,True = มีข้อมูลแล้ว)
+    buyerID = models.CharField(max_length = 30,blank = True,default="")              # Field ที่เก็บค่า pk ของผู้ซื้อ
+    buyerName = models.CharField(max_length = 30,blank = True,default="")            # Field ที่เก็บค่า ชื่อ ของผู้ซื้อ
+    dealplace = models.CharField(max_length=999,blank=True,default="")               # Field ที่เก็บค่า สถานที่ ที่ทำการซื้อขาย
+    dealday = models.CharField(max_length=10,blank=True,default="")                  # Field ที่เก็บค่า วัน ที่ทำการซื้อขาย
+    dealtime = models.CharField(max_length=5,blank=True,default="")                  # Field ที่เก็บค่า เวลา ที่ทำการซื้อขาย
 
    
     
@@ -84,7 +84,7 @@ class Product(models.Model):
         return self.pName
 
 
-class Category(models.Model):
+class Category(models.Model): # ไม่ได้ใช้
     
     nameCategory = models.CharField(max_length = 30)
 
