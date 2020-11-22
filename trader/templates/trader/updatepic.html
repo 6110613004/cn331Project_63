@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Your Product</title>
+    <link rel="stylesheet" href="{% static '/css/aboutpage.css' %}" type="text/css">
+</head>
+<body>
+    <!-- ใส่รูปโปรไฟล์ตรงนี้ -->
+    <div class="container">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ pro_form }}
+            <button type="submit">Update</button>
+        </form>
+</div>
+
+</body>
+</html>

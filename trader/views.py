@@ -69,33 +69,29 @@ def addproduct(request):                                                        
         tempUser = User.objects.get(pk = request.user.pk)                                     # นำข้อมูลของ User ที่ login เก็บไว้ใน tempUser
         temp = request.POST.copy()                                                            # copy ข้อมูลจาก POST ที่ได้รับมา
         tempProduct = Product()                                                               # ให้ tempProduct เป็น Class Product
-        pro_form = ProductUpdateForm(request.POST,request.FILES,instance=request.user.profile)
-        if pro_form.is_valid():     #Still can't update
-            pro_form.save()     #Still can't update
-            tempProduct.pName = temp.get('product_name')                                # นำชื่อสินค้าใส่ลงใน field ชื่อ pName ใน tempProduct
-            tempProduct.p_detail = temp.get('product_detail') #Detail of product        # นำรายละเอียดสินค้าใส่ลงใน field ชื่อ p_detail ใน tempProduct
-            tempProduct.p_price = temp.get('product_price')                             # นำราคาสินค้าใส่ลงใน field ชื่อ p_price ใน tempProduct
-            tempProduct.category = temp.get('product_cat')                              # นำหมวดหมู่สินค้าใส่ลงใน field ชื่อ category ใน tempProduct
-            tempProduct.ownerName = tempUser.first_name   #ชื่อของคนลงขาย                # นำชื่อคนขายใส่ลงใน field ชื่อ ownerName (ชื่อเจ้าของสินค้า) ใน tempProduct
-            tempProduct.ownerID = tempUser.pk                                           # นำ ID (ค่า primary key ของคนขาย) คนขายใส่ลงใน field ชื่อ ownerID ใน tempProduct
-            if (temp.get('day1') != None)  and (temp.get('place1') != None) and (temp.get('time1') != None) :    # ตรวจสอบค่า วัน สถานที่ เวลา ที่ใช้ทำการนัดซื้อสินค้าชุดที่ 1 ว่าได้รับครบถ้วนหรือไม่
-                tempProduct.day1 = temp.get('day1')                                                              # โดยเมื่อครบจะทำการใส่ค่าลงใน field ชุดที่ 1 ตามลำดับ
-                tempProduct.place1 = temp.get('place1')                                                          #
-                tempProduct.time1 = temp.get('time1')                                                            #
-                tempProduct.s1 = True                                                                            # และจะทำการ set ค่า s1 (ค่า status สำหรับตรวจสอบว่ามีข้อมูลอยู่ใน field ชุดที่ 1)
-            if (temp.get('day2') != None)  and (temp.get('place2') != None) and (temp.get('time2') != None) :           # ตรวจสอบค่า วัน สถานที่ เวลา ที่ใช้ทำการนัดซื้อสินค้าชุดที่ 2 ว่าได้รับครบถ้วนหรือไม่
-                tempProduct.day2 = temp.get('day2')                                                                     # โดยเมื่อครบจะทำการใส่ค่าลงใน field ชุดที่ 2 ตามลำดับ
-                tempProduct.place2 = temp.get('place2')                                                                 #
-                tempProduct.time2 = temp.get('time2')                                                                   #
-                tempProduct.s2 = True                                                                                   # และจะทำการ set ค่า s2 (ค่า status สำหรับตรวจสอบว่ามีข้อมูลอยู่ใน field ชุดที่ 2)
-            if (temp.get('day3') != None)  and (temp.get('place3') != None) and (temp.get('time3') != None) :                   # ตรวจสอบค่า วัน สถานที่ เวลา ที่ใช้ทำการนัดซื้อสินค้าชุดที่ 3 ว่าได้รับครบถ้วนหรือไม่
-                tempProduct.day3 = temp.get('day3')                                                                             # โดยเมื่อครบจะทำการใส่ค่าลงใน field ชุดที่ 3 ตามลำดับ
-                tempProduct.place3 = temp.get('place3')                                                                         #
-                tempProduct.time3 = temp.get('time3')                                                                           #
-                tempProduct.s3 = True                                                                                           # และจะทำการ set ค่า s3 (ค่า status สำหรับตรวจสอบว่ามีข้อมูลอยู่ใน field ชุดที่ 3)
-            tempProduct.save()                                                      # บันทึกค่าลง DataBase
-            return redirect('myshop')                                               # กลับสู่หน้า myshop.html
-
+        tempProduct.pName = temp.get('product_name')                                # นำชื่อสินค้าใส่ลงใน field ชื่อ pName ใน tempProduct
+        tempProduct.p_detail = temp.get('product_detail') #Detail of product        # นำรายละเอียดสินค้าใส่ลงใน field ชื่อ p_detail ใน tempProduct
+        tempProduct.p_price = temp.get('product_price')                             # นำราคาสินค้าใส่ลงใน field ชื่อ p_price ใน tempProduct
+        tempProduct.category = temp.get('product_cat')                              # นำหมวดหมู่สินค้าใส่ลงใน field ชื่อ category ใน tempProduct
+        tempProduct.ownerName = tempUser.first_name   #ชื่อของคนลงขาย                # นำชื่อคนขายใส่ลงใน field ชื่อ ownerName (ชื่อเจ้าของสินค้า) ใน tempProduct
+        tempProduct.ownerID = tempUser.pk                                           # นำ ID (ค่า primary key ของคนขาย) คนขายใส่ลงใน field ชื่อ ownerID ใน tempProduct
+        if (temp.get('day1') != None)  and (temp.get('place1') != None) and (temp.get('time1') != None) :    # ตรวจสอบค่า วัน สถานที่ เวลา ที่ใช้ทำการนัดซื้อสินค้าชุดที่ 1 ว่าได้รับครบถ้วนหรือไม่
+            tempProduct.day1 = temp.get('day1')                                                              # โดยเมื่อครบจะทำการใส่ค่าลงใน field ชุดที่ 1 ตามลำดับ
+            tempProduct.place1 = temp.get('place1')                                                          #
+            tempProduct.time1 = temp.get('time1')                                                            #
+            tempProduct.s1 = True                                                                            # และจะทำการ set ค่า s1 (ค่า status สำหรับตรวจสอบว่ามีข้อมูลอยู่ใน field ชุดที่ 1)
+        if (temp.get('day2') != None)  and (temp.get('place2') != None) and (temp.get('time2') != None) :           # ตรวจสอบค่า วัน สถานที่ เวลา ที่ใช้ทำการนัดซื้อสินค้าชุดที่ 2 ว่าได้รับครบถ้วนหรือไม่
+            tempProduct.day2 = temp.get('day2')                                                                     # โดยเมื่อครบจะทำการใส่ค่าลงใน field ชุดที่ 2 ตามลำดับ
+            tempProduct.place2 = temp.get('place2')                                                                 #
+            tempProduct.time2 = temp.get('time2')                                                                   #
+            tempProduct.s2 = True                                                                                   # และจะทำการ set ค่า s2 (ค่า status สำหรับตรวจสอบว่ามีข้อมูลอยู่ใน field ชุดที่ 2)
+        if (temp.get('day3') != None)  and (temp.get('place3') != None) and (temp.get('time3') != None) :                   # ตรวจสอบค่า วัน สถานที่ เวลา ที่ใช้ทำการนัดซื้อสินค้าชุดที่ 3 ว่าได้รับครบถ้วนหรือไม่
+            tempProduct.day3 = temp.get('day3')                                                                             # โดยเมื่อครบจะทำการใส่ค่าลงใน field ชุดที่ 3 ตามลำดับ
+            tempProduct.place3 = temp.get('place3')                                                                         #
+            tempProduct.time3 = temp.get('time3')                                                                           #
+            tempProduct.s3 = True                                                                                           # และจะทำการ set ค่า s3 (ค่า status สำหรับตรวจสอบว่ามีข้อมูลอยู่ใน field ชุดที่ 3)
+        tempProduct.save()                                                      # บันทึกค่าลง DataBase
+        return redirect('myshop')                                               # กลับสู่หน้า myshop.html
     else:                                                                           # หากการเข้ามาใน Function นี้เป็นการเข้ามาโดยที่ไม่ได้มีการส่ง method Post มาด้วย
         pro_form = ProductUpdateForm(instance=request.user.profile)                 # จะเข้าสู้หน้า addproduct.html เพื่อทำการเพิ่มสินค้า
     return render(request, 'trader/addproduct.html',{
@@ -240,3 +236,20 @@ def myprevioustrades(request):                                                  
         
         }
     )
+
+def updatepic(request,x_id): #Update product image page
+    tempProduct = Product.objects.get(id = x_id)  
+    if request.method == 'POST': 
+        pro_form = ProductUpdateForm(request.POST,request.FILES,instance=tempProduct)
+        if pro_form.is_valid() :
+            pro_form.save()
+            
+            return redirect('myshop')
+    else:   
+        pro_form = ProductUpdateForm()
+    
+    context ={
+        'pro_form':pro_form,
+        'x_id':tempProduct
+    }
+    return render(request, 'trader/updatepic.html', context)

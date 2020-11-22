@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import django_heroku
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_nose',
     'trader',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -134,6 +136,7 @@ LOGIN_REDIRECT_URL = 'aboutpage'
 LOGIN_URL ='login'
 
 
+
 STATIC_ROOT = os.path.join(BASE_DIR, "live-static", "static-root")
 
 
@@ -143,8 +146,17 @@ MEDIA_URL = "/media/"
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 NOSE_ARGS = [
     '--with-coverage',
-    '--cover-package= trader',
+    '--cover-package',
 ]
+
+AWS_ACCESS_KEY_ID = 'AKIAQ4ADGWHG2WY2Q2UD'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'tusecondtrader'
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "live-static", "media-root") #เวลาอัพรูป รูปจะไปอยูในfolder พวกนี้

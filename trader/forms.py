@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import Profile,Product
+from django.core.files.storage import default_storage as storage
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()

@@ -21,5 +21,6 @@ urlpatterns = [
     path('confirmdeal/<str:x_id>', views.confirmdeal, name ="confirmdeal"),
     path('previoustrades/<str:x_id>', views.previoustrades, name ="previoustrades"),
     path('myprevioustrades', views.myprevioustrades, name ="myprevioustrades"),
+    path('updatepic/<str:x_id>', views.updatepic, name ="updatepic"),
     ]
 
