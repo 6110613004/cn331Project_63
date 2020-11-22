@@ -2,21 +2,30 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>register</title>
-    <link rel="stylesheet" href="{% static '/css/login+register.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static '/css/login+register+logout.css' %}">
 </head>
-
 <body>
-    <div class="logo">
-        <img src="{% static 'images/Logo.png' %}" alt="logo">
-        <h1 class="head-login">สมัครสมาชิกใหม่</h1>
+    <div class="nav-bar">
+        <div class="logo">
+            <div class="logo-back"><a href="#"><img src="{% static 'images/Logo.png' %}" alt="logo"></a></div>
+        </div>
+        <div class="head-bar">
+            <h1>Register</h1>
+        </div>
+        <div class="nav">
+            <ul>
+                <li><a href="{% url 'shopgrid' %}">Home</a></li>
+                <li><a href="{% url 'aboutpage'  %}">About</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+            </ul>
+        </div>
     </div>
-    <br>
-    <div class="login-page">
+    <div class="register-page">
         <div class="form">
             <p class="login-char">สมัครสมาชิกใหม่</p><br>
             <form class="register-form" method="POST" action="{% url 'register' %}">
@@ -28,5 +37,4 @@
         </div>
     </div>
 </body>
-
 </html>

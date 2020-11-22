@@ -1,24 +1,101 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>History</title>
+    <link rel="stylesheet" href="{% static '/css/previoustrades.css' %}" type="text/css">
 </head>
 <body>
-    <h2>ประวัติการขาย</h2><br>
-    {% for x in previous_sell %}
-        ชื่อสินค้า <a href = "{% url 'product_detail' x.pName %}"> {{ x.pName }}</a> ซื้อโดย {{x.buyerName}} <br>
-    {% empty %}
-        ไม่มีประวัติการขาย
-    {% endfor %}
-<br><br>
-    <h2>ประวัติการซื้อ</h2><br>
-    {% for x in previous_buy %}
-        ชื่อสินค้า <a href = "{% url 'product_detail' x.pName %}"> {{ x.pName }}</a> ซื้อจาก {{x.ownerName}} <br>
-    {% empty %}
-        ไม่มีประวัติการซื้อ
-    {% endfor %}
-
+    <div class="nav-bar">
+        <div class="logo">
+            <div class="logo-back"><a href="{% url 'shopgrid' %}"><img src="{% static 'images/Logo.png' %}" alt="logo"></a></div>
+        </div>
+        <div class="head-bar">
+            <h1>History</h1>
+        </div>
+        <div class="nav">
+            <ul>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'shopgrid' %}">Home</a></li>
+                    <li><a href="{% url 'myshopgrid' %}">My shop</a></li>
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    <li><a href="{% url 'myfavorite' %}">favorite</a></li>
+                    <li><a href="{% url 'aboutpage'  %}">About</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'shopgrid' %}">Home</a></li>
+                    <li><a href="{% url 'aboutpage'  %}">About</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <div class="head-home">
+    </div>
+    <div class="main-buy">
+        <div class="box-content">
+            <div class="head">
+                ประวัติการซื้อ
+            </div>
+            <div class="center-content">
+                {% for x in previous_buy %}
+                    <div class="box-list">
+                        <div class="pic-item">
+                            <img src="{{x.p_image.url}}" alt="item1">
+                            <a href="{% url 'product_detail' x.pName %}">
+                                <div class="overlay">
+                                    <div class="text"><i class="fa fa-search-plus" aria-hidden="true"></i></div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="name-item">
+                        <p class="by">ชื่อสินค้า :&nbsp;</p><a href="{% url 'product_detail' x.pName %}"><p>{{ x.pName }}</p></a>
+                        </div>
+                        <div class="owner-item">
+                        <p class="by">ลงขายโดย :&nbsp;</p><a href="#"><p class="name">{{x.ownerName}}</p></a>
+                        </div>
+                    </div>
+                {% empty %}
+                    <div class="shop-empty">
+                        ไม่มีประวัติการซื้อ
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="main-sale">
+        <div class="box-content">
+            <div class="head">
+                ประวัติการขาย
+            </div>
+            <div class="center-content">
+                {% for x in previous_sell %}
+                    <div class="box-list">
+                        <div class="pic-item">
+                            <img src="{{x.p_image.url}}" alt="item1">
+                            <a href="{{x.ownerName}}">
+                                <div class="overlay">
+                                    <div class="text"><i class="fa fa-search-plus" aria-hidden="true"></i></div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="name-item">
+                            <p class="by">ชื่อสินค้า :&nbsp;</p><a href="{{x.ownerName}}"><p>{{ x.pName }}</p></a>
+                        </div>
+                        <div class="owner-item">
+                            <p class="by">ถูกซื้อโดย :&nbsp;</p><a href="#"><p class="name">{{x.buyerName}}</p></a>
+                        </div>
+                    </div>
+                {% empty %}
+                    <div class="shop-empty">
+                        ไม่มีประวัติการขาย
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 </body>
 </html>

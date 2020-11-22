@@ -4,8 +4,8 @@ from . import views
 urlpatterns = [
    # path('register/',views.register, name="register"),
     path('', views.about, name ="aboutpage"),
-    path('myshop', views.myshop, name ="myshop"),
-    path('shop', views.shop, name ="shop"),
+    path('myshop', views.myshop, name ="myshopgrid"),
+    path('shop', views.shop, name ="shopgrid"),
     path('addproductpage', views.addproduct, name ="addproductpage"),
     path('addproduct', views.addproduct, name ="addproduct"),
     path('delete/<str:x_id>', views.delete, name ="delete"),

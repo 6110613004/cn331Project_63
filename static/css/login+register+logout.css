@@ -7,46 +7,74 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@600&display=swap');
 
-* {
+*{
     margin: 0;
     padding: 0;
+    font-family: 'Roboto', sans-serif;
 }
-body {
-    background-color: #e0cadf;
-    background-size: cover;
-    background-position: center;
-    height: 100vh; 
-    background: -webkit-linear-gradient(right, #e0cadf, #cae0cb);
-    background: -moz-linear-gradient(right, #e0cadf, #cae0cb);
-    background: -o-linear-gradient(right, #e0cadf, #cae0cb);
-    background: linear-gradient(to left,#e0cadf, #cae0cb);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;  
+body{
+    background-color: #f0f0f0;
+}
+a{
+    text-decoration: none;
+}
+.nav-bar{
+    width: auto;
+    height: 75px;
+    background-color: darkslategray;
 }
 .logo{
-    background-color: #cae0cb;
-    height: 15%;
+    float: left;
+    margin: 0 0 0 100px;
+}
+.logo-back img{
+    height: 75px;
+    width: 150px;
+    opacity: 2;
 }
 
-.logo img {
+.head-bar{
     float: left;
-    width: 15%;
-    height: auto;
-    margin-top: 0px;
-    margin-left: 5%;
+    margin: 20px 0 0 25px;
+}
+.head-bar h1{
+    font-size: 2em;
+    color: white;
+}
+.nav{
+    float: right;
+    margin-top: 25px;
+    margin-right: 100px;
 }
 
-.logo h1.head-login {
-    float: left;
-    font-family: 'Mitr', sans-serif;
-    padding-top: 2.5%;
-    font-size: auto;
+.nav ul li{
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.nav ul li a{
+    font-size: 1.2em;
+    color: white;
+    padding: 20px;
+    font-weight: 900;
+}
+
+.nav ul li a:hover{
+    
+    background-color: #57d4d2;
+}
+.nav ul li a:active{
+    color: #2a6969;
 }
 
 .login-page{
     height: 85%;
 }
 .register-page{
+    height: 85%;
+}
+
+.logout-page{
     height: 85%;
 }
 .form {
@@ -105,3 +133,13 @@ body {
     background: #0eac50;
 }
 
+.form button a {
+    color: white;
+}
+
+.form h2.login-char{
+    text-align: center;
+    padding-bottom: 30px;
+    font-family: 'Mitr', sans-serif;
+    font-size: large;
+}

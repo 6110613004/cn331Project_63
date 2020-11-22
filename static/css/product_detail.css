@@ -1,0 +1,285 @@
+@import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mitr:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color:  #f0f0f0;
+}
+a{
+    text-decoration: none;
+}
+.nav-bar{
+    width: auto;
+    height: 75px;
+    background-color: darkslategray;
+}
+.logo{
+    float: left;
+    margin: 0 0 0 100px;
+}
+.logo-back img{
+    height: 75px;
+    width: 150px;
+    opacity: 2;
+}
+
+.head-bar{
+    float: left;
+    margin: 20px 0 0 25px;
+}
+.head-bar h1{
+    font-size: 2em;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+}
+.nav{
+    float: right;
+    margin-top: 25px;
+    margin-right: 100px;
+}
+
+.nav ul li{
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.nav ul li a{
+    font-size: 1.2em;
+    color: white;
+    padding: 20px;
+    font-weight: 900;
+    font-family: 'Roboto', sans-serif;
+}
+
+.nav ul li a:hover{
+    
+    background-color: #57d4d2;
+}
+.nav ul li a:active{
+    color: #2a6969;
+}
+
+.main-content{
+    width: 80%;
+    min-height: auto;
+    overflow: hidden;
+    display: block;
+    background-color: white;
+    margin: 5% auto;
+    padding-bottom: 3%;
+    border-radius: 10px;
+}
+
+.pic-goods {
+    width: 40%;
+    height: 550px;
+    display: block;
+    float: left;
+}
+
+.pic-goods img{
+    width: 80%;
+    height: 400px;
+    margin: 15px auto;
+    display: block;
+}
+.name-goods{
+    font-family: 'Mitr', sans-serif;
+    font-size: 1.8em;
+    font-weight: 800;
+    margin: 25px 0 20px 30px;
+    display: block;
+    float: left;
+    width: 55%;
+    min-height: auto;
+    overflow: hidden;
+}
+
+.price-goods{
+    background-color: rgb(223, 221, 221);
+    float: left;
+    width: 50%;
+    height: 1.5em;
+    padding: 15px;
+    margin-left: 30px;
+}
+.price-goods .price{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.goods-status{
+    width: 55%;
+    min-height: auto;
+    overflow: hidden;
+    padding: 15px;
+    margin-left: 30px;
+    float: left;
+}
+
+.ready{
+    font-family: 'Mitr', sans-serif;
+    font-size: 1.5em;
+    font-weight: 600;
+    color: black;
+    background-color: rgb(0, 175, 0);
+    float: left;
+    width: auto;
+    height: auto;
+    padding: 10px;
+}
+
+.busy{
+    font-family: 'Mitr', sans-serif;
+    font-size: 1.5em;
+    font-weight: 600;
+    color: black;
+    background-color: rgb(241, 241, 26);
+    float: left;
+    width: auto;
+    height: auto;
+    padding: 10px;
+}
+.sold{
+    font-family: 'Mitr', sans-serif;
+    font-size: 1.5em;
+    font-weight: 600;
+    color: black;
+    background-color: rgb(253, 26, 26);
+    float: left;
+    width: auto;
+    height: auto;
+    padding: 10px;
+}
+
+.deadline{
+    width: 55%;
+    min-height: auto;
+    overflow: hidden;
+    margin-left: 30px;
+    float: left;
+}
+
+form{
+    float: left;
+    margin: 10px 0 0 25px;
+    font-family: 'Mitr', sans-serif;
+    font-size: 1.1em;
+}
+.deadline .head-dl{
+    font-family: 'Mitr', sans-serif;
+    font-size: 1.3em;
+    font-weight: 700;
+}
+
+.container-tikbox{
+    min-width: auto;
+    min-height: auto;
+    overflow: hidden;
+}
+
+.true-deadline{
+    float: left;
+    font-family: 'Mitr', sans-serif;
+    font-size: 1.1em;
+    margin-left: 35px;
+    font-weight: 700;
+    margin-top: 20px;
+    width: 50%;
+    min-height: auto;
+    overflow: hidden;
+}
+
+.true-deadline p{
+    margin-left: 0;
+    font-size: 1.3em;
+}
+
+/**/
+.buy-button{
+    float: left;
+    width: 20%;
+    min-height: auto;
+    overflow: hidden;
+    margin-top: 50px;
+    margin-left: 100px;
+}
+
+.buy-but {
+    background: gray;
+    color: black;
+    cursor: pointer;
+    font-size: 2em;
+    padding: 20px;
+    border: 0;
+    transition: all 0.5s;
+    border-radius: 1px;
+    width: 50%;
+    position: relative;
+}
+.buy-but a{
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    font-size: 1em;
+}
+
+.buy-but::after {
+    font-weight: 400;
+    position: absolute;
+    left: 85%;
+    top: 31%;
+    right: 5%;
+    bottom: 0;
+    opacity: 0;
+
+}
+
+.buy-but:hover {
+    background: lightgray;
+    transition: all .5s;
+    border-radius: 15px;
+    padding: 20px 40px 20px 20px;
+}
+
+.buy-but::after {
+    opacity: 1;
+    transition: all 0.5s;
+}
+
+.product-detail{
+    width: 80%;
+    min-height: auto;
+    overflow: hidden;
+    display: block;
+    background-color: white;
+    margin: 0% auto;
+    padding-bottom: 5%;
+    border-radius: 10px;
+    padding: -50px;
+}
+
+.head-pd{
+    margin: 20px 0 30px 50px;
+    font-family: 'Mitr', sans-serif;
+    font-weight: 800;
+    font-size: 2em;
+}
+
+.content-pro{
+    margin: 0 50px 100px 100px;
+    font-family: 'Mitr', sans-serif;
+    font-weight: 500;
+    font-size: 1.2em;
+}
+

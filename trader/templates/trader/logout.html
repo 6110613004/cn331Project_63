@@ -4,12 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static '/css/logout.css' %}" type="text/css">
-    <title>logout-page</title>
+    <title>logout</title>
+    <link rel="stylesheet" href="{% static '/css/login+register+logout.css' %}">
 </head>
 <body>
-    <div class="logo">
-        <img src="{% static 'images/Logo.png' %}" alt="logo">
+    <div class="nav-bar">
+        <div class="logo">
+            <div class="logo-back"><a href="#"><img src="{% static 'images/Logo.png' %}" alt="logo"></a></div>
+        </div>
+        <div class="head-bar">
+            <h1>Logout</h1>
+        </div>
+        <div class="nav">
+            <ul>
+                <li><a href="{% url 'shopgrid' %}">Home</a></li>
+                <li><a href="{% url 'aboutpage'  %}">About</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+            </ul>
+        </div>
     </div>
     <div class="logout-page">
         <div class="form">
@@ -17,10 +30,9 @@
                 <h2 class="login-char"> คุณได้ออกจากระบบแล้ว </h2>
                 <button><a href="{% url 'login' %}">เข้าสู่ระบบ</a></button>
                 <br><br>
-                <button><a href="{% url 'aboutpage' %}">About us</a></button>
+                <button><a href="{% url 'shopgrid' %}">Home</a></button>
             </form>
         </div>
     </div>
 </body>
 </html>
-

@@ -1,66 +1,110 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product</title>
+    <link rel="stylesheet" href="{% static '/css/product_detail.css' %}" type="text/css">
 </head>
 <body>
-    <center><h1>ชื่อสินค้า {{ product_de.pName}}</h1></center><br>
-    <center><img src="{{product_de.p_image.url}}" width="240"></center><br>
-    <h2> รายละเอียดสินค้า </h2><br>
-    {{product_de.p_detail}} <br>
-    <h2> ราคา  {{product_de.p_price}} บาท </h2> <br>
-    {% if product_de.buyerID == "" %}
-    <h2> สินค้าพร้อมขายในขณะนี้ </h2>
-    {% else %}
-    <h2> สินค้าไม่พร้อมขายในขณะนี้(มีผู้อื่นกำลังนัดซื้อ) </h2>
-    {% endif %}
-
-
-    {% if status %}
-
-        <h2>เลือกวัน เวลา และสถานที่</h2>
-        <form method="POST" action="{% url 'buy' product_de.id %}">
-            {% csrf_token %}
-            {% if product_de.s1 == True %}
-                <input type="radio" id="deal1" name="deal" value="1">
-                <label for="deal1">
-                    {{product_de.day1}} {{product_de.place1}} {{product_de.time1}} 
-                </label>
-                <br>
+    <div class="nav-bar">
+        <div class="logo">
+            <div class="logo-back"><a href="#"><img src="{% static 'images/Logo.png' %}" alt="logo"></a></div>
+        </div>
+        <div class="head-bar">
+            <h1>Shop</h1>
+        </div>
+        <div class="nav">
+            <ul>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'shopgrid' %}">Home</a></li>
+                    <li><a href="{% url 'myshopgrid' %}">My shop</a></li>
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    <li><a href="{% url 'myfavorite' %}">favorite</a></li>
+                    <li><a href="{% url 'aboutpage'  %}">About</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'shopgrid' %}">Home</a></li>
+                    <li><a href="{% url 'aboutpage'  %}">About</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="pic-goods">
+            <img src="{{product_de.p_image.url}}" alt="goods-pic">
+        </div>
+        <div class="goods-detail">
+            <div class="name-goods">
+                {{ product_de.pName}}
+            </div>
+            <div class="price-goods">
+                <p class="price">
+                    ฿{{product_de.p_price}} 
+                </p>
+            </div>
+            <div class="goods-status">
+                {% if product_de.buyerID == "" %}
+                    <div class="ready">
+                        สินค้าพร้อมขาย
+                    </div>
+                {% else %}
+                    <div class="busy">
+                        สินค้าอยู่ระหว่างการซื้อขาย
+                    </div>
+                {% endif %}
+            </div>
+            {% if status %}
+                <div class="deadline">
+                    <p class="head-dl">
+                        กรุณาเลือกวันนัดรับ
+                    </p>
+                    <form method="POST" action="{% url 'buy' product_de.id %}">
+                        {% csrf_token %}
+                        {% if product_de.s1 == True %}
+                            <label for="dl1" class="container-tikbox">
+                                <input type="radio" id="dl1" name="deadline" value="dl1"> {{product_de.day1}} {{product_de.place1}} {{product_de.time1}} 
+                            </label><br>
+                        {% else %}
+                        {% endif %}
+                        {% if product_de.s2 == True %}
+                            <label for="dl2" class="container-tikbox">
+                                <input type="radio" id="dl2" name="deadline" value="dl2"> {{product_de.day2}} {{product_de.place2}} {{product_de.time2}}
+                            </label><br>
+                        {% else %}
+                        {% endif %}
+                        {% if product_de.s3 == True %}
+                            <label for="dl3" class="container-tikbox">
+                                <input type="radio" id="dl3" name="deadline" value="dl3"> {{product_de.day3}} {{product_de.place3}} {{product_de.time3}}
+                            </label><br>
+                        {% else %}
+                        {% endif %}
+                        <div class="buy-button">
+                            <button type="submit" value="Submit" class="buy-but">
+                                <a href="#" class="buy-bt"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                            </button>
+                        </div>
+                    </form>
+                </div>
             {% else %}
+                <div class="true-deadline">
+                    <p>กำหนดการซื้อคือ</p>
+                    {{dealday}}	{{dealplace}} {{dealtime}}
+                </div>
             {% endif %}
-
-        
-
-            {% if product_de.s2 == True %}
-                <input type="radio" id="deal2" name="deal" value="2">
-                <label for="deal2">
-                    {{product_de.day2}} {{product_de.place2}} {{product_de.time2}} 
-                </label>
-                <br>
-            {% else %}
-            {% endif %}
-        
-        
-
-            {% if product_de.s3 == True %}
-                <input type="radio" id="deal2" name="deal" value="3">
-                <label for="deal2">
-                    {{product_de.day3}} {{product_de.place3}} {{product_de.time3}} 
-                </label>
-                <br> 
-            {% else %}
-            {% endif %}
-            <br>
-            <input type="submit" value="Submit">
-        </form>
-    {% else %}
-        กำหนดการซื้อคือ {{dealday}}	{{dealplace}} {{dealtime}}
-    {% endif %}  
-<br>
-
-    <a href = "{% url 'shop' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Back to shop </a>
+        </div>
+    </div>
+    <div class="product-detail">
+        <div class="head-pd">
+            รายละเอียดสินค้า :
+        </div>
+        <div class="content-pro">
+            {{product_de.p_detail}}
+        </div>
+    </div>
 </body>
 </html>
+    

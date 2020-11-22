@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <link rel="stylesheet" href="{% static '/css/shoplist.css' %}" type="text/css">
+</head>
+<body>
+    <div class="nav-bar">
+        <div class="logo">
+            <div class="logo-back"><a href="#"><img src="{% static 'images/Logo.png' %}" alt="logo"></a></div>
+        </div>
+        <div class="head-bar">
+            <h1>Home</h1>
+        </div>
+        <div class="nav">
+            <ul>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'shoplist' %}">Home</a></li>
+                    <li><a href="{% url 'myshoplist' %}">My shop/a></li>
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    <li><a href="{% url 'myfavorite' %}">favorite</a></li>
+                    <li><a href="{% url 'aboutpage'  %}">About</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'shoplist' %}">Home</a></li>
+                    <li><a href="{% url 'aboutpage'  %}">About</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <div class="head-home">
+        <h1>สินค้าทั้งหมด</h1>
+    </div>
+    <div class="search-box">
+        <div class="form-search">
+            <form action="{% url 'searchbar' %}" method="GET" class="search">
+                <input type="text" name="search" placeholder="ค้นหา. . .">
+                <select name="searchCategory" id="searchCategory">
+                    <option value="All">All</option>
+                    {% for x in Category %}
+                        <option value="{{ x }}">{{x}}</option>
+                    {% empty %}
+                        <option value="nocategory"></option>
+                    {% endfor %}
+                </select>
+                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </form>
+        </div>
+    </div>
+    <div class="content-mode">
+        <div class="grid-mode">
+            <a href="{% url 'shopgrid' %}"><i class="fa fa-th" aria-hidden="true"></i></a>
+        </div>
+        <div class="list-mode">
+            <a href="#"><i class="fa fa-list" aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <div class="nav2-bar">
+        <button type="button" class="buy-sale-now">
+            <a href="{% url 'mydeal' %}">กำลังซื้อ-ขาย</a>
+        </button>
+        <br>
+        <button type="button" class="buy-sale-his">
+            <a href="{% url 'myprevioustrades' %}">ประวัติการซื้อ-ขาย</a>
+        </button>
+    </div>
+    <div class="box-content">
+        <div class="center-content">
+            {% for listProduct in PD %}
+                {% if listProduct.dealday == "" %}
+                    <div class="box-list">
+                        <div class="pic-item">
+                            <img src="{{listProduct.p_image.url}}" alt="item1">
+                            <a href="{% url 'product_detail' listProduct.pName %}">
+                                <div class="overlay">
+                                    <div class="text"><i class="fa fa-search-plus" aria-hidden="true"></i></div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="name-item">
+                            <p class="by">ชื่อสินค้า :&nbsp;</p><a href="{% url 'product_detail' listProduct.pName %}"><p>{{ listProduct }}</p></a>
+                        </div>
+                        <div class="owner-item">
+                            <p class="by">ลงขายโดย :&nbsp;</p><a href="{% url 'productpage' listProduct.ownerName  %}"><p class="name">{{ listProduct.ownerName }}</p></a>
+                        </div>
+                        <div class="addtofav">
+                            <a href="{% url 'addmyfavorite' listProduct.id %}"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>&nbsp;เพิ่มในสิ่งที่ถูกใจ</a>
+                        </div>
+                    </div>
+                {% else %}
+                {% endif%}
+            {% empty %}
+                <div class="shop-empty">
+                    ไม่มีสินค้า
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

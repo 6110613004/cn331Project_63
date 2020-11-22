@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>myshop</title>
-    <link rel="stylesheet" href="{% static '/css/myshopgrid.css' %}">
+    <link rel="stylesheet" href="{% static '/css/myshoplist.css' %}">
 </head>
 <body>
     <div class="nav-bar">
@@ -41,10 +41,10 @@
     </div>
     <div class="content-mode">
         <div class="grid-mode">
-            <a href="#"><i class="fa fa-th" aria-hidden="true"></i></a>
+            <a href="{% url 'myshopgrid' %}"><i class="fa fa-th" aria-hidden="true"></i></a>
         </div>
         <div class="list-mode">
-            <a href="###"><i class="fa fa-list" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-list" aria-hidden="true"></i></a>
         </div>
     </div>
     <div class="box-content">
@@ -63,7 +63,7 @@
                         <a href="#"><p>{{ x.pName }}</p></a>
                     </div>
                     <div class="owner-item">
-                        <a href="{% url 'updatepic' x.id %}"><p class="name">แก้ไขรูปภาพ</p></a>
+                        <a href="{% url 'updatepic' %}"><p class="name">แก้ไขรูปภาพ</p></a>
                     </div>
                     <div class="addtofav">
                         <a href="{% url 'delete' x.id %}"><i class="fa fa-trash" aria-hidden="true"></i></a>

@@ -55,7 +55,7 @@ def myshop(request):
     )                                                                                         # (pStatus คือ สถานนะของสินค้า True = ยังไม่ได้ทำการขาย False = ทำการขายเเล้ว)
 
 def shop(request):
-    return render(request, 'trader/shop.html',{                                               # ไปหน้า shop.html 
+    return render(request, 'trader/shopgrid.html',{                                               # ไปหน้า shop.html 
         'PD' : Product.objects.exclude(ownerID = request.user.pk ).filter(pStatus=True) ,     # โดยจะส่งค่า object class Product ทั้งหมดที่ไม่ใช่ของ User ที่ login เข้ามา
         'Category' : CATEGORY_CHOICES                                                         # และส่งข้อมูล Category (เป็น list ใน models.py) ไปด้วย (สำหรับการค้นหาในหน้า shop.html)
         }
@@ -91,7 +91,7 @@ def addproduct(request):                                                        
             tempProduct.time3 = temp.get('time3')                                                                           #
             tempProduct.s3 = True                                                                                           # และจะทำการ set ค่า s3 (ค่า status สำหรับตรวจสอบว่ามีข้อมูลอยู่ใน field ชุดที่ 3)
         tempProduct.save()                                                      # บันทึกค่าลง DataBase
-        return redirect('myshop')                                               # กลับสู่หน้า myshop.html
+        return redirect('myshopgrid')                                               # กลับสู่หน้า myshop.html
     else:                                                                           # หากการเข้ามาใน Function นี้เป็นการเข้ามาโดยที่ไม่ได้มีการส่ง method Post มาด้วย
         pro_form = ProductUpdateForm(instance=request.user.profile)                 # จะเข้าสู้หน้า addproduct.html เพื่อทำการเพิ่มสินค้า
     return render(request, 'trader/addproduct.html',{
@@ -115,7 +115,7 @@ def update_ownerName(request):                          # ยังไม่ไ�
 def delete(request,x_id):                                      # Function ลบสินค้า รับค่า x_id(ค่า pk ของสินค้านั้นๆ) มา    
         temp = Product.objects.filter(id = x_id )              # ให้ตัวแปล temp เก็บค่า object ของ Class Product ที่มีค่า pk = x_id ที่ได้รับมา                           
         temp.delete()                                          # ใช้ Function delete เพื่อลบ object นั้นออกจาก DataBase
-        return HttpResponseRedirect(reverse('myshop'))         # รีเฟชกลับสู่หน้าเดิม (myshop.html)                               
+        return HttpResponseRedirect(reverse('myshopgrid'))         # รีเฟชกลับสู่หน้าเดิม (myshop.html)                               
 
 
 def productpage(request,x_ownerName):                                                     # Function productpage จะรับชื่อเข้ามา             
@@ -168,7 +168,7 @@ def addmyfavorite(request,x_id):                                # Function addmy
     tempUser = User.objects.get(pk = request.user.pk)           # ให้ tempUser เก็บค่าของ Object Class User ของ User ที่ใช้งานอยู่
     temp = Product.objects.get(id = x_id)                       # ให้ temp เก็บค่าของ Object Class Product ที่ค่า pk ตรงกับ x_id ที่ส่งเข้ามา
     temp.MyFavorite.add(tempUser)                               # ให้ object ที่ temp เก็บ เพิ่ม object ที่ tempUser เก็บ (เนื่องจาก field MyFavorite เป็นเเบบ ManyToMany)
-    return HttpResponseRedirect(reverse('shop'))                # รีเฟชหน้า shop.html
+    return HttpResponseRedirect(reverse('shopgrid'))                # รีเฟชหน้า shop.html
 
 def deletefavorite(request,x_id):                           # Function deletefavorite (สำหรับลบสินค้าที่ตัวเองเคยกดชื่นชอบไว้)
         temp = MyFavorite.objects.get(id = x_id )           # ให้ temp เก็บค่าของ Object Class Product ที่ค่า pk ตรงกับ x_id ที่ส่งเข้ามา  
@@ -194,7 +194,7 @@ def buy(request,x_id):                                                          
             tempProduct.dealday = tempProduct.day3                                                                                              # ให้ตัวแปร dealday เก็บค่า วันในชุดที่ 3     
             tempProduct.dealtime = tempProduct.time3                                                                                            # ให้ตัวแปร dealtime เก็บค่า เวลาในชุดที่ 3       
         tempProduct.save()                                                                                                                      # บันทึกค่า object หลังจากเปลี่ยนแปลง
-    return HttpResponseRedirect(reverse('shop'))                                                                                                # ไปสู่หน้า shop.html
+    return HttpResponseRedirect(reverse('shopgrid'))                                                                                                # ไปสู่หน้า shop.html
 
 def mydeal(request):                                                                            # Function mydeal (สำหรับดูว่าเรากำลังซื้อ-ขายสินค้าอะไรอยู่บ้าง)
     return render(request, 'trader/mydeal.html',{                                               #ไปสู่หน้า mydeal.html
@@ -244,7 +244,7 @@ def updatepic(request,x_id): #Update product image page
         if pro_form.is_valid() :
             pro_form.save()
             
-            return redirect('myshop')
+            return redirect('myshopgrid')
     else:   
         pro_form = ProductUpdateForm()
     

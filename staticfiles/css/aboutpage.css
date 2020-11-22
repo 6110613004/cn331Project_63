@@ -1,4 +1,4 @@
-@import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mitr:wght@300&display=swap');
@@ -7,187 +7,135 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@600&display=swap');
 
-/*this is overall*/
-
-* {
+*{
     margin: 0;
     padding: 0;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Mitr', Arial, sans-serif;
-}
-
-body {
-    background-color: #ffffff;
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-}
-
-ul {
-    list-style-type: none;
-    width: auto;
-}
-
-ul li {
-    display: inline-block;
-}
-
-
-/*this is overall*/
-
-
-/*this is headder*/
-
-.headed {
-    background-color:  #222c3c;
-}
-
-
-/*this is headder*/
-
-
-/*this is logo*/
-
-.logo img {
-    float: left;
-    width: 20%;
-    height: auto;
-    margin-top: 0px;
-}
-
-.logo h1.head-text {
-    float: left;
-    font-family: 'Anton', sans-serif;
-    font-size: 175%;
-    margin-top: 40px;
-    color: #ffffff;
-}
-
-
-/*this is logo*/
-
-
-/*this is nav-bar*/
-
-.navigator{
-    background-color: #475c87;
-    height: 5%;
-}
-
-ul li a.nav-bar {
-    text-decoration: none;
-    color:  white;
-    border: none;
-    padding: 5px;
-    margin: 5px;
-    font-size: 110%;
-    font-family: 'Merriweather', serif;
-}
-
-ul li a.nav-bar:active{
-    color: #ffab2e;
-}
-ul li a.nav-bar:hover {
-    border: solid 1px #ffffff;
-    background-color: transparent;
-}
-ul li a.nav-bar-login-register {
-    text-decoration: none;
-    color: white;
-    border: none;
-    padding: 5px;
-    margin: 5px;
-    font-size: 130%;
-    font-family: 'Merriweather', serif;
-}
-
-ul li a.nav-bar-login-register:hover {
-    background-color: transparent;
-    border-bottom: 1px white solid;
-}
-ul.normal-bar{
-    padding-top: 10px;
-    float: left;
-}
-
-ul.login-botton{
-    padding-top: 10px;
-    float: right;
-}
-
-ul li a.nav-bar-login-register:active{
-    color: #ffab2e;
-}
-
-
-/*this is nav-bar*/
-
-
-/*this is table-content*/
-
-.table-content {
-    width: 100%;
-    margin-top: 100px;
-}
-
-.table-content tr.welcome td {
-    text-align: center;
-    vertical-align: middle;
-    padding-bottom: 20px;
-}
-
-.table-content tr.welcome td h1 {
     font-family: 'Roboto', sans-serif;
 }
-
-.table-content tr.welcome td p {
-    font-family: 'Mitr', sans-serif;
-    font-size: 120;
+body{
+    background-color: lightgray;
 }
-
-.table-content tr.emty {
+a{
+    text-decoration: none;
+}
+.nav-bar{
+    width: auto;
     height: 75px;
+    background-color: darkslategray;
+}
+.logo{
+    float: left;
+    margin: 0 0 0 100px;
+}
+.logo-back img{
+    height: 75px;
+    width: 150px;
+    opacity: 2;
 }
 
-.table-content tr.emty td {
-    border-top: 1px solid lightgray;
+.head-bar{
+    float: left;
+    margin: 20px 0 0 25px;
+}
+.head-bar h1{
+    font-size: 2em;
+    color: white;
+}
+.nav{
+    float: right;
+    margin-top: 25px;
+    margin-right: 100px;
 }
 
-.table-content tr td h1.head-mem {
-    text-align: left;
-    font-family: 'Crimson Text', serif;
-    font-size: 250%;
+.nav ul li{
+    display: inline-block;
+    margin-right: 15px;
 }
 
-.table-content tr.emtyy {
-    height: 30px;
+.nav ul li a{
+    font-size: 1.2em;
+    color: white;
+    padding: 20px;
+    font-weight: 900;
 }
 
-.table-content tr.member-web td.mem-pic {
-    vertical-align: middle;
+.nav ul li a:hover{
+    
+    background-color: #57d4d2;
+}
+.nav ul li a:active{
+    color: #2a6969;
+}
+.Head-tell{
+    height: 50px;
+    border: 1px solid gray;
+}
+.about{
+    margin: 5px 0 0 100px;
+    
+}
+.welcome-text{
+    height: 200px;
+    display: block;
+}
+
+.welcome-head{
+    margin: 50px 0 25px 0;
+}
+.welcome-head h1{
     text-align: center;
-    border-radius: 50px;
-    background-color: transparent;
-    margin: 0;
-    padding: 0;
+}
+.hr-under{
+    margin: 75px auto 0 auto;
+}
+hr.hr-under{
+    border: 1px solid gray;
+    border-radius: 1px;
+    width: 50%;
 }
 
-.table-content tr.member-web td.mem-pic img {
-    width: 100%;
-    border: solid#5e4770;
-    border-radius: 50px;
-    margin-left: auto;
-    margin-right: auto;
+.content p{
+    text-align: center;
+    font-family: 'Mitr', sans-serif;
 }
 
-.table-content tr.member-web td.mem-pic .container {
+.member{
+    display: block;
+    min-height: auto;
+    margin-top: 25px;
+    overflow: hidden;
+    display: block;
+}
+.member-pic{
+    min-height: auto;
     position: relative;
-    width: 90%;
-    margin: 0;
-    padding: 0;
-    margin-left: 10px;
+    left: 5%;
+    z-index: 1;
+    overflow: hidden;
 }
 
-.table-content tr.member-web td.mem-pic .overlay {
+.member-text{
+    margin-left: 50px;
+}
+
+.member-text h1{
+    font-size: 2em;
+}
+.container{
+    float: left;
+    margin: 50px 20px;
+    position: relative;
+}
+
+.container:hover .picmem{
+    opacity: 0.3;
+}
+
+.container:hover .overlay{
+    opacity: 1;
+}
+
+.overlay{
     transition: 1s ease;
     position: absolute;
     left: 50%;
@@ -198,89 +146,50 @@ ul li a.nav-bar-login-register:active{
     -ms-transform: translate(-50%, -50%)
 }
 
-.table-content tr.member-web td.mem-pic .container:hover .picmem {
-    opacity: 0.3;
+.container img{
+    width: 300px;
+    min-width: 300px;
+    max-width: 300px;
+    height: auto;
+    border-radius: 20px;
 }
 
-.table-content tr.member-web td.mem-pic .container:hover .overlay {
-    opacity: 1;
-}
-
-.table-content tr.member-web td.mem-pic .text {
-    color: black;
-    font-size: 150%;
-    font-family: 'Roboto Slab', serif;
-}
-
-
-/*this is table-content*/
-
-
-/*this is link */
-
-.table-content tr td h1.link {
-    text-align: left;
-    font-family: 'Crimson Text', serif;
-    font-size: 300%;
-}
-
-ul li a.link-bar {
-    text-decoration: none;
-    color: black;
-    padding: 15px;
-    border: none;
-    margin: 5px;
-    font-size: 120%;
-    border-radius: 15px;
-    font-family: 'Merriweather', serif;
-}
-
-ul li a.link-bar:hover {
-    color: #ffab2e;
-}
-
-ul li a.link-bar:focus {
-    background-color: gray;
-    color: white;
-}
-
-.table-content tr td.link {
-    border-bottom: 1px solid lightgray;
-}
-
-
-/*this is link */
-
-.table-content tr td h1.wd {
-    font-family: 'Lora', serif;
-    text-align: left;
-    font-size: 400%;
-}
-
-.table-content tr td.wd {
-    border-bottom: 5px solid lightgray;
-    padding-left: 2%;
-}
-
-.table-content tr td h1.day-detail {
-    padding-left: 5%;
-}
-
-.table-content tr td ol.detail {
-    padding-left: 10%;
-    list-style-type: square;
-}
-
-.table-content tr.day-detail td {
-    border-bottom: 1px solid lightgray;
-}
-
-.table-content tr td.day-pic {
+.text p{
     text-align: center;
+    font-weight: 300;
+    font-size: 0.8em;
+}
+.link{
+    margin-top:25px ;
+    display: block;
+    height: 140px;
+    border-bottom: 1px solid gray;
 }
 
-.table-content tr td.day-pic img {
-    width: 400px;
-    border-radius: 15px;
-    border: solid lightgray 5px;
+.link-head{
+    margin-bottom: 30px;
+    margin-left: 50px;
 }
+.link-content{
+    margin-left: 100px;
+}
+
+.link-content ul li{
+    display: inline;
+    margin-left: 30px;
+}
+
+.link-content ul li a{
+    font-size: 1.2em;
+    color: black;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.link-content ul li a:hover{
+    background-color: #46c7c7;
+}
+.link-content ul li a:active{
+    color:  white;
+}
+

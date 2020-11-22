@@ -1,20 +1,70 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>otheruser</title>
+    <link rel="stylesheet" href="{% static '/css/otheruser.css' %}">
 </head>
 <body>
-    สินค้าของ {{XXX}}
-    <a href="{% url 'previoustrades' ID %}"> ประวัติการ ซื้อ-ขาย ของ {{XXX}} </a>
-    {% for x in PDG %}
-        <li>
-            ชื่อสินค้า {{ x }}
-            <img src="{{x.p_image.url}}" width="200">  
-        </li>
-        {% empty %}
-            <li>ไม่มีสินค้า</li>
-        {% endfor %}
+    <div class="nav-bar">
+        <div class="logo">
+            <a href="#"><img src="{% static 'images/Logo.png' %}" alt="logo"></a>
+        </div>
+        <div class="head-bar">
+            <h1>Shop</h1>
+        </div>
+        <div class="nav">
+            <ul>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'shopgrid' %}">Home</a></li>
+                    <li><a href="{% url 'myshopgrid' %}">My shop</a></li>
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    <li><a href="{% url 'myfavorite' %}">favorite</a></li>
+                    <li><a href="{% url 'aboutpage'  %}">About</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'shopgrid' %}">Home</a></li>
+                    <li><a href="{% url 'aboutpage'  %}">About</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <div class="head-home">
+    </div>
+    <div class="main-buy">
+        <div class="box-content">
+            <div class="head">
+                รายการสินค้าของ {{XXX}}
+            </div>
+            <div class="center-content">
+                {% for x in PDG %}
+                    <div class="box-list">
+                        <div class="pic-item">
+                            <img src="{{x.p_image.url}}" alt="item1">
+                            <a href="#">
+                                <div class="overlay">
+                                    <div class="text"><i class="fa fa-search-plus" aria-hidden="true"></i></div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="name-item">
+                            <p class="by">ชื่อสินค้า :&nbsp;</p><a href="#"><p>{{ x }}</p></a>
+                        </div>
+                        <div class="addtofav">
+                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>&nbsp;เพิ่มในสิ่งที่ถูกใจ</a>
+                        </div>
+                    </div>
+                {% empty %}
+                    <div class="shop-empty">
+                        ไม่มีสินค้า
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 </body>
 </html>

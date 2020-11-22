@@ -1,0 +1,236 @@
+@import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mitr:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    scroll-behavior: smooth;
+}
+body{
+    background-color:  #f0f0f0;
+}
+a{
+    text-decoration: none;
+}
+.nav-bar{
+    width: auto;
+    height: 75px;
+    background-color: darkslategray;
+}
+.logo{
+    float: left;
+    margin: 0 0 0 100px;
+}
+.logo a img{
+    height: 75px;
+    width: 150px;
+}
+
+
+.head-bar{
+    float: left;
+    margin: 20px 0 0 25px;
+}
+.head-bar h1{
+    font-size: 2em;
+    color: white;
+}
+.nav{
+    float: right;
+    margin-top: 25px;
+    margin-right: 100px;
+}
+
+.nav ul li{
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.nav ul li a{
+    font-size: 1.2em;
+    color: white;
+    padding: 20px;
+    font-weight: 900;
+}
+
+.nav ul li a:hover{
+    
+    background-color: #57d4d2;
+}
+.nav ul li a:active{
+    color: #2a6969;
+}
+.head-home{
+    margin: 25px 50px 20px 0;
+}
+.head{
+    display: block;
+    margin-left: 7%;
+    margin-top: -3%;
+    font-family: 'Mitr', sans-serif;
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+
+.box-content{
+    width: 70%;
+    min-height: auto;
+    background-color: transparent;
+    margin: 0% auto;
+    display: block;
+    overflow: hidden;
+    padding: 75px;
+    border-radius: 15px;
+}
+
+.center-content{
+    margin: 5% auto 0 auto;
+    height: 600px;
+    overflow: scroll;
+    position: relative;
+    background-color: transparent;
+}
+
+/**/
+.pic-item{
+    position: relative;
+}
+
+.overlay{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: lightgrey;
+    height: 200px;
+    width: 20%;
+}
+
+.pic-item:hover .overlay{
+    opacity: .5;
+}
+
+.text {
+    color: black;
+    font-size: 2em;
+    position: absolute;
+    top: 50%;
+    bottom: 0%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 200px;
+    text-align: center;
+}
+
+.text i{
+    margin: 35% 0;
+    display: block;
+}
+/**/
+.box-list{
+    float: left;
+    width: 90%;
+    height: 200px;
+    min-height: auto;
+    background-color: white;
+    display: block;
+    overflow: hidden;
+    border-radius: 1px;
+    margin-bottom: 1.5%;
+    margin-left: 5%;
+}
+
+.pic-item img{
+    width: 20%;
+    height: 200px;
+    display: block;
+    float: left;
+}
+.name-item{
+    height: 2em;
+    float: left;
+    width: 72%;
+    height: 2em;
+    margin-left: 5%;
+    margin-top: 1%;
+}
+
+.name-item a{
+    color: black;
+    font-family: 'Mitr', sans-serif;
+}
+
+.name-item a:hover{
+    color: rgb(92, 91, 91);
+}
+
+.name-item a p{
+    font-weight: 700;
+    font-family: 'Mitr', sans-serif;
+    text-overflow: ellipsis;
+    max-height: 2em;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+}
+
+p.by{
+    float: left;
+    font-weight: 400;
+    font-family: 'Mitr', sans-serif;
+    max-height: 2em;
+}
+
+.owner-item a p.name{
+    font-family: 'Mitr', sans-serif;
+    font-weight: 400;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-height: 2em;
+    margin-left: 10px;
+    display: block;
+    text-decoration: underline;
+}
+
+.owner-item a{
+    color: rgb(53, 52, 52);
+}
+
+.owner-item a:hover{
+    color: rgb(0, 0, 255);
+}
+
+.owner-item a:active{
+    color: green;
+}
+.owner-item{
+    float: left;
+    margin-top: 1%;
+    margin-left: 5%;
+    width: 72%;
+}
+.shop-empty{
+    font-family: 'Mitr', sans-serif;
+    font-weight: 800;
+    font-size: 3em;
+    display: block;
+    margin: 50px auto;
+    text-align: center;
+}
