@@ -10,7 +10,7 @@
 <body>
     <div class="nav-bar">
         <div class="logo">
-            <div class="logo-back"><a href="#"><img src="{% static 'images/Logo.png' %}" alt="logo"></a></div>
+            <div class="logo-back"><a href="{% url 'shopgrid' %}"><img src="{% static 'images/Logo.png' %}" alt="logo"></a></div>
         </div>
         <div class="head-bar">
             <h1>My Shop</h1>
@@ -21,7 +21,7 @@
                     <li><a href="{% url 'shopgrid' %}">Home</a></li>
                     <li><a href="{% url 'myshopgrid' %}">My shop</a></li>
                     <li><a href="{% url 'profile' %}">Profile</a></li>
-                    <li><a href="{% url 'myfavorite' %}">v</a></li>
+                    <li><a href="{% url 'myfavorite' %}">Favortie</a></li>
                     <li><a href="{% url 'aboutpage'  %}">About</a></li>
                     <li><a href="{% url 'logout' %}">Logout</a></li>
                 {% else %}

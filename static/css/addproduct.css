@@ -1,0 +1,218 @@
+@import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mitr:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+body{
+    background-color: #f0f0f0;
+}
+a{
+    text-decoration: none;
+}
+.nav-bar{
+    width: auto;
+    height: 75px;
+    background-color: darkslategray;
+}
+.logo{
+    float: left;
+    margin: 0 0 0 100px;
+}
+.logo-back img{
+    height: 75px;
+    width: 150px;
+    opacity: 2;
+}
+
+.head-bar{
+    float: left;
+    margin: 20px 0 0 25px;
+}
+.head-bar h1{
+    font-size: 2em;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+}
+.nav{
+    float: right;
+    margin-top: 25px;
+    margin-right: 100px;
+}
+
+.nav ul li{
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.nav ul li a{
+    font-size: 1.2em;
+    color: white;
+    padding: 20px;
+    font-weight: 900;
+}
+
+.nav ul li a:hover{
+    
+    background-color: #57d4d2;
+}
+.nav ul li a:active{
+    color: #2a6969;
+}
+.head-home{
+    margin: 50px;
+}
+
+.head-home h1{
+    margin-left: 10%;
+    font-family: 'Mitr', sans-serif;
+}
+
+.main-content{
+    width: 60%;
+    min-height: auto;
+    overflow: hidden;
+    display: block;
+    margin: 0 auto;
+    background-color: white;
+    padding-bottom: 100px;
+    border-radius: 5px;
+}
+
+.photo-add{
+    margin: 25px 0 10px 30px;
+}
+
+.photo-add .add-but{
+    font-family: 'Mitr', sans-serif;
+    padding: 5px;
+    background-color: white;
+    font-size: 1.1em;
+    color: black;
+    border: 1px solid gray;
+}
+.photo-add .add-but:hover{
+    background-color: lightgray;
+}
+
+.photo-add .add-but:active{
+    background-color: gray;
+}
+
+.goods-name{
+    margin: 0px 0 10px 30px;
+}
+
+.control-label{
+    font-size: 1.3em;
+    font-weight: 500;
+    color: black;
+    font-family: 'Mitr', sans-serif;
+}
+
+.goods-name input{
+    font-family: 'Mitr', sans-serif;
+    padding: 5px;
+    font-size: 1.1em;
+    font-weight: 500;
+    margin-left: 20px;
+}
+
+.goods-catagory{
+    margin: 0 0 10px 30px;
+}
+
+.control-select{
+    margin-left: 10px;
+    padding: 5px;
+    min-width: 200px;
+    font-family: 'Mitr', sans-serif;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.control-option{
+    font-family: 'Mitr', sans-serif;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.goods-price{
+    margin: 0 0 10px 30px;
+}
+
+.goods-price input{
+    font-family: 'Mitr', sans-serif;
+    padding: 5px;
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-left: 20px;
+}
+
+.goods-detail{
+    margin: 20px 0 10px 30px;
+}
+.control-label-text{
+    font-size: 1.3em;
+    font-weight: 500;
+    color: black;
+    font-family: 'Mitr', sans-serif;
+    float: left;
+}
+
+.control-textarea{
+    font-family: 'Mitr', sans-serif;
+    padding: 5px;
+    font-size: 1.2em;
+    font-weight: 500;
+    margin-left: 20px;
+}
+
+.deadline{
+    margin: 20px 0 10px 30px;
+}
+
+.head-dl{
+    font-size: 500;
+    font-family: 'Mitr', sans-serif;
+    margin: 0 0 10px 0;
+    font-size: 1.3em;
+}
+
+.day-detail{
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+.sumit-but{
+    box-shadow: 0 5px 0 rgb(32, 34, 133);
+    font-size: 1.2em;
+    color: white;
+    padding: 1em 1.5em;;
+    font-weight: 600;
+    background-color: rgb(46, 48, 192);
+    width: 20%;
+    height: auto;
+    display: flex;
+    font-family: 'Mitr', sans-serif;
+    position: relative;
+    margin: 50px 0 0 5%;
+}
+
+.sumit-but:hover{
+    background-color:rgb(32, 34, 133);
+}
+
+.sumit-but:active{
+    box-shadow: none;
+    top: 5px;
+}

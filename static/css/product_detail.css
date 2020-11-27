@@ -209,7 +209,7 @@ form{
 /**/
 .buy-button{
     float: left;
-    width: 20%;
+    width: 150%;
     min-height: auto;
     overflow: hidden;
     margin-top: 50px;

@@ -1,24 +1,61 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>Your Profile</title>
-    <link rel="stylesheet" href="{% static '/css/aboutpage.css' %}" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="{% static '/css/profile.css' %}">
 </head>
 <body>
-    <h1><center>Hello {{user.username}}</center></h1>
-    <center><img src="{{user.profile.image.url}}" width="240"></center>
-    <!-- ใส่รูปโปรไฟล์ตรงนี้ -->
-    <div class="container">
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ u_form }}<br><br><br>
-            {{ p_form }}<br>
-            <button type="submit">Update</button>
-        </form>
-</div>
-
+    <div class="nav-bar">
+        <div class="logo">
+            <div class="logo-back"><a href="{% url 'shopgrid' %}"><img src="{% static 'images/Logo.png' %}" alt="logo"></a></div>
+        </div>
+        <div class="head-bar">
+            <h1>Profile</h1>
+        </div>
+        <div class="nav">
+            <ul>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'shopgrid' %}">Home</a></li>
+                    <li><a href="{% url 'myshopgrid' %}">My shop</a></li>
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    <li><a href="{% url 'myfavorite' %}">Favorite</a></li>
+                    <li><a href="{% url 'aboutpage'  %}">About</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'shopgrid' %}">Home</a></li>
+                    <li><a href="{% url 'aboutpage'  %}">About</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <div class="content">
+        <div class="profile-left">
+            <div class="profile-head">My Profile</div>
+            <div class="profile-pic">
+                <img src="{{user.profile.image.url}}" alt="picture">
+            </div>
+            <div class="profile-detail">
+                <div class="before">Username :</div><div class="name">{{user.username}}</div>
+            </div>
+        </div>
+        <div class="profile-right">
+            <div class="update-head">
+                Updateprofile
+            </div>
+            <div class="update-detail">
+                <form method="POST" enctype="">
+                    {% csrf_token %}
+                    {{ u_form }}
+                    {{ p_form }} <br>
+                    <button type="submit" class="submit">บันทึก</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

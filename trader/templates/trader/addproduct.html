@@ -1,67 +1,98 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Product</title>
+    <title>addproduct</title>
+    <link rel="stylesheet" href="{% static '/css/addproduct.css' %}" type="text/css">
 </head>
 <body>
-    <h1>Add Product here</h1>
-    <br>
-    <form method="post" enctype="multipart/form-data" action = "{% url 'addproductpage' %}" >
-        {% csrf_token %}
-        {{ pro_form }}<br>
-        <label for="product_name">กรุณาใส่ชื่อสินค้า</label> <br>
-        <input type="text" id ="product_name" name ="product_name"><br>
-        <label for="product_detail">รายละเอียดของสินค้า</label> <br>
-        <textarea name="product_detail" id="product_detail " cols="20" rows="4"></textarea><br>
-        <label for="product_price">กรุณาใส่ราคาของสินค้า</label> <br>
-        <input type="text" id ="product_price" name ="product_price"><br>
-        <label for="product_cat">กรุณาใส่หมวดหมู่ของสินค้า</label> <br>
-        <select name="product_cat" id="product_cat">
-            {% for x in Category %}
-                <li> <option value="{{ x }}"> {{x}} </option>  </li>
-            {% endfor %}
-            </select>  
-        </select>  
-        <br>
-        กรุณาใส่วัน เวลา และสถานที่นัดดูสินค้า <br>
-        {% for i in '123' %}
-        <label for="day{{i}}"> {{i}}: วัน</label> 
-        <select name="day{{i}}" id="day{{i}}">
-            <option value="none" selected disabled hidden> 
-                เลือกวัน 
-            </option>
-            {% for x in DayList %}
-                <option value="{{ x }}"> {{x}} </option>  
-            {% endfor %}
-        </select> 
-
-        <label for='place{{i}}'>สถานที่</label> 
-        <select name="place{{i}}" id="place{{i}}">
-            <option value="none" selected disabled hidden> 
-                เลือกสถานที่
-            </option>
-            {% for x in place %}
-                <option value="{{ x }}"> {{x}} </option>  
-            {% endfor %}
-        </select>
-
-        <label for='time{{i}}'>เวลา</label> 
-        <select name="time{{i}}" id="time{{i}}">
-            <option value="none" selected disabled hidden> 
-                เลือกเวลา
-            </option>
-            {% for x in Time %}
-                <option value="{{ x }}"> {{x}} </option>  
-            {% endfor %}
-        </select> <br> 
-        {% endfor %}
-        
-
-        <button type="submit" >Submit</button>
-    </form>
-    <a href = "{% url 'shopgrid' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Back to shop </a>
-
+    <div class="nav-bar">
+        <div class="logo">
+            <div class="logo-back"><a href="{% url 'shopgrid' %}"><img src="{% static 'images/Logo.png' %}" alt="logo"></a></div>
+        </div>
+        <div class="head-bar">
+            <h1>My Shop</h1>
+        </div>
+        <div class="nav">
+            <ul>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'shopgrid' %}">Home</a></li>
+                    <li><a href="{% url 'myshopgrid' %}">My shop</a></li>
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    <li><a href="{% url 'myfavorite' %}">favorite</a></li>
+                    <li><a href="{% url 'aboutpage'  %}">About</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'shopgrid' %}">Home</a></li>
+                    <li><a href="{% url 'aboutpage'  %}">About</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <div class="head-home">
+        <h1>Add product</h1>
+    </div>
+    <div class="main-content">
+        <form method="post" enctype="multipart/form-data" action = "{% url 'addproductpage' %}" >
+            {% csrf_token %}
+            <div class="photo-add">
+                {{ pro_form }}
+            </div>
+            <div class="goods-name">
+                <label for="goods-n" class="control-label">ชื่อสินค้า : </label>
+                <input type="text" id="goods-n" placeholder="เช่น หนังสือเรียนวิชาเคมี">
+            </div>
+            <div class="goods-catagory">
+                <label for="goods-cat" class="control-label">ประเภทสินค้า :</label>
+                <select name="goods-cat" id="goods-cat" class="control-select">
+                    <option value="nocat" class="control-option"></option>
+                    {% for x in Category %}
+                        <option value="{{ x }}" class="control-option">{{ x }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="goods-price">
+                <label for="goods-p" class="control-label">ราคาสินค้า :</label>
+                <input type="text" id="goods-p" placeholder="เช่น 100">
+            </div>
+            <div class="goods-detail">
+                <label for="goods-d" class="control-label-text">รายละเอียดของสินค้า : </label>
+                <textarea name="goods-d" id="goods-d" cols="50" rows="20" class="control-textarea"></textarea>
+            </div>
+            <div class="deadline">
+                <div class="head-dl">เลือกวันนัดรับ : </div>
+                {% for i in '123' %}
+                    <div class="day-detail">
+                        <label for="day{{i}}" id="day{{i}}" class="control-label">day{{i}} : วัน </label>
+                        <select name="day{{i}}" id="day{{i}}" class="control-select">
+                            <option value="เลือกวัน" class="control-option" selected disabled hidden>เลือกวัน</option>
+                            {% for x in DayList %}
+                                <option value="{{ x }}" class="control-option">{{ x }}</option>
+                            {% endfor %}    
+                        </select>
+                        <label for="place{{i}}" id="place{{i}}" class="control-label">สถานที่ : </label>
+                        <select name="place{{i}}" id="place{{i}}" class="control-select" >
+                            <option value="เลือกสถานที่" class="control-option" selected disabled hidden>เลือกสถานที่</option>
+                            {% for x in place %}
+                                <option value="{{ x }}" class="control-option">{{ x }}</option>
+                            {% endfor %}
+                        </select>
+                        <label for="time{{i}}" id="time{{i}}" class="control-label">เวลา</label>
+                        <select name="time{{i}}" id="time{{i}}" class="control-select">
+                            <option value="เลือกเวลา" class="control-option" selected disabled hidden>เลือกเวลา</option>
+                            {% for x in Time %}
+                                <option value="{{ x }}" class="control-option">{{ x }}</option>
+                            {% endfor %}  
+                        </select>
+                    </div>
+                {% endfor %}
+            </div>
+            <button  type="button" class="sumit-but">เพิ่มสินค้า</button>
+        </form>
+    </div>
 </body>
 </html>

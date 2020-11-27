@@ -1,0 +1,200 @@
+@import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mitr:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+body{
+    background-color: #f0f0f0;
+}
+a{
+    text-decoration: none;
+}
+.nav-bar{
+    width: auto;
+    height: 75px;
+    background-color: darkslategray;
+}
+.logo{
+    float: left;
+    margin: 0 0 0 100px;
+}
+.logo-back img{
+    height: 75px;
+    width: 150px;
+    opacity: 2;
+}
+
+.head-bar{
+    float: left;
+    margin: 20px 0 0 25px;
+}
+.head-bar h1{
+    font-size: 2em;
+    color: white;
+}
+.nav{
+    float: right;
+    margin-top: 25px;
+    margin-right: 100px;
+}
+
+.nav ul li{
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.nav ul li a{
+    font-size: 1.2em;
+    color: white;
+    padding: 20px;
+    font-weight: 900;
+}
+
+.nav ul li a:hover{
+    
+    background-color: #57d4d2;
+}
+.nav ul li a:active{
+    color: #2a6969;
+}
+.content{
+    min-height: auto;
+    width: 100%;
+    overflow: hidden;
+}
+
+.profile-left{
+    width: 29%;
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: transparent;
+    float: left;    
+    display: block;
+    border-right: 2px solid lightgray;
+}
+
+.profile-right{
+    width: 70%;
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: transparent;
+    float: right;
+    display: block;
+}
+.profile-head{
+    font-family: 'Oswald', sans-serif;
+    font-size: 3em;
+    margin-top: 10%;
+    margin-left: 10%;
+    margin-bottom: 5%;
+}
+
+.profile-pic img{
+    height: 300px;
+    width: 400px;
+    margin: 0 auto;
+    display: block;
+    border-radius: 50%;
+}
+.profile-detail .before{
+    font-family: 'Roboto', sans-serif;
+    margin: 50px 0 0 15%;
+    display: block;
+    float: left;
+    font-weight: 400;
+}
+
+.profile-detail .name{
+    font-family: 'Roboto', sans-serif;
+    display: block;
+    float: left;
+    margin: 50px 0 0 20px;
+    font-weight: 700;
+}
+
+.update-head{
+    font-family: 'Oswald', sans-serif;
+    font-size: 3em;
+    margin-top: 5%;
+    margin-left: 7%;
+    margin-bottom: 5%;
+}
+
+.update-detail{
+    margin-left: 10%;
+}
+
+form{
+    font-family: 'Roboto', sans-serif;
+    display: block;
+    font-weight: 700;
+}
+.user{
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.usern{
+    margin-bottom: 10px;
+}
+
+.email{
+    float: left;
+    margin-right: 42px;
+    margin-bottom: 10px;
+}
+
+.emailu{
+    margin-bottom: 10px;
+}
+
+.pic-cur{
+    margin-bottom: 10px;
+}
+
+.pic-cur a{
+    text-decoration: underline;
+    color: blue;
+    font-size: 1.2em;
+    margin-left: 10px;
+}
+
+.pic-cur a:hover{
+    color: darkblue;
+}
+
+.change-pic{
+    margin-bottom: 10px;
+}
+
+.change-pic button{
+    background-color: white;
+    padding: 5px;
+    margin-left: 10px;
+}
+.change-pic button:active{
+    background-color: rgb(184, 182, 182);
+}
+.faculty{
+    float: left;
+}
+
+.selec select{
+    margin-left: 10px;
+    padding: 5px;
+}
+
+form button.submit{
+    margin: 20px;
+    padding: 10px;
+}
+
