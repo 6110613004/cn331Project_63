@@ -1,42 +1,122 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mydeal</title>
+    <link rel="stylesheet" href="{% static '/css/mydeal.css' %}" type="text/css">
 </head>
 <body>
-    My Deal !!
-    <a href="{% url 'myprevioustrades' %}"> ประวัติการ ซื้อ-ขาย ของ ฉัน </a>
-    <h1>ขาย</h1>
-    {% for x in sell %}
-        <p>ชื่อสินค้า <a href = "{% url 'product_detail' x.pName %}"> {{ x }}</a>
-        {% if x.pStatus == True %}
-            {% if x.buyerID == "" %}
-                กำลังรอผู้ที่สนใจ
-            {% else %}
-                กำลังซื้อโดย {{x.buyerName}}
-                <a href = "{% url 'canceldeal' x.id %}"> ยกเลิกการขาย </a>
-                <a href = "{% url 'confirmdeal' x.id %}"> สำเร็จการขาย </a>
-            {% endif %}
-        {% else %}
-            การซื้อขายนี้สำเร็จเเล้ว
-        {% endif %}
-        </p> <br>
-    {% empty %}
-        <p>ไม่มี</p>
-    {% endfor %}
-    <br><br>
-
-    <h1>ซื้อ</h1>
-    {% for x in buy %}
-        <p> ชื่อสินค้า <a href = "{% url 'product_detail' x.pName %}"> {{ x }}</a> 
-            ขายโดย {{x.ownerName}}
-            <a href = "{% url 'canceldeal' x.id %}"> ยกเลิกการซื้อ </a>
-
-        </p>
-    {% empty %}
-        <p>ไม่มี</p>
-    {% endfor %}
+    <div class="nav-bar">
+        <div class="logo">
+            <div class="logo-back"><a href="{% url 'shopgrid' %}"><img src="{% static 'images/Logo.png' %}" alt="logo"></a></div>
+        </div>
+        <div class="head-bar">
+            <h1>Trading now</h1>
+        </div>
+        <div class="nav">
+            <ul>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'shoplist' %}">Home</a></li>
+                    <li><a href="{% url 'myshoplist' %}">My shop/a></li>
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    <li><a href="{% url 'myfavorite' %}">favorite</a></li>
+                    <li><a href="{% url 'aboutpage'  %}">About</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'shoplist' %}">Home</a></li>
+                    <li><a href="{% url 'aboutpage'  %}">About</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <div class="head-home">
+    </div>
+    <div class="main-buy">
+        <div class="box-content">
+            <div class="head">
+                รายการสั่งซื้อ
+            </div>
+            <div class="center-content">
+                {% for x in buy %}
+                    <div class="box-list">
+                        <div class="pic-item">
+                            <img src="{{x.p_image.url}}" alt="item1">
+                            <a href="{% url 'product_detail' x.pName %}">
+                                <div class="overlay">
+                                    <div class="text"><i class="fa fa-search-plus" aria-hidden="true"></i></div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="name-item">
+                            <p class="by">ชื่อสินค้า :&nbsp;</p><a href="{% url 'product_detail' x.pName %}"><p>{{ x }}</p></a>
+                        </div>
+                        <div class="owner-item">
+                            <p class="by">ลงขายโดย :&nbsp;</p><a href="#"><p class="name">{{x.ownerName}}</p></a>
+                        </div>
+                        <div class="cancle2">
+                            <a href="{% url 'canceldeal' x.id %}">ยกเลิกการสั่งซื้อ</a>
+                        </div>
+                    </div>
+                {% empty %}
+                    <div class="shop-empty">
+                        ไม่มีรายการสั่งซื้อ
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="main-sale">
+        <div class="box-content">
+            <div class="head">
+                รายการที่มีผู้สนใจ
+            </div>
+            <div class="center-content">
+                {% for x in sell %}
+                    <div class="box-list">
+                        <div class="pic-item">
+                            <img src="{{x.p_image.url}}" alt="item1">
+                            <a href="{% url 'product_detail' x.pName %}">
+                                <div class="overlay">
+                                    <div class="text"><i class="fa fa-search-plus" aria-hidden="true"></i></div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="name-item">
+                            <p class="by">ชื่อสินค้า :&nbsp;</p><a href="{% url 'product_detail' x.pName %}"><p>{{ x }}</p></a>
+                        </div>
+                        {% if x.pStatus == True %}
+                            {% if x.buyerID == "" %}
+                                <div class="owner-item">
+                                    <p class="by">สถานะ : กำลังรอผู้ที่สนใจ</p>
+                                </div>
+                            {% else %}
+                                <div class="owner-item">
+                                    <p class="by">ถูกซื้อโดย :&nbsp;</p><a href="#"><p class="name">{{x.buyerName}}</p></a>
+                                </div>
+                                <div class="addtofav">
+                                    <a href="{% url 'confirmdeal' x.id %}">สำเร็จการขาย</a>
+                                </div>
+                                <div class="cancle">
+                                    <a href="{% url 'canceldeal' x.id %}">ยกเลิกการขาย</a>
+                                </div>
+                            {% endif %}
+                        {% else %}
+                            <div class="owner-item">
+                                <p class="by">สถานะ : ขายสำเร็จ</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% empty %}
+                    <div class="shop-empty">
+                        ไม่มีรายการสินค้าที่ถูกขาย
+                    </div>
+                {% endfor %}  
+            </div>
+        </div>
+    </div>
 </body>
 </html>

@@ -1,13 +1,82 @@
-{{ error }}
-
-{% if post %}
-    <center><h1>Search Result Found</h1></center><br>
-
-{% for i in post %}
-<center><h2><a href="{% url 'product_detail' i.pName %}">{{ i.pName }}</a></h2></center>
-{% endfor %}
-    {% else %}
-    <h1>Nothing found</h1>
-{% endif %}
-
-<a href="{% url 'shop' %}"> Shop </a>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ผลการค้นหา :</title>
+    <link rel="stylesheet" href="{% static '/css/search.css' %}" type="text/css">
+</head>
+<body>
+    <div class="nav-bar">
+        <div class="logo">
+            <div class="logo-back"><a href="{% url 'shopgrid' %}"><img src="{% static 'images/Logo.png' %}" alt="logo"></a></div>
+        </div>
+        <div class="head-bar">
+            <h1>Home</h1>
+        </div>
+        <div class="nav">
+            <ul>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'shopgrid' %}">Home</a></li>
+                    <li><a href="{% url 'myshopgrid' %}">My shop</a></li>
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    <li><a href="{% url 'myfavorite' %}">Favorite</a></li>
+                    <li><a href="{% url 'aboutpage'  %}">About</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'shopgrid' %}">Home</a></li>
+                    <li><a href="{% url 'aboutpage'  %}">About</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <div class="head-home">
+        <h1>ผลการค้นหา. . .</h1>
+    </div>
+    <div class="search-box">
+        <div class="form-search">
+            <form action="{% url 'searchbar' %}" method="GET" class="search">
+                <input type="text" name="search" placeholder="ค้นหา. . .">
+                <select name="searchCategory" id="searchCategory">
+                    <option value="All">All</option>
+                    {% for x in Category %}
+                        <option value="{{ x }}">{{x}}</option>
+                    {% empty %}
+                        <option value="nocategory"></option>
+                    {% endfor %}
+                </select>
+                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </form>
+        </div>
+    </div>
+    <div class="nav2-bar">
+        <button type="button" class="buy-sale-now">
+            <a href="{% url 'mydeal' %}">กำลังซื้อ-ขาย</a>
+        </button>
+        <br>
+        <button type="button" class="buy-sale-his">
+            <a href="{% url 'myprevioustrades' %}">ประวัติการซื้อ-ขาย</a>
+        </button>
+    </div>
+    <div class="box-content">
+        <div class="center-content">
+            {% if post %}   
+                {% for i in post %} 
+                    <div class="box-list">
+                        <div class="name-item">
+                            <p class="by"></p><a href="{% url 'product_detail' i.pName %}"><p>{{ i.pName }}</p></a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="shop-empty">
+                    ไม่มีรายการที่ค้นหา
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
