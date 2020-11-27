@@ -53,9 +53,19 @@ def myshop(request):
     return render(request, 'trader/myshop.html',{                                             # ไปหน้า myshop.html      
         'PD' : Product.objects.filter(ownerID = request.user.id ).filter(pStatus=True)}       # ส่ง object class Product ที่เป็นของ User ที่ login มา              
     )                                                                                         # (pStatus คือ สถานนะของสินค้า True = ยังไม่ได้ทำการขาย False = ทำการขายเเล้ว)
+def myshoplist(request):
+    return render(request, 'trader/myshoplist.html',{                                             # ไปหน้า myshop.html      
+        'PD' : Product.objects.filter(ownerID = request.user.id ).filter(pStatus=True)}       # ส่ง object class Product ที่เป็นของ User ที่ login มา              
+    )
 
 def shop(request):
     return render(request, 'trader/shopgrid.html',{                                               # ไปหน้า shop.html 
+        'PD' : Product.objects.exclude(ownerID = request.user.pk ).filter(pStatus=True) ,     # โดยจะส่งค่า object class Product ทั้งหมดที่ไม่ใช่ของ User ที่ login เข้ามา
+        'Category' : CATEGORY_CHOICES                                                         # และส่งข้อมูล Category (เป็น list ใน models.py) ไปด้วย (สำหรับการค้นหาในหน้า shop.html)
+        }
+    )
+def shoplist(request):
+    return render(request, 'trader/shoplist.html',{                                               # ไปหน้า shop.html 
         'PD' : Product.objects.exclude(ownerID = request.user.pk ).filter(pStatus=True) ,     # โดยจะส่งค่า object class Product ทั้งหมดที่ไม่ใช่ของ User ที่ login เข้ามา
         'Category' : CATEGORY_CHOICES                                                         # และส่งข้อมูล Category (เป็น list ใน models.py) ไปด้วย (สำหรับการค้นหาในหน้า shop.html)
         }

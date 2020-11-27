@@ -63,7 +63,7 @@
                         <a href="#"><p>{{ x.pName }}</p></a>
                     </div>
                     <div class="owner-item">
-                        <a href="{% url 'updatepic' %}"><p class="name">แก้ไขรูปภาพ</p></a>
+                        <a href="{% url 'updatepic' x.id %}"><p class="name">แก้ไขรูปภาพ</p></a>
                     </div>
                     <div class="addtofav">
                         <a href="{% url 'delete' x.id %}"><i class="fa fa-trash" aria-hidden="true"></i></a>
