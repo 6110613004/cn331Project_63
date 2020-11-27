@@ -65,20 +65,20 @@
                     <form method="POST" action="{% url 'buy' product_de.id %}">
                         {% csrf_token %}
                         {% if product_de.s1 == True %}
-                            <label for="dl1" class="container-tikbox">
-                                <input type="radio" id="dl1" name="deadline" value="dl1"> {{product_de.day1}} {{product_de.place1}} {{product_de.time1}} 
+                            <label for="deal1" class="container-tikbox">
+                                <input type="radio" id="deal1" name="deal" value="1"> {{product_de.day1}} {{product_de.place1}} {{product_de.time1}} 
                             </label><br>
                         {% else %}
                         {% endif %}
                         {% if product_de.s2 == True %}
-                            <label for="dl2" class="container-tikbox">
-                                <input type="radio" id="dl2" name="deadline" value="dl2"> {{product_de.day2}} {{product_de.place2}} {{product_de.time2}}
+                            <label for="deal2" class="container-tikbox">
+                                <input type="radio" id="deal2" name="deal" value="2"> {{product_de.day2}} {{product_de.place2}} {{product_de.time2}}
                             </label><br>
                         {% else %}
                         {% endif %}
                         {% if product_de.s3 == True %}
-                            <label for="dl3" class="container-tikbox">
-                                <input type="radio" id="dl3" name="deadline" value="dl3"> {{product_de.day3}} {{product_de.place3}} {{product_de.time3}}
+                            <label for="deal2" class="container-tikbox">
+                                <input type="radio" id="deal2" name="deal" value="3"> {{product_de.day3}} {{product_de.place3}} {{product_de.time3}}
                             </label><br>
                         {% else %}
                         {% endif %}
